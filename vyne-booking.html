@@ -467,7 +467,7 @@ nav {
 
 <!-- Nav -->
 <nav>
-  <a href="#" class="logo">V<span>Y</span>NE</a>
+  <a href="index.html" class="logo">V<span>Y</span>NE</a>
   <a href="vyne-fleet.html" class="nav-back">← Back to Fleet</a>
 </nav>
 
@@ -478,7 +478,7 @@ nav {
   <h2 class="success-title">You're <em>Booked</em></h2>
   <p class="success-sub">Your deposit has been received. A VYNE concierge will contact you within 2 hours to confirm your reservation details.</p>
   <p class="success-ref">Confirmation #: <span id="confirmRef">VYN-000000</span></p>
-  <a href="#" class="btn-success">Back to Home</a>
+  <a href="index.html" class="btn-success">Back to Home</a>
 </div>
 
 <!-- Main layout -->
@@ -657,8 +657,7 @@ nav {
       </div>
     </div>
 
-    <!-- ── STEP 5: Driver ── -->
-        <!-- ── STEP 4: Insurance ── -->
+    <!-- ── STEP 4: Insurance ── -->
     <div class="step" id="step4">
       <div class="step-eyebrow">Step 04</div>
       <h2 class="step-title">Rental <em>Insurance</em></h2>
@@ -668,13 +667,13 @@ nav {
         Insurance is provided by <strong style="color:var(--gold-light);">RentCover / Cover Genius</strong> — licensed in Tennessee and all 50 US states. Your policy document is emailed instantly upon booking confirmation.
       </div>
       <div class="step-nav">
-        <button class="btn-back" onclick="prevStep(5)">← Back</button>
-        <button class="btn-next" onclick="nextStep(5)"><span>Continue →</span></button>
+        <button class="btn-back" onclick="prevStep(4)">← Back</button>
+        <button class="btn-next" onclick="nextStep(4)"><span>Continue →</span></button>
       </div>
     </div>
 
-    <!-- ── STEP 5: Driver (was 4) ── -->
-    <div class="step" id="step6">
+    <!-- ── STEP 5: Driver ── -->
+    <div class="step" id="step5">
       <div class="step-eyebrow">Step 05</div>
       <h2 class="step-title">Driver <em>Details</em></h2>
       <p class="step-sub">Primary driver information and license upload. All drivers must be 25+ with a valid license.</p>
@@ -910,7 +909,7 @@ function validateStep(step) {
   if (step === 3) {
     // Address is fixed — always valid
   }
-  if (step === 6) {  // deposit  // driver
+  if (step === 5) {  // driver
     const fn = document.getElementById('firstName').value.trim();
     const ln = document.getElementById('lastName').value.trim();
     const em = document.getElementById('driverEmail').value.trim();
@@ -960,14 +959,7 @@ function calcDuration() {
   updateSummary();
 }
 
-// ── Location Toggle ──
-function toggleSameLocation() {
-  state.sameLocation = !state.sameLocation;
-  document.getElementById('toggleBox').classList.toggle('checked', state.sameLocation);
-  document.getElementById('field-dropoff-loc').style.display = state.sameLocation ? 'none' : 'block';
-}
-// init checked
-document.getElementById('toggleBox').classList.add('checked');
+// ── Location Toggle (removed — fixed address) ──
 
 // ── File Upload ──
 function handleUpload(input, zoneId, successId) {
@@ -1049,7 +1041,7 @@ function showToast(msg) {
 
 // ── Submit ──
 function submitBooking() {
-  if (!validateStep(5)) return;
+  if (!validateStep(6)) return;
   // Simulate processing
   const btn = document.querySelector('.btn-next.deposit span');
   btn.textContent = 'Processing...';

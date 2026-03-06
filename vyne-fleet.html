@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYNE — Our Fleet · Nashville Luxury Car Rentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --cream: #F5F0E8;
+  --bone: #EAE3D2;
+  --gold: #C9A84C;
+  --gold-light: #E2C97E;
+  --dark: #0C0C0A;
+  --mid: #161614;
+  --panel: #1E1E1C;
+  --panel2: #252522;
+  --border: rgba(201,168,76,0.12);
+  --border-active: rgba(201,168,76,0.5);
+  --muted: #6A6560;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 300;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Noise */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.045;
+}
+
+/* Cursor */
+#cursor { width:7px;height:7px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:transform 0.15s,background 0.2s; }
+#cursor-ring { width:28px;height:28px;border:1px solid rgba(201,168,76,0.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.3s; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.15); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 22px 48px;
+  background: rgba(12,12,10,0.92);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+}
+.logo { font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.4em;color:var(--cream);text-decoration:none; }
+.logo span { color:var(--gold); }
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-link {
+  font-size:11px; font-weight:300; letter-spacing:0.25em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none; transition:color 0.3s; cursor:none;
+}
+.nav-link:hover { color:var(--gold); }
+.nav-cta {
+  font-size:11px; font-weight:300; letter-spacing:0.25em; text-transform:uppercase;
+  color:#0C0C0A; background:var(--gold); padding:12px 28px;
+  text-decoration:none; cursor:none; transition:background 0.3s;
+}
+.nav-cta:hover { background:var(--gold-light); }
+
+/* ── HERO ── */
+.fleet-hero {
+  padding: 140px 48px 80px;
+  text-align: center;
+  position: relative;
+}
+.fleet-hero::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(201,168,76,0.05) 0%, transparent 70%);
+  pointer-events:none;
+}
+.fh-eyebrow {
+  font-size:11px; font-weight:300; letter-spacing:0.4em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:20px;
+  display:flex; align-items:center; justify-content:center; gap:16px;
+  opacity:0; transform:translateY(20px);
+}
+.fh-eyebrow::before, .fh-eyebrow::after { content:''; width:30px; height:1px; background:var(--gold); opacity:0.4; }
+.fh-title {
+  font-family:var(--serif); font-size:clamp(40px,6vw,80px); font-weight:300;
+  line-height:1; margin-bottom:16px;
+  opacity:0; transform:translateY(30px);
+}
+.fh-title em { font-style:italic; color:var(--gold-light); }
+.fh-sub {
+  font-size:12px; font-weight:300; letter-spacing:0.12em; color:var(--muted);
+  max-width:440px; margin:0 auto; line-height:2;
+  opacity:0; transform:translateY(20px);
+}
+
+/* ── VEHICLE CARDS ── */
+.vehicles-section { padding: 0 48px 80px; }
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+}
+.v-card {
+  background: var(--panel);
+  padding: 40px 36px;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.v-card::before {
+  content:''; position:absolute; top:0;left:0;right:0; height:2px;
+  background:linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity:0; transition:opacity 0.3s;
+}
+.v-card:hover { background:var(--panel2); border-color:var(--border); }
+.v-card:hover::before { opacity:1; }
+
+.vc-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+.vc-emoji { font-size:48px; line-height:1; transition:transform 0.3s; }
+.v-card:hover .vc-emoji { transform:scale(1.1) rotate(-3deg); }
+.vc-tag {
+  font-size:9px; font-weight:300; letter-spacing:0.3em; text-transform:uppercase;
+  color:#0C0C0A; background:var(--gold); padding:5px 12px;
+}
+.vc-name { font-family:var(--serif); font-size:28px; font-weight:300; color:var(--cream); margin-bottom:4px; }
+.vc-year { font-size:11px; color:var(--muted); letter-spacing:0.1em; margin-bottom:20px; }
+
+.vc-specs { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:24px; }
+.vc-spec {
+  font-size:10px; font-weight:300; letter-spacing:0.15em; color:var(--muted);
+  display:flex; align-items:center; gap:6px;
+}
+.vc-spec-dot { width:3px; height:3px; background:var(--gold); border-radius:50%; }
+
+.vc-bottom { display:flex; justify-content:space-between; align-items:center; }
+.vc-price { font-family:var(--serif); font-size:32px; color:var(--gold); }
+.vc-price span { font-size:12px; font-family:var(--sans); font-weight:300; color:var(--muted); }
+.vc-btn {
+  font-size:10px; font-weight:300; letter-spacing:0.25em; text-transform:uppercase;
+  color:#0C0C0A; background:var(--gold); padding:14px 32px;
+  text-decoration:none; cursor:none; display:inline-block;
+  position:relative; overflow:hidden; transition:background 0.3s;
+}
+.vc-btn::after {
+  content:''; position:absolute; inset:0;
+  background:var(--gold-light); transform:translateX(-101%);
+  transition:transform 0.4s ease;
+}
+.vc-btn:hover::after { transform:translateX(0); }
+.vc-btn span { position:relative; z-index:1; }
+
+/* ── INFO BAR ── */
+.info-bar {
+  margin: 0 48px 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+.info-item {
+  background: var(--panel);
+  padding: 28px 28px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 16px;
+}
+.ii-icon { font-size:24px; flex-shrink:0; }
+.ii-label { font-size:10px; font-weight:300; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:4px; }
+.ii-val { font-size:12px; font-weight:300; color:var(--cream); letter-spacing:0.05em; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 64px 48px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+}
+.footer-brand { }
+.footer-logo { font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.4em;color:var(--cream);margin-bottom:16px; }
+.footer-logo span { color:var(--gold); }
+.footer-tagline { font-size:11px; font-weight:300; color:var(--muted); letter-spacing:0.1em; line-height:1.9; }
+.footer-col-title { font-size:10px; font-weight:300; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:12px; }
+.footer-links a {
+  font-size:12px; font-weight:300; color:var(--muted); text-decoration:none;
+  letter-spacing:0.08em; transition:color 0.3s; cursor:none;
+}
+.footer-links a:hover { color:var(--cream); }
+.footer-bottom {
+  grid-column:1/-1;
+  border-top:1px solid var(--border);
+  padding-top:24px;
+  display:flex; justify-content:space-between; align-items:center;
+}
+.footer-copy { font-size:10px; font-weight:300; color:var(--muted); letter-spacing:0.1em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding:16px 24px; }
+  .nav-link { display:none; }
+  .fleet-hero { padding:120px 24px 60px; }
+  .vehicles-section { padding:0 24px 60px; }
+  .vehicle-grid { grid-template-columns:1fr; }
+  .info-bar { margin:0 24px 60px; grid-template-columns:1fr; }
+  footer { grid-template-columns:1fr; gap:32px; padding:48px 24px 32px; }
+  .footer-bottom { flex-direction:column; gap:12px; text-align:center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="index.html" class="logo">V<span>Y</span>NE</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#about" class="nav-link">About</a>
+    <a href="vyne-booking.html" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="fleet-hero">
+  <div class="fh-eyebrow">The Collection</div>
+  <h1 class="fh-title">Our <em>Fleet</em></h1>
+  <p class="fh-sub">Six handpicked vehicles maintained to concierge standards. Every detail inspected. Every mile insured through RentCover.</p>
+</div>
+
+<!-- Vehicles -->
+<div class="vehicles-section">
+  <div class="vehicle-grid">
+
+    <div class="v-card reveal">
+      <div class="vc-top">
+        <span class="vc-emoji">🚗</span>
+        <span class="vc-tag">Luxury Sedan</span>
+      </div>
+      <div class="vc-name">Mercedes-Benz S-Class</div>
+      <div class="vc-year">2024 · S580 4MATIC</div>
+      <div class="vc-specs">
+        <span class="vc-spec"><span class="vc-spec-dot"></span>496 HP</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>AWD</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Burmester Audio</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Massage Seats</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-price">$299 <span>/ day</span></div>
+        <a href="vyne-booking.html" class="vc-btn"><span>Reserve Now</span></a>
+      </div>
+    </div>
+
+    <div class="v-card reveal">
+      <div class="vc-top">
+        <span class="vc-emoji">🚙</span>
+        <span class="vc-tag">Luxury SUV</span>
+      </div>
+      <div class="vc-name">Cadillac Escalade</div>
+      <div class="vc-year">2024 · ESV Sport Platinum</div>
+      <div class="vc-specs">
+        <span class="vc-spec"><span class="vc-spec-dot"></span>420 HP</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>AWD</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>AKG 36-Speaker</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>3rd Row</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-price">$349 <span>/ day</span></div>
+        <a href="vyne-booking.html" class="vc-btn"><span>Reserve Now</span></a>
+      </div>
+    </div>
+
+    <div class="v-card reveal">
+      <div class="vc-top">
+        <span class="vc-emoji">🏎️</span>
+        <span class="vc-tag">Sports Car</span>
+      </div>
+      <div class="vc-name">Porsche 911 Carrera</div>
+      <div class="vc-year">2024 · GTS Cabriolet</div>
+      <div class="vc-specs">
+        <span class="vc-spec"><span class="vc-spec-dot"></span>473 HP</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>RWD</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Convertible</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Sport Chrono</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-price">$499 <span>/ day</span></div>
+        <a href="vyne-booking.html" class="vc-btn"><span>Reserve Now</span></a>
+      </div>
+    </div>
+
+    <div class="v-card reveal">
+      <div class="vc-top">
+        <span class="vc-emoji">🚗</span>
+        <span class="vc-tag">Executive Sedan</span>
+      </div>
+      <div class="vc-name">BMW 7 Series</div>
+      <div class="vc-year">2024 · 760i xDrive</div>
+      <div class="vc-specs">
+        <span class="vc-spec"><span class="vc-spec-dot"></span>536 HP</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>AWD</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Theater Screen</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>B&W Diamond</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-price">$279 <span>/ day</span></div>
+        <a href="vyne-booking.html" class="vc-btn"><span>Reserve Now</span></a>
+      </div>
+    </div>
+
+    <div class="v-card reveal">
+      <div class="vc-top">
+        <span class="vc-emoji">🏎️</span>
+        <span class="vc-tag">Exotic SUV</span>
+      </div>
+      <div class="vc-name">Lamborghini Urus</div>
+      <div class="vc-year">2024 · Performante</div>
+      <div class="vc-specs">
+        <span class="vc-spec"><span class="vc-spec-dot"></span>666 HP</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>AWD</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>0-60 in 3.3s</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Carbon Package</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-price">$899 <span>/ day</span></div>
+        <a href="vyne-booking.html" class="vc-btn"><span>Reserve Now</span></a>
+      </div>
+    </div>
+
+    <div class="v-card reveal">
+      <div class="vc-top">
+        <span class="vc-emoji">🚘</span>
+        <span class="vc-tag">Grand Touring</span>
+      </div>
+      <div class="vc-name">Bentley Continental GT</div>
+      <div class="vc-year">2024 · Convertible</div>
+      <div class="vc-specs">
+        <span class="vc-spec"><span class="vc-spec-dot"></span>542 HP</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>AWD</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Convertible</span>
+        <span class="vc-spec"><span class="vc-spec-dot"></span>Naim Audio</span>
+      </div>
+      <div class="vc-bottom">
+        <div class="vc-price">$749 <span>/ day</span></div>
+        <a href="vyne-booking.html" class="vc-btn"><span>Reserve Now</span></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Info Bar -->
+<div class="info-bar">
+  <div class="info-item reveal">
+    <span class="ii-icon">📍</span>
+    <div>
+      <div class="ii-label">Pickup Location</div>
+      <div class="ii-val">5483 Murfreesboro Pike, Nashville TN 37217</div>
+    </div>
+  </div>
+  <div class="info-item reveal">
+    <span class="ii-icon">🕐</span>
+    <div>
+      <div class="ii-label">Hours</div>
+      <div class="ii-val">Open daily · By appointment only</div>
+    </div>
+  </div>
+  <div class="info-item reveal">
+    <span class="ii-icon">📋</span>
+    <div>
+      <div class="ii-label">Requirements</div>
+      <div class="ii-val">25+ years old · Valid license · 25% deposit</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">V<span>Y</span>NE</div>
+    <p class="footer-tagline">Luxury car rentals in Nashville, Tennessee. Concierge-first. No compromises.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="vyne-booking.html">Book a Vehicle</a></li>
+      <li><a href="index.html#about">About VYNE</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@vynenashville.com">hello@vynenashville.com</a></li>
+      <li><a href="tel:+16155551234">(615) 555-1234</a></li>
+      <li><a href="https://maps.google.com/?q=5483+Murfreesboro+Pike+Nashville+TN" target="_blank">5483 Murfreesboro Pike, Nashville TN</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 VYNE Nashville. All rights reserved.</span>
+    <span class="footer-copy">Vehicles subject to availability.</span>
+  </div>
+</footer>
+
+<script>
+// ── Cursor ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+(function animate(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animate); })();
+document.querySelectorAll('a,button,.v-card,.vc-btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2)'; ring.style.borderColor='rgba(201,168,76,0.8)'; });
+  el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(201,168,76,0.4)'; });
+});
+
+// ── Page load stagger ──
+function animateEntry() {
+  const els = ['.fh-eyebrow','.fh-title','.fh-sub'];
+  els.forEach((sel, i) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200 + i * 120);
+  });
+}
+animateEntry();
+
+// ── Scroll reveal with stagger ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }, i * 80);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(40px)';
+  revealObserver.observe(el);
+});
+
+// ── Prefers reduced motion ──
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.reveal,.fh-eyebrow,.fh-title,.fh-sub').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+}
+</script>
+</body>
+</html>
