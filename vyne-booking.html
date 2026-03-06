@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYNE — Reserve a Vehicle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --cream: #F5F0E8;
+  --bone: #EAE3D2;
+  --gold: #C9A84C;
+  --gold-light: #E2C97E;
+  --dark: #0C0C0A;
+  --mid: #161614;
+  --panel: #1E1E1C;
+  --panel2: #252522;
+  --border: rgba(201,168,76,0.12);
+  --border-active: rgba(201,168,76,0.5);
+  --muted: #6A6560;
+  --error: #c97c6a;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-weight: 300;
+  min-height: 100vh;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Cursor */
+#cursor { width:7px;height:7px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.15s,background 0.2s; }
+#cursor-ring { width:28px;height:28px;border:1px solid rgba(201,168,76,0.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.3s; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0;left:0;right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding: 22px 48px;
+  background: rgba(12,12,10,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.logo { font-family:var(--serif);font-size:22px;font-weight:300;letter-spacing:0.4em;color:var(--cream);text-decoration:none; }
+.logo span { color:var(--gold); }
+.nav-back { font-size:8px;font-weight:200;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:10px;transition:color 0.3s; }
+.nav-back:hover { color:var(--gold); }
+
+/* ── LAYOUT ── */
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  min-height: 100vh;
+  padding-top: 70px;
+}
+
+/* ── LEFT — STEPS ── */
+.steps-panel {
+  padding: 56px 64px 80px;
+  border-right: 1px solid var(--border);
+}
+
+/* Progress bar */
+.progress-track {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 56px;
+}
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  flex: 1;
+}
+.progress-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  transition: background 0.4s;
+  z-index: 0;
+}
+.progress-step.completed:not(:last-child)::after { background: var(--gold); }
+
+.ps-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.2);
+  background: var(--panel);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.1em;
+  color: var(--muted);
+  position: relative; z-index: 1;
+  transition: all 0.4s;
+}
+.progress-step.completed .ps-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0C0C0A;
+}
+.progress-step.completed .ps-dot::after { content:'✓'; font-size:11px; }
+.progress-step.active .ps-dot {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  color: var(--gold);
+  box-shadow: 0 0 16px rgba(201,168,76,0.2);
+}
+.ps-label {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+  white-space: nowrap; text-align: center;
+  transition: color 0.3s;
+}
+.progress-step.active .ps-label,
+.progress-step.completed .ps-label { color: var(--gold); }
+
+/* Step content */
+.step { display: none; animation: stepIn 0.4s ease both; }
+.step.active { display: block; }
+@keyframes stepIn { from{opacity:0;transform:translateX(16px)} to{opacity:1;transform:translateX(0)} }
+
+.step-eyebrow {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.step-eyebrow::before { content:''; width:20px; height:1px; background:var(--gold); }
+.step-title {
+  font-family: var(--serif); font-size: clamp(32px,4vw,52px); font-weight: 300;
+  line-height: 1; margin-bottom: 8px;
+}
+.step-title em { font-style: italic; color: var(--gold-light); }
+.step-sub {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 40px; line-height: 1.8;
+}
+
+/* ── STEP 1: Vehicle selection ── */
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+}
+.vehicle-option {
+  background: var(--panel);
+  padding: 24px;
+  cursor: none;
+  position: relative;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.vehicle-option::before {
+  content: '';
+  position: absolute; top:0;left:0;right:0; height:2px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.vehicle-option:hover { background: var(--panel2); border-color: var(--border); }
+.vehicle-option:hover::before { opacity: 1; }
+.vehicle-option.selected {
+  background: rgba(201,168,76,0.06);
+  border-color: var(--border-active);
+}
+.vehicle-option.selected::before { opacity: 1; }
+
+.vo-emoji { font-size: 36px; margin-bottom: 12px; display: block; transition: transform 0.3s; line-height:1; }
+.vehicle-option:hover .vo-emoji { transform: scale(1.08); }
+.vo-tag { font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.vo-name { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream); margin-bottom: 2px; }
+.vo-year { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 12px; }
+.vo-price { font-family: var(--serif); font-size: 22px; color: var(--gold); }
+.vo-price span { font-size: 12px; font-family: var(--sans); font-weight: 300; color: var(--muted); }
+.vo-check {
+  position: absolute; top: 12px; right: 12px;
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--gold);
+  opacity: 0; transition: opacity 0.3s;
+}
+.vehicle-option.selected .vo-check { opacity: 1; background: rgba(201,168,76,0.1); }
+
+/* ── STEP 2: Date & Time ── */
+.date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field-label {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);
+}
+.field-input {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 12px; font-weight: 300; letter-spacing: 0.08em;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+  width: 100%;
+  cursor: none;
+}
+.field-input:focus { border-color: var(--border-active); background: rgba(201,168,76,0.03); }
+.field-input::placeholder { color: var(--muted); }
+.field-input::-webkit-calendar-picker-indicator { filter: invert(0.6); cursor: pointer; }
+.field-note { font-size: 12px; font-weight: 300; letter-spacing: 0.12em; color: var(--muted); line-height: 1.8; margin-top: 4px; }
+
+.duration-display {
+  background: rgba(201,168,76,0.05);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 20px;
+}
+.dd-label { font-size: 12px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); }
+.dd-val { font-family: var(--serif); font-size: 22px; color: var(--gold); }
+
+/* ── STEP 3: Locations ── */
+.location-rows { display: flex; flex-direction: column; gap: 16px; }
+.location-row { position: relative; }
+.location-icon {
+  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+  font-size: 14px; opacity: 0.5; pointer-events: none;
+}
+.field-input.with-icon { padding-left: 44px; }
+
+.same-location-toggle {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  cursor: none;
+  transition: all 0.3s;
+  margin-top: 4px;
+}
+.same-location-toggle:hover { border-color: var(--border-active); }
+.toggle-box {
+  width: 16px; height: 16px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--gold);
+  transition: all 0.3s;
+}
+.toggle-box.checked { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+.toggle-label { font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+.delivery-note {
+  background: rgba(201,168,76,0.04); border: 1px solid var(--border);
+  padding: 14px 18px; margin-top: 20px;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.1em; line-height: 1.9; color: var(--muted);
+}
+.delivery-note strong { color: var(--gold-light); }
+
+/* ── STEP 4: Driver Info ── */
+.driver-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.driver-grid .full { grid-column: 1/-1; }
+
+.upload-zone {
+  border: 1px dashed rgba(201,168,76,0.25);
+  background: rgba(201,168,76,0.02);
+  padding: 32px 24px;
+  text-align: center;
+  cursor: none;
+  transition: all 0.3s;
+  position: relative;
+}
+.upload-zone:hover { border-color: var(--border-active); background: rgba(201,168,76,0.05); }
+.upload-zone.has-file { border-color: rgba(74,124,90,0.5); background: rgba(74,124,90,0.05); }
+.upload-icon { font-size: 28px; margin-bottom: 10px; opacity: 0.5; }
+.upload-title { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream); margin-bottom: 4px; }
+.upload-sub { font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.upload-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.upload-success { font-size: 11px; color: #7ec492; margin-top: 8px; display: none; }
+.upload-zone.has-file .upload-success { display: block; }
+
+/* ── STEP 5: Deposit ── */
+.deposit-summary {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.ds-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.ds-header-label { font-size: 12px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+.ds-vehicle { font-family: var(--serif); font-size: 20px; color: var(--cream); }
+.ds-rows { padding: 20px 24px; display: flex; flex-direction: column; gap: 12px; }
+.ds-row { display: flex; justify-content: space-between; align-items: center; }
+.ds-row-label { font-size: 11px; font-weight: 300; letter-spacing: 0.12em; color: var(--muted); }
+.ds-row-val { font-size: 11px; font-weight: 300; color: var(--cream); }
+.ds-row-val.gold { color: var(--gold-light); font-family: var(--serif); font-size: 14px; }
+.ds-divider { border: none; border-top: 1px solid var(--border); margin: 4px 0; }
+.ds-deposit {
+  padding: 20px 24px;
+  background: rgba(201,168,76,0.05);
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.ds-deposit-label { font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+.ds-deposit-amt { font-family: var(--serif); font-size: 32px; color: var(--gold); line-height: 1; }
+.ds-deposit-note { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+.payment-fields { display: flex; flex-direction: column; gap: 14px; }
+.card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.secure-badge {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); margin-top: 6px;
+}
+.secure-badge::before { content:'🔒'; font-size:12px; }
+
+/* Navigation buttons */
+.step-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.btn-back {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); background: none; border: none; cursor: none;
+  display: flex; align-items: center; gap: 10px;
+  transition: color 0.3s;
+  padding: 0;
+}
+.btn-back:hover { color: var(--cream); }
+.btn-back.hidden { opacity: 0; pointer-events: none; }
+.btn-next {
+  font-family: var(--sans); font-size: 11px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase;
+  color: #0C0C0A; background: var(--gold);
+  border: none; padding: 16px 40px;
+  cursor: none; position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.btn-next::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--gold-light);
+  transform: translateX(-101%);
+  transition: transform 0.4s ease;
+}
+.btn-next:hover::after { transform: translateX(0); }
+.btn-next span { position: relative; z-index: 1; }
+.btn-next.deposit { background: var(--gold); font-size: 12px; padding: 18px 48px; }
+
+.field-error { font-size: 12px; color: var(--error); letter-spacing: 0.1em; margin-top: 4px; display: none; }
+.field.has-error .field-input { border-color: var(--error); }
+.field.has-error .field-error { display: block; }
+
+/* ── RIGHT — SUMMARY PANEL ── */
+.summary-panel {
+  background: var(--mid);
+  border-left: 1px solid var(--border);
+  padding: 56px 36px;
+  position: sticky; top: 70px;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.sp-label {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 28px;
+  display: flex; align-items: center; gap: 10px;
+}
+.sp-label::before { content:''; width:16px; height:1px; background:var(--gold); }
+
+.sp-vehicle-preview {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 24px 20px;
+  text-align: center;
+  margin-bottom: 24px;
+  min-height: 120px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: all 0.4s;
+}
+.sp-vehicle-emoji { font-size: 48px; margin-bottom: 10px; }
+.sp-vehicle-name { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--cream); }
+.sp-vehicle-tag { font-size: 11px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+.sp-empty { font-size: 11px; color: var(--muted); font-style: italic; font-family: var(--serif); }
+
+.sp-rows { display: flex; flex-direction: column; gap: 0; flex: 1; }
+.sp-row {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.05);
+  display: flex; flex-direction: column; gap: 4px;
+  opacity: 0.3; transition: opacity 0.4s;
+}
+.sp-row.filled { opacity: 1; }
+.sp-row-label { font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); }
+.sp-row-val { font-size: 11px; font-weight: 300; letter-spacing: 0.05em; color: var(--cream); }
+.sp-row-val.highlight { color: var(--gold-light); font-family: var(--serif); font-size: 14px; }
+
+.sp-deposit-box {
+  background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-top: 24px;
+  opacity: 0; transition: opacity 0.5s;
+}
+.sp-deposit-box.visible { opacity: 1; }
+.sp-dep-label { font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.sp-dep-amt { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--gold); line-height: 1; }
+.sp-dep-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* ── SUCCESS SCREEN ── */
+#successScreen {
+  display: none;
+  position: fixed; inset: 0;
+  background: var(--dark);
+  z-index: 200;
+  align-items: center; justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
+}
+#successScreen.show { display: flex; animation: fadeIn 0.6s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.success-icon { font-size: 56px; margin-bottom: 24px; animation: popIn 0.5s 0.3s ease both; }
+@keyframes popIn { from{transform:scale(0.5);opacity:0} to{transform:scale(1);opacity:1} }
+.success-eyebrow { font-size: 12px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.success-title { font-family: var(--serif); font-size: clamp(40px,5vw,72px); font-weight: 300; line-height: 1; margin-bottom: 16px; }
+.success-title em { font-style: italic; color: var(--gold-light); }
+.success-sub { font-size: 12px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); max-width: 400px; line-height: 2; margin-bottom: 48px; }
+.success-ref { font-family: var(--serif); font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+.success-ref span { color: var(--gold); }
+.btn-success { font-size: 11px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: #0C0C0A; background: var(--gold); padding: 16px 40px; text-decoration: none; cursor: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.15); }
+
+@media (max-width: 900px) {
+  .booking-layout { grid-template-columns: 1fr; }
+  .summary-panel { display: none; }
+  .steps-panel { padding: 40px 24px; }
+  .vehicle-grid { grid-template-columns: 1fr; }
+  .driver-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="logo">V<span>Y</span>NE</a>
+  <a href="vyne-fleet.html" class="nav-back">← Back to Fleet</a>
+</nav>
+
+<!-- Success Screen -->
+<div id="successScreen">
+  <div class="success-icon">✦</div>
+  <div class="success-eyebrow">Reservation Confirmed</div>
+  <h2 class="success-title">You're <em>Booked</em></h2>
+  <p class="success-sub">Your deposit has been received. A VYNE concierge will contact you within 2 hours to confirm your reservation details.</p>
+  <p class="success-ref">Confirmation #: <span id="confirmRef">VYN-000000</span></p>
+  <a href="#" class="btn-success">Back to Home</a>
+</div>
+
+<!-- Main layout -->
+<div class="booking-layout">
+
+  <!-- LEFT -->
+  <div class="steps-panel">
+
+    <!-- Progress -->
+    <div class="progress-track" id="progressTrack">
+      <div class="progress-step active" data-step="1">
+        <div class="ps-dot">1</div>
+        <div class="ps-label">Vehicle</div>
+      </div>
+      <div class="progress-step" data-step="2">
+        <div class="ps-dot">2</div>
+        <div class="ps-label">Dates</div>
+      </div>
+      <div class="progress-step" data-step="3">
+        <div class="ps-dot">3</div>
+        <div class="ps-label">Location</div>
+      </div>
+      <div class="progress-step" data-step="4">
+        <div class="ps-dot">4</div>
+        <div class="ps-label">Insurance</div>
+      </div>
+      <div class="progress-step" data-step="5">
+        <div class="ps-dot">5</div>
+        <div class="ps-label">Driver</div>
+      </div>
+      <div class="progress-step" data-step="6">
+        <div class="ps-dot">6</div>
+        <div class="ps-label">Deposit</div>
+      </div>
+    </div>
+
+    <!-- ── STEP 1: Vehicle ── -->
+    <div class="step active" id="step1">
+      <div class="step-eyebrow">Step 01</div>
+      <h2 class="step-title">Choose Your <em>Vehicle</em></h2>
+      <p class="step-sub">Select the vehicle you'd like to reserve for your time in Music City.</p>
+
+      <div class="vehicle-grid">
+        <div class="vehicle-option" data-vehicle="Mercedes-Benz S-Class" data-price="299" data-tag="Luxury Sedan" data-emoji="🚗" onclick="selectVehicle(this)">
+          <div class="vo-check">✓</div>
+          <span class="vo-emoji">🚗</span>
+          <div class="vo-tag">Luxury Sedan</div>
+          <div class="vo-name">Mercedes S-Class</div>
+          <div class="vo-year">2024 · S580 4MATIC</div>
+          <div class="vo-price">$299 <span>/ day</span></div>
+        </div>
+        <div class="vehicle-option" data-vehicle="Cadillac Escalade" data-price="349" data-tag="Luxury SUV" data-emoji="🚙" onclick="selectVehicle(this)">
+          <div class="vo-check">✓</div>
+          <span class="vo-emoji">🚙</span>
+          <div class="vo-tag">Luxury SUV</div>
+          <div class="vo-name">Cadillac Escalade</div>
+          <div class="vo-year">2024 · ESV Sport Platinum</div>
+          <div class="vo-price">$349 <span>/ day</span></div>
+        </div>
+        <div class="vehicle-option" data-vehicle="Porsche 911 Carrera" data-price="499" data-tag="Sports Car" data-emoji="🏎️" onclick="selectVehicle(this)">
+          <div class="vo-check">✓</div>
+          <span class="vo-emoji">🏎️</span>
+          <div class="vo-tag">Sports Car</div>
+          <div class="vo-name">Porsche 911 Carrera</div>
+          <div class="vo-year">2024 · GTS Cabriolet</div>
+          <div class="vo-price">$499 <span>/ day</span></div>
+        </div>
+        <div class="vehicle-option" data-vehicle="BMW 7 Series" data-price="279" data-tag="Executive Sedan" data-emoji="🚗" onclick="selectVehicle(this)">
+          <div class="vo-check">✓</div>
+          <span class="vo-emoji">🚗</span>
+          <div class="vo-tag">Executive Sedan</div>
+          <div class="vo-name">BMW 7 Series</div>
+          <div class="vo-year">2024 · 760i xDrive</div>
+          <div class="vo-price">$279 <span>/ day</span></div>
+        </div>
+        <div class="vehicle-option" data-vehicle="Lamborghini Urus" data-price="899" data-tag="Exotic SUV" data-emoji="🏎️" onclick="selectVehicle(this)">
+          <div class="vo-check">✓</div>
+          <span class="vo-emoji">🏎️</span>
+          <div class="vo-tag">Exotic SUV</div>
+          <div class="vo-name">Lamborghini Urus</div>
+          <div class="vo-year">2024 · Performante</div>
+          <div class="vo-price">$899 <span>/ day</span></div>
+        </div>
+        <div class="vehicle-option" data-vehicle="Bentley Continental GT" data-price="749" data-tag="Grand Touring" data-emoji="🚘" onclick="selectVehicle(this)">
+          <div class="vo-check">✓</div>
+          <span class="vo-emoji">🚘</span>
+          <div class="vo-tag">Grand Touring</div>
+          <div class="vo-name">Bentley Continental GT</div>
+          <div class="vo-year">2024 · Convertible</div>
+          <div class="vo-price">$749 <span>/ day</span></div>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back hidden">← Back</button>
+        <button class="btn-next" onclick="nextStep(1)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Dates ── -->
+    <div class="step" id="step2">
+      <div class="step-eyebrow">Step 02</div>
+      <h2 class="step-title">Pickup &amp; <em>Return</em></h2>
+      <p class="step-sub">Select your rental dates and preferred pickup &amp; return times.</p>
+
+      <div class="date-grid">
+        <div class="field" id="field-pickup-date">
+          <label class="field-label">Pickup Date</label>
+          <input type="date" class="field-input" id="pickupDate" onchange="calcDuration()">
+          <span class="field-error">Please select a pickup date</span>
+        </div>
+        <div class="field" id="field-return-date">
+          <label class="field-label">Return Date</label>
+          <input type="date" class="field-input" id="returnDate" onchange="calcDuration()">
+          <span class="field-error">Return must be after pickup</span>
+        </div>
+      </div>
+
+      <div class="time-grid" style="margin-top:16px;">
+        <div class="field">
+          <label class="field-label">Pickup Time</label>
+          <input type="time" class="field-input" id="pickupTime" value="10:00">
+        </div>
+        <div class="field">
+          <label class="field-label">Return Time</label>
+          <input type="time" class="field-input" id="returnTime" value="10:00">
+        </div>
+      </div>
+
+      <div class="duration-display" id="durationDisplay" style="display:none;">
+        <span class="dd-label">Rental Duration</span>
+        <span class="dd-val" id="durationVal">—</span>
+      </div>
+
+      <p class="field-note" style="margin-top:16px;">Minimum rental is 3 hours. Extended rentals billed daily. All times are Central Time (Nashville).</p>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(2)">← Back</button>
+        <button class="btn-next" onclick="nextStep(2)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Location ── -->
+    <div class="step" id="step3">
+      <div class="step-eyebrow">Step 03</div>
+      <h2 class="step-title">Pickup <em>Location</em></h2>
+      <p class="step-sub">All vehicles are picked up and returned to our Nashville location. Plan to arrive at your scheduled time.</p>
+
+      <input type="hidden" id="pickupAddress" value="5483 Murfreesboro Pike, Nashville TN">
+
+      <div style="background:var(--panel);border:1px solid var(--border);padding:28px 28px 24px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,transparent,var(--gold),transparent);"></div>
+        <div style="font-size:8px;font-weight:200;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px;">
+          <span>📍</span> VYNE Nashville — Pickup & Return
+        </div>
+        <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--cream);margin-bottom:4px;">5483 Murfreesboro Pike</div>
+        <div style="font-size:11px;font-weight:200;letter-spacing:0.12em;color:var(--muted);margin-bottom:20px;">Nashville, Tennessee 37217</div>
+        <div style="display:flex;gap:12px;">
+          <a href="https://maps.google.com/?q=5483+Murfreesboro+Pike+Nashville+TN" target="_blank"
+             style="font-size:8px;font-weight:200;letter-spacing:0.2em;text-transform:uppercase;color:var(--charcoal);background:var(--gold);padding:11px 20px;text-decoration:none;transition:background 0.3s;">
+            Get Directions →
+          </a>
+          <div style="font-size:8px;font-weight:200;letter-spacing:0.15em;color:var(--muted);display:flex;align-items:center;gap:8px;">
+            🕐 Open daily · By appointment
+          </div>
+        </div>
+      </div>
+
+      <div style="background:rgba(201,168,76,0.04);border:1px solid var(--border);padding:16px 20px;margin-top:16px;font-size:9px;font-weight:200;letter-spacing:0.1em;line-height:2;color:var(--muted);">
+        Your vehicle will be <strong style="color:var(--gold-light);">detailed, fueled, and ready</strong> at this address before your pickup time. Please bring your valid driver's license and the card used for your deposit.
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(3)">← Back</button>
+        <button class="btn-next" onclick="nextStep(3)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: Driver ── -->
+        <!-- ── STEP 4: Insurance ── -->
+    <div class="step" id="step4">
+      <div class="step-eyebrow">Step 04</div>
+      <h2 class="step-title">Rental <em>Insurance</em></h2>
+      <p class="step-sub">Protect your rental through RentCover — licensed in all 50 states. Coverage is issued instantly at checkout.</p>
+      <div id="insuranceOptions" style="display:flex;flex-direction:column;gap:3px;margin-bottom:20px;"></div>
+      <div style="background:rgba(201,168,76,0.04);border:1px solid var(--border);padding:14px 18px;font-size:11px;font-weight:300;letter-spacing:0.06em;line-height:1.9;color:var(--muted);">
+        Insurance is provided by <strong style="color:var(--gold-light);">RentCover / Cover Genius</strong> — licensed in Tennessee and all 50 US states. Your policy document is emailed instantly upon booking confirmation.
+      </div>
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(5)">← Back</button>
+        <button class="btn-next" onclick="nextStep(5)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- ── STEP 5: Driver (was 4) ── -->
+    <div class="step" id="step6">
+      <div class="step-eyebrow">Step 05</div>
+      <h2 class="step-title">Driver <em>Details</em></h2>
+      <p class="step-sub">Primary driver information and license upload. All drivers must be 25+ with a valid license.</p>
+
+      <div class="driver-grid">
+        <div class="field" id="field-fname">
+          <label class="field-label">First Name</label>
+          <input type="text" class="field-input" id="firstName" placeholder="First name" oninput="updateSummary()">
+          <span class="field-error">Required</span>
+        </div>
+        <div class="field" id="field-lname">
+          <label class="field-label">Last Name</label>
+          <input type="text" class="field-input" id="lastName" placeholder="Last name">
+          <span class="field-error">Required</span>
+        </div>
+        <div class="field full" id="field-email">
+          <label class="field-label">Email Address</label>
+          <input type="email" class="field-input" id="driverEmail" placeholder="your@email.com">
+          <span class="field-error">Valid email required</span>
+        </div>
+        <div class="field" id="field-phone">
+          <label class="field-label">Phone Number</label>
+          <input type="tel" class="field-input" id="driverPhone" placeholder="(615) 000-0000">
+          <span class="field-error">Required</span>
+        </div>
+        <div class="field" id="field-dob">
+          <label class="field-label">Date of Birth</label>
+          <input type="date" class="field-input" id="driverDOB">
+          <span class="field-error">Must be 25+</span>
+        </div>
+        <div class="field full">
+          <label class="field-label">Driver's License — Front</label>
+          <div class="upload-zone" id="licUpload">
+            <div class="upload-icon">🪪</div>
+            <div class="upload-title">Upload License</div>
+            <div class="upload-sub">JPG, PNG or PDF · Max 10MB</div>
+            <div class="upload-success" id="licSuccess">✓ License uploaded</div>
+            <input type="file" class="upload-input" accept=".jpg,.jpeg,.png,.pdf" onchange="handleUpload(this,'licUpload','licSuccess')">
+          </div>
+        </div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(5)">← Back</button>
+        <button class="btn-next" onclick="nextStep(5)"><span>Continue →</span></button>
+      </div>
+    </div>
+
+    <!-- ── STEP 6: Deposit ── -->
+    <div class="step" id="step6">
+      <div class="step-eyebrow">Step 06</div>
+      <h2 class="step-title">Secure Your <em>Reservation</em></h2>
+      <p class="step-sub">A 25% deposit holds your vehicle. The remaining balance is due 48 hours before pickup.</p>
+
+      <div class="deposit-summary" id="depositSummary">
+        <div class="ds-header">
+          <div class="ds-header-label">Reservation Summary</div>
+          <div class="ds-vehicle" id="ds-vehicle-name">—</div>
+        </div>
+        <div class="ds-rows">
+          <div class="ds-row">
+            <span class="ds-row-label">Rental Period</span>
+            <span class="ds-row-val" id="ds-dates">—</span>
+          </div>
+          <div class="ds-row">
+            <span class="ds-row-label">Duration</span>
+            <span class="ds-row-val" id="ds-duration">—</span>
+          </div>
+          <div class="ds-row">
+            <span class="ds-row-label">Daily Rate</span>
+            <span class="ds-row-val" id="ds-rate">—</span>
+          </div>
+          <hr class="ds-divider">
+          <div class="ds-row">
+            <span class="ds-row-label">Estimated Total</span>
+            <span class="ds-row-val gold" id="ds-total">—</span>
+          </div>
+        </div>
+        <div class="ds-deposit">
+          <div>
+            <div class="ds-deposit-label">Deposit Due Today (25%)</div>
+            <div class="ds-deposit-note">Remaining balance due 48hrs before pickup</div>
+          </div>
+          <div>
+            <div class="ds-deposit-amt" id="ds-deposit-amt">$0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="payment-fields">
+        <div class="field" id="field-cardname">
+          <label class="field-label">Name on Card</label>
+          <input type="text" class="field-input" id="cardName" placeholder="As it appears on card">
+          <span class="field-error">Required</span>
+        </div>
+        <div class="field" id="field-cardnum">
+          <label class="field-label">Card Number</label>
+          <input type="text" class="field-input" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCard(this)">
+          <span class="field-error">Valid card number required</span>
+        </div>
+        <div class="card-row">
+          <div class="field" id="field-expiry">
+            <label class="field-label">Expiry</label>
+            <input type="text" class="field-input" id="cardExpiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+            <span class="field-error">Required</span>
+          </div>
+          <div class="field" id="field-cvv">
+            <label class="field-label">CVV</label>
+            <input type="text" class="field-input" id="cardCVV" placeholder="•••" maxlength="4">
+            <span class="field-error">Required</span>
+          </div>
+        </div>
+        <div class="secure-badge">Secured with 256-bit SSL encryption</div>
+      </div>
+
+      <div class="step-nav">
+        <button class="btn-back" onclick="prevStep(6)">← Back</button>
+        <button class="btn-next deposit" onclick="submitBooking()"><span>Pay Deposit & Reserve →</span></button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Summary Panel -->
+  <div class="summary-panel">
+    <div class="sp-label">Your Reservation</div>
+
+    <div class="sp-vehicle-preview" id="spVehiclePreview">
+      <div class="sp-empty">No vehicle selected yet</div>
+    </div>
+
+    <div class="sp-rows">
+      <div class="sp-row" id="sp-row-dates">
+        <div class="sp-row-label">Rental Dates</div>
+        <div class="sp-row-val" id="sp-dates">—</div>
+      </div>
+      <div class="sp-row" id="sp-row-duration">
+        <div class="sp-row-label">Duration</div>
+        <div class="sp-row-val highlight" id="sp-duration">—</div>
+      </div>
+      <div class="sp-row" id="sp-row-location">
+        <div class="sp-row-label">Pickup Location</div>
+        <div class="sp-row-val" id="sp-location">—</div>
+      </div>
+      <div class="sp-row" id="sp-row-driver">
+        <div class="sp-row-label">Primary Driver</div>
+        <div class="sp-row-val" id="sp-driver">—</div>
+      </div>
+      <div class="sp-row" id="sp-row-insurance">
+        <div class="sp-row-label">Insurance</div>
+        <div class="sp-row-val" id="sp-insurance" style="color:var(--muted);">Not selected</div>
+      </div>
+    </div>
+
+    <div class="sp-deposit-box" id="spDepositBox">
+      <div class="sp-dep-label">Deposit Due Today</div>
+      <div class="sp-dep-amt" id="sp-deposit">$0</div>
+      <div class="sp-dep-sub">25% of estimated total</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── State ──
+const state = {
+  currentStep: 1,
+  vehicle: null,
+  vehiclePrice: 0,
+  vehicleEmoji: '',
+  vehicleTag: '',
+  pickupDate: null,
+  returnDate: null,
+  days: 0,
+  pickupAddress: '',
+  dropoffAddress: '',
+  sameLocation: true,
+  firstName: '',
+  lastName: '',
+};
+
+// ── Cursor ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+(function animate(){ rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animate); })();
+document.querySelectorAll('a,button,.vehicle-option,.upload-zone,.same-location-toggle').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cursor.style.transform='translate(-50%,-50%) scale(2)'; ring.style.borderColor='rgba(201,168,76,0.8)'; });
+  el.addEventListener('mouseleave',()=>{ cursor.style.transform='translate(-50%,-50%) scale(1)'; ring.style.borderColor='rgba(201,168,76,0.4)'; });
+});
+
+// ── Step Navigation ──
+function goToStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  document.querySelectorAll('.progress-step').forEach(s => {
+    const sn = parseInt(s.dataset.step);
+    s.classList.remove('active','completed');
+    if (sn < n) s.classList.add('completed');
+    else if (sn === n) s.classList.add('active');
+  });
+  state.currentStep = n;
+  window.scrollTo(0,0);
+}
+
+function nextStep(from) {
+  if (!validateStep(from)) return;
+  goToStep(from+1);
+  if (from+1 === 6) populateDepositSummary();
+}
+function prevStep(from) { goToStep(from-1); }
+
+// ── Validation ──
+function validateStep(step) {
+  let valid = true;
+  const setError = (id, show) => {
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle('has-error', show);
+    if(show) valid = false;
+  };
+  if (step === 1) {
+    if (!state.vehicle) { showToast('Please select a vehicle'); return false; }
+  }
+  if (step === 2) {
+    const pd = document.getElementById('pickupDate').value;
+    const rd = document.getElementById('returnDate').value;
+    setError('field-pickup-date', !pd);
+    setError('field-return-date', !rd || rd <= pd);
+    if (!pd) return false;
+    if (!rd || rd <= pd) return false;
+  }
+  if (step === 3) {
+    // Address is fixed — always valid
+  }
+  if (step === 6) {  // deposit  // driver
+    const fn = document.getElementById('firstName').value.trim();
+    const ln = document.getElementById('lastName').value.trim();
+    const em = document.getElementById('driverEmail').value.trim();
+    const ph = document.getElementById('driverPhone').value.trim();
+    setError('field-fname', !fn);
+    setError('field-lname', !ln);
+    setError('field-email', !em || !em.includes('@'));
+    setError('field-phone', !ph);
+    if (!fn||!ln||!em||!em.includes('@')||!ph) return false;
+  }
+  if (step === 6) {  // deposit
+    const cn = document.getElementById('cardName').value.trim();
+    const num = document.getElementById('cardNumber').value.replace(/\s/g,'');
+    const exp = document.getElementById('cardExpiry').value.trim();
+    const cvv = document.getElementById('cardCVV').value.trim();
+    setError('field-cardname', !cn);
+    setError('field-cardnum', num.length < 16);
+    setError('field-expiry', exp.length < 5);
+    setError('field-cvv', cvv.length < 3);
+    if (!cn||num.length<16||exp.length<5||cvv.length<3) return false;
+  }
+  return valid;
+}
+
+// ── Vehicle Selection ──
+function selectVehicle(el) {
+  document.querySelectorAll('.vehicle-option').forEach(v => v.classList.remove('selected'));
+  el.classList.add('selected');
+  state.vehicle = el.dataset.vehicle;
+  state.vehiclePrice = parseInt(el.dataset.price);
+  state.vehicleEmoji = el.dataset.emoji;
+  state.vehicleTag = el.dataset.tag;
+  updateSummary();
+}
+
+// ── Date Calculation ──
+function calcDuration() {
+  const pd = document.getElementById('pickupDate').value;
+  const rd = document.getElementById('returnDate').value;
+  if (!pd || !rd || rd <= pd) { document.getElementById('durationDisplay').style.display='none'; return; }
+  const diff = (new Date(rd) - new Date(pd)) / (1000*60*60*24);
+  state.days = diff;
+  state.pickupDate = pd;
+  state.returnDate = rd;
+  document.getElementById('durationVal').textContent = diff + (diff===1?' day':' days');
+  document.getElementById('durationDisplay').style.display = 'flex';
+  updateSummary();
+}
+
+// ── Location Toggle ──
+function toggleSameLocation() {
+  state.sameLocation = !state.sameLocation;
+  document.getElementById('toggleBox').classList.toggle('checked', state.sameLocation);
+  document.getElementById('field-dropoff-loc').style.display = state.sameLocation ? 'none' : 'block';
+}
+// init checked
+document.getElementById('toggleBox').classList.add('checked');
+
+// ── File Upload ──
+function handleUpload(input, zoneId, successId) {
+  if (input.files.length) {
+    document.getElementById(zoneId).classList.add('has-file');
+    document.getElementById(successId).textContent = '✓ ' + input.files[0].name;
+  }
+}
+
+// ── Update Summary Panel ──
+function updateSummary() {
+  // Vehicle
+  const preview = document.getElementById('spVehiclePreview');
+  if (state.vehicle) {
+    preview.innerHTML = `<div class="sp-vehicle-emoji">${state.vehicleEmoji}</div><div class="sp-vehicle-name">${state.vehicle}</div><div class="sp-vehicle-tag">${state.vehicleTag}</div>`;
+  }
+  // Dates
+  if (state.pickupDate && state.returnDate) {
+    const fmt = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    document.getElementById('sp-dates').textContent = `${fmt(state.pickupDate)} → ${fmt(state.returnDate)}`;
+    document.getElementById('sp-row-dates').classList.add('filled');
+    document.getElementById('sp-duration').textContent = state.days + (state.days===1?' day':' days');
+    document.getElementById('sp-row-duration').classList.add('filled');
+  }
+  // Location — always fixed
+  document.getElementById('sp-location').textContent = '5483 Murfreesboro Pike, Nashville TN';
+  document.getElementById('sp-row-location').classList.add('filled');
+  // Driver
+  const fn = document.getElementById('firstName')?.value?.trim();
+  const ln = document.getElementById('lastName')?.value?.trim();
+  if (fn) {
+    document.getElementById('sp-driver').textContent = fn + (ln?' '+ln:'');
+    document.getElementById('sp-row-driver').classList.add('filled');
+  }
+  // Deposit
+  if (state.vehicle && state.days > 0) {
+    const total = state.vehiclePrice * state.days;
+    const deposit = Math.round(total * 0.25);
+    document.getElementById('sp-deposit').textContent = '$'+deposit.toLocaleString();
+    document.getElementById('spDepositBox').classList.add('visible');
+  }
+}
+
+// ── Populate Deposit Step ──
+function populateDepositSummary() {
+  document.getElementById('ds-vehicle-name').textContent = state.vehicle || '—';
+  if (state.pickupDate && state.returnDate) {
+    const fmt = d => new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    document.getElementById('ds-dates').textContent = `${fmt(state.pickupDate)} – ${fmt(state.returnDate)}`;
+    document.getElementById('ds-duration').textContent = state.days + (state.days===1?' day':' days');
+  }
+  document.getElementById('ds-rate').textContent = '$'+state.vehiclePrice+' / day';
+  const total = state.vehiclePrice * Math.max(state.days,1);
+  const deposit = Math.round(total * 0.25);
+  document.getElementById('ds-total').textContent = '$'+total.toLocaleString();
+  document.getElementById('ds-deposit-amt').textContent = '$'+deposit.toLocaleString();
+  updateSummary();
+}
+
+// ── Card Formatting ──
+function formatCard(input) {
+  let v = input.value.replace(/\D/g,'').substring(0,16);
+  input.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+function formatExpiry(input) {
+  let v = input.value.replace(/\D/g,'');
+  if (v.length >= 2) v = v.substring(0,2)+' / '+v.substring(2,4);
+  input.value = v;
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--border);color:var(--cream);font-family:var(--sans);font-size:10px;font-weight:200;letter-spacing:0.15em;padding:14px 28px;z-index:999;animation:fadeUp 0.3s ease';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+// ── Submit ──
+function submitBooking() {
+  if (!validateStep(5)) return;
+  // Simulate processing
+  const btn = document.querySelector('.btn-next.deposit span');
+  btn.textContent = 'Processing...';
+  setTimeout(() => {
+    const ref = 'VYN-' + Math.floor(100000 + Math.random()*900000);
+    document.getElementById('confirmRef').textContent = ref;
+    document.getElementById('successScreen').classList.add('show');
+  }, 1800);
+}
+
+// Pre-fill summary with default address
+updateSummary();
+
+// Set min date to today
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('pickupDate').min = today;
+document.getElementById('returnDate').min = today;
+document.getElementById('pickupDate').addEventListener('change', function(){ document.getElementById('returnDate').min = this.value; });
+
+// ── RentCover Insurance ──
+const INSURANCE_TIERS = [
+  { id:'none', name:'No Insurance', slug:null, price:0, coverage:'None', features:['I have my own coverage'], badge:null },
+  { id:'basic', name:'Basic Protection', slug:'RENTAL_BASIC', price:14, coverage:'$1,000', features:['Collision damage','Theft protection','$1,000 excess covered'], badge:null },
+  { id:'standard', name:'Standard Protection', slug:'RENTAL_STANDARD', price:24, coverage:'$3,000', features:['Collision & theft','$3,000 excess covered','Towing included','24/7 claims support'], badge:'Most Popular' },
+  { id:'premium', name:'Full Coverage', slug:'RENTAL_PREMIUM', price:39, coverage:'Unlimited', features:['Zero excess','Unlimited coverage','Personal belongings','Emergency travel','Roadside'], badge:'Best Value' },
+];
+let selectedInsurance = null;
+
+function renderInsuranceTiers() {
+  const container = document.getElementById('insuranceOptions');
+  if (!container) return;
+  container.innerHTML = INSURANCE_TIERS.map(tier => `
+    <div class="vehicle-option" id="ins-${tier.id}" style="padding:20px 24px;cursor:none;" onclick="selectInsurance('${tier.id}')">
+      <div style="position:absolute;top:10px;right:10px;">
+        ${tier.badge ? `<span style="font-size:7px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#0C0C0A;background:var(--gold);padding:3px 8px;">${tier.badge}</span>` : ''}
+      </div>
+      <div class="vo-check" id="ins-check-${tier.id}">✓</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div style="font-size:9px;font-weight:300;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;">${tier.id==='none'?'Decline':'RentCover · Cover Genius'}</div>
+          <div style="font-family:var(--serif);font-size:20px;color:var(--cream);margin-bottom:8px;">${tier.name}</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            ${tier.features.map(f=>`<span style="font-size:9px;font-weight:300;color:var(--muted);display:flex;align-items:center;gap:4px;"><span style="color:var(--gold);font-size:10px;">${tier.id==='none'?'·':'✓'}</span>${f}</span>`).join('')}
+          </div>
+        </div>
+        <div style="text-align:right;flex-shrink:0;padding-left:20px;">
+          ${tier.price > 0 
+            ? `<div style="font-family:var(--serif);font-size:26px;color:var(--gold);">$${tier.price}</div><div style="font-size:9px;color:var(--muted);">/ day</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Coverage: ${tier.coverage}</div>`
+            : `<div style="font-family:var(--serif);font-size:18px;color:var(--muted);font-style:italic;">Declined</div>`
+          }
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function selectInsurance(id) {
+  document.querySelectorAll('#insuranceOptions .vehicle-option').forEach(el => el.classList.remove('selected'));
+  document.getElementById('ins-'+id)?.classList.add('selected');
+  selectedInsurance = INSURANCE_TIERS.find(t => t.id === id);
+  // Update summary
+  const insEl = document.getElementById('sp-insurance');
+  if (insEl) {
+    if (id === 'none') {
+      insEl.textContent = 'Declined';
+      insEl.style.color = 'var(--muted)';
+    } else {
+      insEl.textContent = selectedInsurance.name + ' (+$' + selectedInsurance.price + '/day)';
+      insEl.style.color = 'var(--gold-light)';
+      document.getElementById('sp-row-insurance').classList.add('filled');
+    }
+  }
+  updateSummary();
+}
+
+// Init insurance on step 4 render
+const _origGoToStep = goToStep;
+goToStep = function(n) {
+  _origGoToStep(n);
+  if (n === 4) renderInsuranceTiers();
+};
+
+// Patch populateDepositSummary to include insurance
+const _origPopulate = populateDepositSummary;
+populateDepositSummary = function() {
+  _origPopulate();
+  if (selectedInsurance && selectedInsurance.price > 0 && state.days > 0) {
+    const insCost = selectedInsurance.price * state.days;
+    const newTotal = state.vehiclePrice * state.days + insCost;
+    const newDeposit = Math.round(newTotal * 0.25);
+    const totalEl = document.getElementById('ds-total');
+    const depEl = document.getElementById('ds-deposit-amt');
+    const spDep = document.getElementById('sp-deposit');
+    if (totalEl) totalEl.textContent = '$' + newTotal.toLocaleString() + ' (incl. insurance)';
+    if (depEl)   depEl.textContent   = '$' + newDeposit.toLocaleString();
+    if (spDep)   spDep.textContent   = '$' + newDeposit.toLocaleString();
+    // Add insurance line to deposit summary
+    const dsRows = document.querySelector('.ds-rows');
+    if (dsRows && !document.getElementById('ds-ins-row')) {
+      const row = document.createElement('div');
+      row.id = 'ds-ins-row';
+      row.className = 'ds-row';
+      row.innerHTML = `<span class="ds-row-label">Insurance (${selectedInsurance.name})</span><span class="ds-row-val">+$${insCost} ($${selectedInsurance.price}/day)</span>`;
+      dsRows.insertBefore(row, dsRows.querySelector('.ds-divider'));
+    }
+  }
+};
+
+</script>
+</body>
+</html>

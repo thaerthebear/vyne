@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYNE Admin — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --cream: #F5F0E8; --bone: #EAE3D2;
+  --gold: #C9A84C; --gold-light: #E2C97E;
+  --dark: #0A0A08; --mid: #111110; --panel: #181816; --panel2: #1E1E1C; --panel3: #242422;
+  --border: rgba(201,168,76,0.1); --border2: rgba(201,168,76,0.06);
+  --muted: #5A5550; --muted2: #7A7570;
+  --green: #4a7c5a; --green-light: #7ec492; --green-glow: rgba(74,124,90,0.15);
+  --red: #8c4a3a; --red-light: #e09080; --red-glow: rgba(140,74,58,0.15);
+  --blue: #3a5a8c; --blue-light: #80a8e0;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background:var(--dark); color:var(--cream); font-family:var(--sans); font-weight:300; min-height:100vh; display:flex; }
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: 220px; min-height: 100vh;
+  background: var(--mid);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  position: fixed; top:0; left:0; bottom:0;
+  z-index: 50;
+}
+.sb-logo {
+  padding: 28px 24px 24px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 0.18em;
+}
+.sb-logo span { color: var(--gold); }
+.sb-badge {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); margin-top: 4px;
+}
+.sb-nav { padding: 20px 0; flex: 1; }
+.sb-section-label {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--muted); padding: 0 24px; margin: 16px 0 8px;
+}
+.sb-link {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 24px;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted2); text-decoration: none; cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.25s;
+}
+.sb-link:hover { color: var(--cream); background: rgba(201,168,76,0.03); }
+.sb-link.active { color: var(--gold); border-left-color: var(--gold); background: rgba(201,168,76,0.05); }
+.sb-link .icon { font-size: 14px; width: 18px; text-align: center; }
+.sb-badge-count {
+  margin-left: auto; background: var(--gold); color: #0A0A08;
+  font-size: 11px; font-weight: 400; padding: 2px 7px; border-radius: 20px;
+}
+.sb-bottom {
+  padding: 20px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px; font-weight: 300; letter-spacing: 0.15em; color: var(--muted);
+}
+.sb-address { color: var(--muted2); margin-top: 4px; line-height: 1.7; }
+
+/* ── MAIN ── */
+.main { margin-left: 220px; flex: 1; min-height: 100vh; }
+
+/* ── TOP BAR ── */
+.topbar {
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(10,10,8,0.8);
+  backdrop-filter: blur(8px);
+  position: sticky; top: 0; z-index: 40;
+}
+.topbar-title { font-family: var(--serif); font-size: 22px; font-weight: 300; }
+.topbar-title em { font-style: italic; color: var(--gold-light); }
+.topbar-right { display: flex; align-items: center; gap: 20px; }
+.topbar-date { font-size: 12px; font-weight: 300; letter-spacing: 0.2em; color: var(--muted); }
+.topbar-notify {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--charcoal); background: var(--gold); padding: 9px 18px; cursor: pointer;
+  border: none; font-family: var(--sans); transition: background 0.3s;
+}
+.topbar-notify:hover { background: var(--gold-light); }
+
+/* ── PAGE SECTIONS ── */
+.page { display: none; padding: 36px 40px 80px; }
+.page.active { display: block; animation: pageIn 0.3s ease; }
+@keyframes pageIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── STAT CARDS ── */
+.stat-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 3px; margin-bottom: 32px; }
+.stat-card {
+  background: var(--panel); padding: 24px 22px;
+  border: 1px solid var(--border2);
+  position: relative; overflow: hidden;
+  transition: border-color 0.3s;
+}
+.stat-card:hover { border-color: var(--border); }
+.stat-card::before { content:''; position:absolute;top:0;left:0;right:0;height:1px; }
+.stat-card.gold::before { background: linear-gradient(to right,transparent,var(--gold),transparent); }
+.stat-card.green::before { background: linear-gradient(to right,transparent,var(--green-light),transparent); }
+.stat-card.blue::before { background: linear-gradient(to right,transparent,var(--blue-light),transparent); }
+.stat-card.muted::before { background: linear-gradient(to right,transparent,var(--muted2),transparent); }
+.sc-label { font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.sc-val { font-family: var(--serif); font-size: 38px; font-weight: 300; line-height: 1; margin-bottom: 4px; }
+.stat-card.gold .sc-val { color: var(--gold); }
+.stat-card.green .sc-val { color: var(--green-light); }
+.stat-card.blue .sc-val { color: var(--blue-light); }
+.stat-card.muted .sc-val { color: var(--muted2); }
+.sc-sub { font-size: 12px; font-weight: 300; letter-spacing: 0.1em; color: var(--muted); }
+
+/* ── SECTION HEADER ── */
+.section-hdr {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 16px;
+}
+.section-hdr-title { font-family: var(--serif); font-size: 22px; font-weight: 300; }
+.section-hdr-title em { font-style: italic; color: var(--gold-light); }
+.section-hdr-action {
+  font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); cursor: pointer; background: none; border: none;
+  font-family: var(--sans); transition: opacity 0.3s;
+}
+.section-hdr-action:hover { opacity: 0.7; }
+
+/* ── TABLE ── */
+.table-wrap { background: var(--panel); border: 1px solid var(--border2); overflow: hidden; margin-bottom: 32px; }
+.table-filters {
+  padding: 14px 20px; border-bottom: 1px solid var(--border2);
+  display: flex; gap: 4px;
+}
+.tf-btn {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--muted); background: none; border: none; cursor: pointer;
+  padding: 7px 14px; font-family: var(--sans);
+  border-bottom: 1px solid transparent;
+  transition: all 0.25s;
+}
+.tf-btn:hover { color: var(--cream); }
+.tf-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+table { width: 100%; border-collapse: collapse; }
+thead tr { border-bottom: 1px solid var(--border2); }
+th {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); padding: 12px 20px; text-align: left;
+}
+tbody tr {
+  border-bottom: 1px solid var(--border2);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: rgba(201,168,76,0.03); }
+td { padding: 14px 20px; font-size: 12px; font-weight: 300; letter-spacing: 0.06em; color: var(--cream); vertical-align: middle; }
+td.muted { color: var(--muted2); font-size: 11px; }
+td .vehicle-em { font-size: 16px; margin-right: 8px; }
+
+/* Status pills */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 4px 10px; border: 1px solid;
+}
+.pill.confirmed { color: var(--green-light); border-color: rgba(74,124,90,0.4); background: var(--green-glow); }
+.pill.pending   { color: var(--gold); border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.06); }
+.pill.active    { color: var(--blue-light); border-color: rgba(58,90,140,0.4); background: rgba(58,90,140,0.1); }
+.pill.completed { color: var(--muted2); border-color: rgba(122,117,112,0.3); background: rgba(122,117,112,0.06); }
+.pill.cancelled { color: var(--red-light); border-color: rgba(140,74,58,0.3); background: var(--red-glow); }
+.pill::before { content:''; width:5px; height:5px; border-radius:50%; background:currentColor; }
+
+/* ── FLEET AVAILABILITY GRID ── */
+.fleet-avail-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-bottom: 32px; }
+.fa-card {
+  background: var(--panel); padding: 20px 22px;
+  border: 1px solid var(--border2); position: relative; overflow: hidden;
+  transition: border-color 0.3s;
+}
+.fa-card:hover { border-color: var(--border); }
+.fa-card::after {
+  content: ''; position: absolute; top:0; left:0; right:0; height:2px;
+}
+.fa-card.available::after { background: var(--green-light); }
+.fa-card.rented::after    { background: var(--gold); }
+.fa-card.maintenance::after { background: var(--red-light); }
+
+.fa-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.fa-emoji { font-size: 28px; line-height: 1; }
+.fa-status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+}
+.fa-card.available .fa-status-dot { background: var(--green-light); box-shadow: 0 0 8px var(--green-light); }
+.fa-card.rented .fa-status-dot    { background: var(--gold); box-shadow: 0 0 8px var(--gold); animation: rentedPulse 2s ease infinite; }
+.fa-card.maintenance .fa-status-dot { background: var(--red-light); }
+@keyframes rentedPulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+
+.fa-tag { font-size: 11px; font-weight: 300; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.fa-name { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--cream); margin-bottom: 8px; }
+.fa-info { font-size: 12px; font-weight: 300; letter-spacing: 0.1em; color: var(--muted2); line-height: 1.8; }
+.fa-info strong { color: var(--gold-light); }
+.fa-price { font-family: var(--serif); font-size: 20px; color: var(--gold); margin-top: 10px; }
+.fa-price span { font-size: 11px; font-family: var(--sans); color: var(--muted); }
+
+/* ── CALENDAR ── */
+.cal-wrap { background: var(--panel); border: 1px solid var(--border2); overflow: hidden; margin-bottom: 32px; }
+.cal-header {
+  padding: 16px 24px; border-bottom: 1px solid var(--border2);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.cal-title { font-family: var(--serif); font-size: 20px; font-weight: 300; }
+.cal-nav { display: flex; gap: 8px; }
+.cal-nav-btn {
+  background: none; border: 1px solid var(--border); color: var(--muted2); padding: 6px 12px;
+  font-family: var(--sans); font-size: 11px; cursor: pointer; transition: all 0.25s;
+}
+.cal-nav-btn:hover { border-color: var(--gold); color: var(--gold); }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); }
+.cal-day-label {
+  padding: 10px; text-align: center;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+  border-bottom: 1px solid var(--border2);
+}
+.cal-day {
+  padding: 10px 8px; min-height: 64px;
+  border-right: 1px solid var(--border2);
+  border-bottom: 1px solid var(--border2);
+  cursor: pointer; transition: background 0.2s;
+  position: relative;
+}
+.cal-day:nth-child(7n) { border-right: none; }
+.cal-day:hover { background: rgba(201,168,76,0.03); }
+.cal-day.today { background: rgba(201,168,76,0.05); }
+.cal-day.today .cal-day-num { color: var(--gold); font-weight: 400; }
+.cal-day-num { font-size: 12px; font-weight: 300; color: var(--muted2); margin-bottom: 4px; }
+.cal-event {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.05em;
+  padding: 2px 5px; margin-bottom: 2px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  border-left: 2px solid;
+}
+.cal-event.gold { background: rgba(201,168,76,0.12); border-color: var(--gold); color: var(--gold-light); }
+.cal-event.green { background: var(--green-glow); border-color: var(--green-light); color: var(--green-light); }
+
+/* ── REVENUE CHART (CSS bars) ── */
+.rev-chart {
+  background: var(--panel); border: 1px solid var(--border2); padding: 24px;
+  margin-bottom: 32px;
+}
+.rev-bars {
+  display: flex; align-items: flex-end; gap: 6px; height: 120px; margin-top: 20px;
+}
+.rev-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+.rev-bar {
+  width: 100%; background: rgba(201,168,76,0.15);
+  position: relative; transition: background 0.3s; cursor: pointer;
+  min-height: 4px;
+}
+.rev-bar:hover { background: rgba(201,168,76,0.3); }
+.rev-bar.current { background: rgba(201,168,76,0.6); }
+.rev-bar-label { font-size: 11px; font-weight: 300; letter-spacing: 0.1em; color: var(--muted); text-align: center; }
+.rev-bar-val { font-size: 11px; color: var(--gold); position: absolute; top: -18px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+/* ── BOOKING DETAIL MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(10,10,8,0.85);
+  backdrop-filter: blur(4px); z-index: 200;
+  display: none; align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.modal {
+  background: var(--panel2); border: 1px solid var(--border);
+  width: 560px; max-height: 85vh; overflow-y: auto;
+  animation: modalIn 0.3s ease;
+}
+@keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.modal-header {
+  padding: 24px 28px; border-bottom: 1px solid var(--border2);
+  display: flex; justify-content: space-between; align-items: center;
+  position: sticky; top: 0; background: var(--panel2); z-index: 1;
+}
+.modal-title { font-family: var(--serif); font-size: 24px; font-weight: 300; }
+.modal-close {
+  background: none; border: none; color: var(--muted); font-size: 20px;
+  cursor: pointer; transition: color 0.2s; line-height: 1;
+}
+.modal-close:hover { color: var(--cream); }
+.modal-body { padding: 24px 28px; }
+.modal-section { margin-bottom: 24px; }
+.modal-section-title {
+  font-size: 11px; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+.modal-section-title::before { content:''; width:12px; height:1px; background:var(--gold); }
+.modal-rows { display: flex; flex-direction: column; gap: 0; }
+.modal-row {
+  display: flex; justify-content: space-between; padding: 10px 0;
+  border-bottom: 1px solid var(--border2);
+  font-size: 12px; font-weight: 300; letter-spacing: 0.06em;
+}
+.modal-row:last-child { border-bottom: none; }
+.modal-row-label { color: var(--muted2); }
+.modal-row-val { color: var(--cream); text-align: right; }
+.modal-row-val.gold { color: var(--gold-light); font-family: var(--serif); font-size: 13px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+.btn-modal {
+  font-family: var(--sans); font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 12px 20px; border: none; cursor: pointer; transition: all 0.25s;
+}
+.btn-modal.primary { background: var(--gold); color: #0A0A08; }
+.btn-modal.primary:hover { background: var(--gold-light); }
+.btn-modal.danger  { background: var(--red-glow); color: var(--red-light); border: 1px solid rgba(140,74,58,0.3); }
+.btn-modal.danger:hover { background: rgba(140,74,58,0.25); }
+.btn-modal.outline { background: none; color: var(--muted2); border: 1px solid var(--border); }
+.btn-modal.outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.15); }
+</style>
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sb-logo">V<span>Y</span>NE <div class="sb-badge">Admin Dashboard</div></div>
+  <nav class="sb-nav">
+    <div class="sb-section-label">Overview</div>
+    <div class="sb-link active" onclick="showPage('dashboard',this)"><span class="icon">◈</span> Dashboard</div>
+    <div class="sb-link" onclick="showPage('reservations',this)"><span class="icon">📋</span> Reservations <span class="sb-badge-count" id="pendingCount">2</span></div>
+    <div class="sb-section-label">Fleet</div>
+    <div class="sb-link" onclick="showPage('fleet',this)"><span class="icon">🚗</span> Fleet Status</div>
+    <div class="sb-link" onclick="showPage('calendar',this)"><span class="icon">📅</span> Availability</div>
+    <div class="sb-section-label">Finance</div>
+    <div class="sb-link" onclick="showPage('revenue',this)"><span class="icon">◆</span> Revenue</div>
+  </nav>
+  <div class="sb-bottom">
+    <div>📍 Pickup Location</div>
+    <div class="sb-address">5483 Murfreesboro Pike<br>Nashville, TN 37217</div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="topbar-title" id="topbarTitle">Good morning, <em>Thaer</em></div>
+    <div class="topbar-right">
+      <div class="topbar-date" id="topbarDate"></div>
+      <button class="topbar-notify" onclick="showPage('reservations', document.querySelector('.sb-link:nth-child(2)'))">View New Bookings</button>
+    </div>
+  </div>
+
+  <!-- ══ DASHBOARD PAGE ══ -->
+  <div class="page active" id="page-dashboard">
+    <div class="stat-row">
+      <div class="stat-card gold">
+        <div class="sc-label">Total Revenue</div>
+        <div class="sc-val">$4,820</div>
+        <div class="sc-sub">This month · 3 completed</div>
+      </div>
+      <div class="stat-card green">
+        <div class="sc-label">Active Bookings</div>
+        <div class="sc-val">2</div>
+        <div class="sc-sub">Next pickup: Mar 8</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="sc-label">Deposits Held</div>
+        <div class="sc-val">$598</div>
+        <div class="sc-sub">2 pending reservations</div>
+      </div>
+      <div class="stat-card muted">
+        <div class="sc-label">Fleet Available</div>
+        <div class="sc-val">5/6</div>
+        <div class="sc-sub">1 vehicle currently rented</div>
+      </div>
+    </div>
+
+    <!-- Recent Reservations -->
+    <div class="section-hdr">
+      <div class="section-hdr-title">Recent <em>Reservations</em></div>
+      <button class="section-hdr-action" onclick="showPage('reservations',document.querySelectorAll('.sb-link')[1])">View All →</button>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Ref #</th><th>Customer</th><th>Vehicle</th><th>Dates</th><th>Total</th><th>Status</th>
+        </tr></thead>
+        <tbody id="dashRecentTable"></tbody>
+      </table>
+    </div>
+
+    <!-- Revenue chart -->
+    <div class="section-hdr">
+      <div class="section-hdr-title"><em>Revenue</em> — Last 6 Months</div>
+    </div>
+    <div class="rev-chart">
+      <div style="font-size:8px;font-weight:200;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);">Monthly Revenue · USD</div>
+      <div class="rev-bars" id="revBars"></div>
+    </div>
+  </div>
+
+  <!-- ══ RESERVATIONS PAGE ══ -->
+  <div class="page" id="page-reservations">
+    <div class="section-hdr" style="margin-bottom:20px;">
+      <div class="section-hdr-title">All <em>Reservations</em></div>
+    </div>
+    <div class="table-wrap">
+      <div class="table-filters">
+        <button class="tf-btn active" onclick="filterTable('all',this)">All</button>
+        <button class="tf-btn" onclick="filterTable('pending',this)">Pending</button>
+        <button class="tf-btn" onclick="filterTable('confirmed',this)">Confirmed</button>
+        <button class="tf-btn" onclick="filterTable('active',this)">Active</button>
+        <button class="tf-btn" onclick="filterTable('completed',this)">Completed</button>
+        <button class="tf-btn" onclick="filterTable('cancelled',this)">Cancelled</button>
+      </div>
+      <table>
+        <thead><tr>
+          <th>Ref #</th><th>Customer</th><th>Vehicle</th><th>Pickup</th><th>Return</th><th>Total</th><th>Deposit</th><th>Insurance</th><th>Status</th>
+        </tr></thead>
+        <tbody id="fullResTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ FLEET PAGE ══ -->
+  <div class="page" id="page-fleet">
+    <div class="section-hdr" style="margin-bottom:20px;">
+      <div class="section-hdr-title">Fleet <em>Status</em></div>
+    </div>
+    <div class="fleet-avail-grid" id="fleetGrid"></div>
+  </div>
+
+  <!-- ══ CALENDAR PAGE ══ -->
+  <div class="page" id="page-calendar">
+    <div class="section-hdr" style="margin-bottom:20px;">
+      <div class="section-hdr-title">Availability <em>Calendar</em></div>
+    </div>
+    <div class="cal-wrap">
+      <div class="cal-header">
+        <div class="cal-title" id="calMonthTitle"></div>
+        <div class="cal-nav">
+          <button class="cal-nav-btn" onclick="changeMonth(-1)">← Prev</button>
+          <button class="cal-nav-btn" onclick="changeMonth(1)">Next →</button>
+        </div>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <!-- ══ REVENUE PAGE ══ -->
+  <div class="page" id="page-revenue">
+    <div class="stat-row">
+      <div class="stat-card gold">
+        <div class="sc-label">Total Earned</div>
+        <div class="sc-val">$4,820</div>
+        <div class="sc-sub">All time</div>
+      </div>
+      <div class="stat-card green">
+        <div class="sc-label">This Month</div>
+        <div class="sc-val">$1,748</div>
+        <div class="sc-sub">2 rentals completed</div>
+      </div>
+      <div class="stat-card blue">
+        <div class="sc-label">Avg Per Rental</div>
+        <div class="sc-val">$964</div>
+        <div class="sc-sub">Based on 5 rentals</div>
+      </div>
+      <div class="stat-card muted">
+        <div class="sc-label">Deposits Held</div>
+        <div class="sc-val">$598</div>
+        <div class="sc-sub">Pending confirmation</div>
+      </div>
+    </div>
+    <div class="section-hdr">
+      <div class="section-hdr-title"><em>Revenue</em> Breakdown</div>
+    </div>
+    <div class="rev-chart">
+      <div style="font-size:8px;font-weight:200;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);">Monthly Revenue · USD</div>
+      <div class="rev-bars" id="revBars2"></div>
+    </div>
+    <div class="section-hdr" style="margin-top:32px;">
+      <div class="section-hdr-title">Revenue by <em>Vehicle</em></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Vehicle</th><th>Rentals</th><th>Days Rented</th><th>Total Revenue</th><th>Avg / Day</th></tr></thead>
+        <tbody id="revByVehicle"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ── BOOKING DETAIL MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalBox">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Reservation</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ── DATA ──
+const bookings = [
+  { ref:'VYN-100234', insurance:'Standard Protection', insStatus:'active', name:'Marcus Webb', email:'marcus@email.com', phone:'(615) 555-0182', vehicle:'Cadillac Escalade', emoji:'🚙', tag:'Luxury SUV', rate:349, days:3, total:1047, deposit:262, pickup:'Mar 8, 2025', ret:'Mar 11, 2025', status:'confirmed', note:'Wedding weekend. Requested early 8am pickup.' },
+  { ref:'VYN-100235', insurance:'Full Coverage', insStatus:'pending', name:'Jasmine Okafor', email:'jasmine@email.com', phone:'(615) 555-0294', vehicle:'Lamborghini Urus', emoji:'🏎️', tag:'Exotic SUV', rate:899, days:2, total:1798, deposit:450, pickup:'Mar 12, 2025', ret:'Mar 14, 2025', status:'pending', note:'Bachelorette party. Group of 8.' },
+  { ref:'VYN-100236', insurance:'Basic Protection', insStatus:'active', name:'Derek Hollis', email:'derek@email.com', phone:'(615) 555-0471', vehicle:'Porsche 911 Carrera', emoji:'🏎️', tag:'Sports Car', rate:499, days:1, total:499, deposit:125, pickup:'Mar 6, 2025', ret:'Mar 7, 2025', status:'active', note:'' },
+  { ref:'VYN-100231', insurance:'Full Coverage', insStatus:'issued', name:'Ava Chen', email:'ava@email.com', phone:'(615) 555-0199', vehicle:'Mercedes-Benz S-Class', emoji:'🚗', tag:'Luxury Sedan', rate:299, days:4, total:1196, deposit:299, pickup:'Feb 20, 2025', ret:'Feb 24, 2025', status:'completed', note:'Corporate client. Excellent experience.' },
+  { ref:'VYN-100228', insurance:'Declined', insStatus:'none', name:'Tyler Brooks', email:'tyler@email.com', phone:'(615) 555-0382', vehicle:'BMW 7 Series', emoji:'🚗', tag:'Executive Sedan', rate:279, days:2, total:558, deposit:140, pickup:'Feb 10, 2025', ret:'Feb 12, 2025', status:'completed', note:'' },
+  { ref:'VYN-100220', insurance:'Standard Protection', insStatus:'cancelled', name:'Simone Hart', email:'simone@email.com', phone:'(615) 555-0541', vehicle:'Bentley Continental GT', emoji:'🚘', tag:'Grand Touring', rate:749, days:1, total:749, deposit:187, pickup:'Jan 28, 2025', ret:'Jan 29, 2025', status:'cancelled', note:'Client cancelled 24hrs before.' },
+];
+
+const fleet = [
+  { emoji:'🚗', tag:'Luxury Sedan', name:'Mercedes-Benz S-Class', rate:299, status:'available', info:'' },
+  { emoji:'🚙', tag:'Luxury SUV', name:'Cadillac Escalade', rate:349, status:'rented', info:'Rented to <strong>Marcus Webb</strong><br>Mar 8 – Mar 11' },
+  { emoji:'🏎️', tag:'Sports Car', name:'Porsche 911 Carrera', rate:499, status:'rented', info:'Active rental · <strong>Derek Hollis</strong><br>Returns Mar 7' },
+  { emoji:'🚗', tag:'Executive Sedan', name:'BMW 7 Series', rate:279, status:'available', info:'' },
+  { emoji:'🏎️', tag:'Exotic SUV', name:'Lamborghini Urus', rate:899, status:'available', info:'' },
+  { emoji:'🚘', tag:'Grand Touring', name:'Bentley Continental GT', rate:749, status:'available', info:'' },
+];
+
+const revData = [
+  { month:'Oct', val: 0 }, { month:'Nov', val: 0 }, { month:'Dec', val: 749 },
+  { month:'Jan', val: 749 }, { month:'Feb', val: 1754 }, { month:'Mar', val: 1748, current: true },
+];
+
+// ── RENDER ──
+function statusPill(s) {
+  return `<span class="pill ${s}">${s}</span>`;
+}
+
+function renderTable(tbodyId, rows, cols) {
+  const tb = document.getElementById(tbodyId);
+  if (!tb) return;
+  tb.innerHTML = rows.map(b => `
+    <tr onclick="openModal('${b.ref}')">
+      ${cols.map(c => {
+        if (c==='ref') return `<td style="font-family:var(--serif);color:var(--gold);font-size:12px;">${b.ref}</td>`;
+        if (c==='name') return `<td>${b.name}<br><span style="font-size:8px;color:var(--muted)">${b.email}</span></td>`;
+        if (c==='vehicle') return `<td><span class="vehicle-em">${b.emoji}</span>${b.vehicle}</td>`;
+        if (c==='dates') return `<td class="muted">${b.pickup} → ${b.ret}</td>`;
+        if (c==='pickup') return `<td class="muted">${b.pickup}</td>`;
+        if (c==='ret') return `<td class="muted">${b.ret}</td>`;
+        if (c==='total') return `<td style="font-family:var(--serif);font-size:14px;color:var(--gold-light);">$${b.total.toLocaleString()}</td>`;
+        if (c==='deposit') return `<td class="muted">$${b.deposit}</td>`;
+        if (c==='insurance') {
+          const iColors = { active:'var(--green-light)', pending:'var(--gold)', issued:'var(--green-light)', none:'var(--muted)', cancelled:'var(--red-light)' };
+          return `<td style="font-size:9px;color:${iColors[b.insStatus]||'var(--muted)'};">${b.insurance||'—'}</td>`;
+        }
+        if (c==='status') return `<td>${statusPill(b.status)}</td>`;
+        return `<td>${b[c]}</td>`;
+      }).join('')}
+    </tr>
+  `).join('');
+}
+
+// Dash table (recent 4)
+renderTable('dashRecentTable', bookings.slice(0,4), ['ref','name','vehicle','dates','total','status']);
+
+// Full reservations table
+renderTable('fullResTable', bookings, ['ref','name','vehicle','pickup','ret','total','deposit','insurance','status']);
+
+// Fleet grid
+const fg = document.getElementById('fleetGrid');
+fleet.forEach(v => {
+  fg.innerHTML += `
+    <div class="fa-card ${v.status}">
+      <div class="fa-top">
+        <span class="fa-emoji">${v.emoji}</span>
+        <span class="fa-status-dot"></span>
+      </div>
+      <div class="fa-tag">${v.tag}</div>
+      <div class="fa-name">${v.name}</div>
+      <div class="fa-info">${v.status==='available'?'<strong style="color:var(--green-light)">Available</strong> · Ready for booking':v.status==='maintenance'?'<strong style="color:var(--red-light)">In Maintenance</strong>':v.info}</div>
+      <div class="fa-price">$${v.rate}<span> / day</span></div>
+    </div>`;
+});
+
+// Revenue chart (reusable)
+function renderRevBars(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const max = Math.max(...revData.map(r=>r.val), 1);
+  el.innerHTML = revData.map(r => `
+    <div class="rev-bar-wrap">
+      <div class="rev-bar ${r.current?'current':''}" style="height:${Math.max((r.val/max)*100,r.val?4:4)}%">
+        ${r.val ? `<span class="rev-bar-val">$${r.val.toLocaleString()}</span>` : ''}
+      </div>
+      <div class="rev-bar-label">${r.month}</div>
+    </div>`).join('');
+}
+renderRevBars('revBars');
+renderRevBars('revBars2');
+
+// Revenue by vehicle
+const revByV = [
+  { name:'🚙 Cadillac Escalade', rentals:2, days:5, total:1745, avg:349 },
+  { name:'🚗 Mercedes-Benz S-Class', rentals:1, days:4, total:1196, avg:299 },
+  { name:'🚘 Bentley Continental GT', rentals:1, days:1, total:749, avg:749 },
+  { name:'🚗 BMW 7 Series', rentals:1, days:2, total:558, avg:279 },
+  { name:'🏎️ Porsche 911 Carrera', rentals:1, days:1, total:499, avg:499 },
+  { name:'🏎️ Lamborghini Urus', rentals:0, days:0, total:0, avg:'-' },
+];
+document.getElementById('revByVehicle').innerHTML = revByV.map(v => `
+  <tr>
+    <td>${v.name}</td>
+    <td class="muted">${v.rentals}</td>
+    <td class="muted">${v.days}</td>
+    <td style="font-family:var(--serif);font-size:14px;color:var(--gold-light);">${v.total?'$'+v.total.toLocaleString():'—'}</td>
+    <td class="muted">${v.avg!=='-'?'$'+v.avg:'—'}</td>
+  </tr>`).join('');
+
+// ── CALENDAR ──
+let calDate = new Date(2025, 2); // March 2025
+const calEvents = {
+  '2025-3-6':  [{label:'Porsche 911 · Derek', cls:'gold'}],
+  '2025-3-8':  [{label:'Escalade · Marcus', cls:'green'}],
+  '2025-3-11': [{label:'Escalade returns', cls:'green'}],
+  '2025-3-12': [{label:'Urus · Jasmine', cls:'gold'}],
+  '2025-3-14': [{label:'Urus returns', cls:'gold'}],
+};
+const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function renderCalendar() {
+  const y = calDate.getFullYear(), m = calDate.getMonth();
+  document.getElementById('calMonthTitle').textContent = `${months[m]} ${y}`;
+  const grid = document.getElementById('calGrid');
+  const today = new Date();
+  const firstDay = new Date(y, m, 1).getDay();
+  const daysInMonth = new Date(y, m+1, 0).getDate();
+  const dayLabels = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  grid.innerHTML = dayLabels.map(d=>`<div class="cal-day-label">${d}</div>`).join('');
+  for (let i=0; i<firstDay; i++) grid.innerHTML += `<div class="cal-day" style="background:rgba(0,0,0,0.2);"></div>`;
+  for (let d=1; d<=daysInMonth; d++) {
+    const isToday = today.getFullYear()===y && today.getMonth()===m && today.getDate()===d;
+    const key = `${y}-${m+1}-${d}`;
+    const evts = calEvents[key] || [];
+    grid.innerHTML += `
+      <div class="cal-day ${isToday?'today':''}">
+        <div class="cal-day-num">${d}</div>
+        ${evts.map(e=>`<div class="cal-event ${e.cls}">${e.label}</div>`).join('')}
+      </div>`;
+  }
+}
+renderCalendar();
+function changeMonth(dir) { calDate.setMonth(calDate.getMonth()+dir); renderCalendar(); }
+
+// ── MODAL ──
+function openModal(ref) {
+  const b = bookings.find(x=>x.ref===ref);
+  if (!b) return;
+  document.getElementById('modalTitle').textContent = b.ref;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-section">
+      <div class="modal-section-title">Vehicle</div>
+      <div style="display:flex;align-items:center;gap:16px;padding:16px;background:var(--panel);border:1px solid var(--border2);">
+        <span style="font-size:36px;">${b.emoji}</span>
+        <div>
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;">${b.tag}</div>
+          <div style="font-family:var(--serif);font-size:22px;color:var(--cream);">${b.vehicle}</div>
+          <div style="font-size:9px;color:var(--muted);">$${b.rate}/day · ${b.days} day${b.days>1?'s':''}</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Reservation Details</div>
+      <div class="modal-rows">
+        <div class="modal-row"><span class="modal-row-label">Pickup</span><span class="modal-row-val">${b.pickup} · 5483 Murfreesboro Pike</span></div>
+        <div class="modal-row"><span class="modal-row-label">Return</span><span class="modal-row-val">${b.ret}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Duration</span><span class="modal-row-val">${b.days} day${b.days>1?'s':''}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Total</span><span class="modal-row-val gold">$${b.total.toLocaleString()}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Deposit Paid</span><span class="modal-row-val">$${b.deposit} <span style="color:var(--muted);font-size:8px;">(25%)</span></span></div>
+        <div class="modal-row"><span class="modal-row-label">Balance Due</span><span class="modal-row-val">$${b.total-b.deposit} <span style="color:var(--muted);font-size:8px;">(48hrs before pickup)</span></span></div>
+        <div class="modal-row"><span class="modal-row-label">Status</span><span class="modal-row-val">${statusPill(b.status)}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Insurance</span><span class="modal-row-val" style="color:var(--gold-light);">${b.insurance||'None'}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Policy Status</span><span class="modal-row-val">${b.insStatus==='none'?'<span style=\"color:var(--muted)\">Declined</span>':b.insStatus==='active'?'<span style=\"color:var(--green-light)\">✓ Active</span>':b.insStatus==='pending'?'<span style=\"color:var(--gold)\">Pending Issuance</span>':b.insStatus==='issued'?'<span style=\"color:var(--green-light)\">✓ Issued</span>':'<span style=\"color:var(--muted)\">'+b.insStatus+'</span>'}</span></div>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Customer</div>
+      <div class="modal-rows">
+        <div class="modal-row"><span class="modal-row-label">Name</span><span class="modal-row-val">${b.name}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Email</span><span class="modal-row-val">${b.email}</span></div>
+        <div class="modal-row"><span class="modal-row-label">Phone</span><span class="modal-row-val">${b.phone}</span></div>
+        ${b.note?`<div class="modal-row"><span class="modal-row-label">Notes</span><span class="modal-row-val" style="color:var(--muted2);font-style:italic;">${b.note}</span></div>`:''}
+      </div>
+    </div>
+    <div class="modal-actions">
+      ${b.status==='pending'?`<button class="btn-modal primary" onclick="updateStatus('${b.ref}','confirmed')">✓ Confirm Booking</button>`:''}
+      ${b.status==='confirmed'||b.status==='pending'?`<button class="btn-modal danger" onclick="updateStatus('${b.ref}','cancelled')">Cancel</button>`:''}
+      <button class="btn-modal outline" onclick="closeModal()">Close</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function updateStatus(ref, newStatus) {
+  const b = bookings.find(x=>x.ref===ref);
+  if (b) {
+    b.status = newStatus;
+    renderTable('dashRecentTable', bookings.slice(0,4), ['ref','name','vehicle','dates','total','status']);
+    renderTable('fullResTable', bookings, ['ref','name','vehicle','pickup','ret','total','deposit','insurance','status']);
+    const pending = bookings.filter(b=>b.status==='pending').length;
+    document.getElementById('pendingCount').textContent = pending;
+  }
+  closeModal();
+}
+
+function closeModal(e) {
+  if (e && e.target !== document.getElementById('modalOverlay')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+// ── NAV ──
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(l=>l.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if (el) el.classList.add('active');
+  const titles = { dashboard:'Good morning', reservations:'Reservations', fleet:'Fleet Status', calendar:'Availability Calendar', revenue:'Revenue' };
+  const em = { dashboard:'<em>Thaer</em>', reservations:'', fleet:'', calendar:'', revenue:'' };
+  document.getElementById('topbarTitle').innerHTML = titles[id] + (em[id]?' · '+em[id]:'');
+}
+
+// ── FILTER TABLE ──
+function filterTable(status, btn) {
+  document.querySelectorAll('.tf-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = status==='all' ? bookings : bookings.filter(b=>b.status===status);
+  renderTable('fullResTable', filtered, ['ref','name','vehicle','pickup','ret','total','deposit','insurance','status']);
+}
+
+// ── DATE ──
+const now = new Date();
+document.getElementById('topbarDate').textContent = now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+</script>
+</body>
+</html>
