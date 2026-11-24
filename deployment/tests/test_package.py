@@ -48,9 +48,10 @@ class ReleasePackage(unittest.TestCase):
   self.assertNotIn('lesson-media/private-renter-photo.jpg',names)
  def test_public_entry_artwork_is_explicitly_allowlisted(self):
   (self.root/'assets').mkdir()
-  for name in ['entry-concept-v1.png','private-upload.png']:(self.root/'assets'/name).write_bytes(b'fixture-image')
+  for name in ['entry-concept-v1.png','training-cover-v1.png','private-upload.png']:(self.root/'assets'/name).write_bytes(b'fixture-image')
   manifest=r.build(self.root,self.base/'release');names={x['path'] for x in manifest['files']}
   self.assertIn('assets/entry-concept-v1.png',names)
+  self.assertIn('assets/training-cover-v1.png',names)
   self.assertNotIn('assets/private-upload.png',names)
  def test_real_course_and_media_routes_are_in_release(self):
   root=Path(__file__).resolve().parents[2]

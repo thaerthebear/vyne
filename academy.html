@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2349">
+  <title>Run Your Car Fleet Academy · Learn as you launch</title>
+  <link rel="stylesheet" href="/academy.css">
+  <script src="/account-client.js"></script><script src="/academy.js" defer></script>
+<link rel="stylesheet" href="/open-road.css"><link rel="stylesheet" href="/training.css?v=training-1"></head>
+<body class="academy-blue">
+  <aside class="sidebar" aria-label="Workspace navigation">
+    <a class="brand" href="/admin.html" aria-label="Run Your Car Fleet owner workspace">Run Your Car Fleet<span>/</span></a>
+    <span class="workspace-label">YOUR BUSINESS WORKSPACE</span>
+    <nav>
+      <a href="/admin.html"><span aria-hidden="true">⌂</span> Dashboard</a>
+      <a href="/operations.html"><span aria-hidden="true">▤</span> Rentals</a>
+      <a href="/admin.html#vehicle"><span aria-hidden="true">▱</span> Fleet</a>
+      <a href="/admin.html#template"><span aria-hidden="true">▧</span> Documents</a>
+      <a href="/academy.html" aria-current="page"><span aria-hidden="true">◇</span> Setup checklist</a>
+    </nav>
+    <div class="sidebar-note"><span class="tiny-label">LEARN. LAUNCH. RENT.</span><p>Every lesson has a next step in your business.</p></div>
+  </aside>
+  <main><section id="account-entry" class="card"><h2>Sign in to your workspace</h2><p>Use your email and password to continue.</p><a class="button" href="/account.html?next=/academy.html">Sign in</a></section>
+    <header class="topbar"><span>Business setup checklist</span><a href="/admin.html">Open workspace <span aria-hidden="true">↗</span></a></header>
+    <div class="preview-note"><span class="status-dot" aria-hidden="true"></span>Local preview · Payment collection and vehicle access are not live.</div>
+    <section class="hero" aria-labelledby="page-title">
+      <div><p class="eyebrow">A SCHOOL THAT GETS YOU SET UP</p><h1 id="page-title">Build your business<br>as you learn.</h1><p class="intro">Short lessons. Useful actions. Your real setup, one step at a time.</p></div>
+      <div class="hero-mark" aria-hidden="true"><span>01</span><div class="mark-line"></div><span>GO</span></div>
+    </section>
+    <section class="card" style="margin:20px 0;padding:24px;border:1px solid #dce4f1;border-radius:18px;background:#edf3ff"><p class="eyebrow">YOUR FULL COURSE · 33 LESSONS</p><h2>Learn at your own pace.</h2><p>Business planning, rental operations, and practical worksheets. Resume your work on this browser.</p><a class="button" href="/course.html" style="display:inline-block;background:#245cf5;color:white;padding:12px 20px;border-radius:10px;text-decoration:none">Open all 33 lessons →</a><p style="font-size:13px;margin-top:12px">Written course preview · State guides are not yet reviewed.</p></section>
+    <section id="login" hidden style="display:none!important" data-account-bridge><form id="login-form"><input id="access-key" type="hidden"><button type="submit">Open workspace</button></form></section>
+    <p id="message" role="status" aria-live="polite"></p>
+    <div id="academy" hidden>
+      <section class="progress-row" aria-label="Learning and setup progress">
+        <div class="progress-card"><span class="eyebrow">LEARNING</span><p><strong id="read-count">0</strong><span> of <span class="lesson-total">6</span> lessons read</span></p><progress id="read-progress" max="6" value="0" aria-label="Lessons read"></progress></div>
+        <div class="progress-card"><span class="eyebrow">ACTUAL SETUP</span><p><strong id="setup-count">0</strong><span> of <span class="lesson-total">6</span> checks complete</span></p><progress id="setup-progress" max="6" value="0" aria-label="Saved setup checks"></progress></div>
+        <div class="progress-actions"><button class="secondary" id="refresh" type="button">Refresh setup checks <span aria-hidden="true">↻</span></button><button class="text-button" id="lock" type="button">Sign out</button></div>
+      </section>
+      <div class="learning-grid">
+        <section class="syllabus" aria-labelledby="path-title"><div class="section-heading"><h2 id="path-title">Your launch path</h2><span>6 short lessons</span></div><div id="lesson-list"></div></section>
+        <article class="lesson-view" aria-labelledby="lesson-title" tabindex="-1">
+          <div class="lesson-kicker"><span id="lesson-category" class="eyebrow"></span><span id="lesson-duration" class="read-time"></span></div>
+          <h2 id="lesson-title"></h2><p id="lesson-summary" class="lesson-summary"></p>
+          <div class="outcome"><span aria-hidden="true">↗</span><div><span class="eyebrow">WHAT YOU’LL SET UP</span><p id="lesson-outcome"></p></div></div>
+          <div id="lesson-sections"></div>
+          <div class="action-card"><div class="action-heading"><span id="setup-symbol" aria-hidden="true">○</span><div><span id="setup-status" class="eyebrow"></span><h3 id="setup-label"></h3></div></div><p id="setup-hint"></p><a id="setup-link" class="primary" href="/admin.html">Open setup <span aria-hidden="true">→</span></a></div>
+          <div class="reading-actions"><button id="mark-read" class="secondary" type="button">Mark lesson read</button><button id="next-lesson" class="text-button" type="button">Next lesson <span aria-hidden="true">→</span></button></div>
+          <p class="completion-note">Marking a lesson read tracks your learning. Setup checks change only when the required records are saved.</p>
+        </article>
+      </div>
+      <footer><p>Original Run Your Car Fleet product lessons · Each action connects to your owner workspace.</p><p>Setup progress is not approval to operate or confirmation of live payments.</p></footer>
+    </div>
+  </main>
+<nav class="mobile-nav" aria-label="Quick navigation"><a href="/operations.html"><span aria-hidden="true">⌂</span>Today</a><a href="/rentals.html"><span aria-hidden="true">▤</span>Rentals</a><a href="/records.html"><span aria-hidden="true">▱</span>Fleet</a><a href="/account.html"><span aria-hidden="true">○</span>Account</a></nav></body>
+</html>

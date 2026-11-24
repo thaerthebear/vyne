@@ -375,8 +375,8 @@ class Handler(BaseHTTPRequestHandler):
     return self.respond(200,body,'text/html; charset=utf-8')
    return self.respond(200,dict(id=data['id'],content=data['content'],contentHash=data['contentHash'],fields=data['template']['fields'],state=row['state'],mode='local_review'))
   if path.startswith('/api/'): return self.respond(404,{'error':'Not found'})
-  if path=='/assets/entry-concept-v1.png' and self.command=='GET':
-   image=(ROOT/'assets/entry-concept-v1.png').read_bytes()
+  if path in ('/assets/entry-concept-v1.png','/assets/training-cover-v1.png') and self.command=='GET':
+   image=(ROOT/path.lstrip('/')).read_bytes()
    self.send_response(200)
    for key,value in {'Content-Type':'image/png','Content-Length':str(len(image)),'Cache-Control':'public, max-age=86400','X-Content-Type-Options':'nosniff'}.items(): self.send_header(key,value)
    self.end_headers();self.wfile.write(image);return
@@ -410,7 +410,7 @@ class Handler(BaseHTTPRequestHandler):
      self.wfile.write(block); remaining-=len(block)
    return
   files={'/':'index.html','/index.html':'index.html','/vyne-booking.html':'vyne-booking.html','/vyne-fleet.html':'vyne-fleet.html','/vyne-admin.html':'admin.html','/admin.html':'admin.html','/sign.html':'sign.html','/workflow.css':'workflow.css','/workflow.js':'workflow.js'}
-  files.update({'/entry.css':'entry.css','/entry.js':'entry.js'})
+  files.update({'/entry.css':'entry.css','/entry.js':'entry.js','/training.css':'training.css'})
   files.update({'/'+name:name for name in ['course.html','lesson-sample.html','open-road.css','payments.html','payments.js','candidates.html','candidates.js','records.html','records.js','account.html','account.js','account-client.js','standalone.html','standalone.js','maintenance.html','maintenance.js','documents.html','documents.js','staff.html','staff.js','rentals.html','rental.html','reserve.html','journey.css','journey.js','academy.html','academy.js','academy.css','trip.html','trip.js','trip.css','operations.html','operations.js','operations.css']})
   if self.command!='GET' or path not in files: return self.respond(404,{'error':'Not found'})
   file=ROOT/files[path]; ct='text/css' if file.suffix=='.css' else 'text/javascript' if file.suffix=='.js' else 'text/html; charset=utf-8'; self.respond(200,file.read_text(),ct)

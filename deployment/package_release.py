@@ -13,7 +13,7 @@ SOURCE_PATTERNS = [
  'deployment/compose.yml', 'deployment/requirements.txt', 'deployment/Dockerfile.smoke',
  'deployment/tests/*.py', 'deployment/evidence/*.json',
  'investor-demo/index.html', 'investor-demo/demo.js',
- 'assets/entry-concept-v1.png',
+ 'assets/entry-concept-v1.png', 'assets/training-cover-v1.png',
  # Public course media only; never include arbitrary uploads or private state.
  'lesson-media/lesson-1-1.mp4', 'lesson-media/lesson-1-1-poster.jpg',
  'lesson-media/lesson-1-2.mp4', 'lesson-media/lesson-1-2-poster.jpg',

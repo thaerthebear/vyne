@@ -10,3 +10,4 @@ pilot-evidence/checkpoints/*.tar.gz
 output/phone-rental-audit/private/
 output/home-server-migration/private/
 output/entry-design/private/
+output/training-design/private/
