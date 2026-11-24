@@ -1,0 +1,6 @@
+{
+  "name": "rycf-training-checks",
+  "private": true,
+  "scripts": { "test": "node --test ../course-client.test.mjs" },
+  "devDependencies": { "jsdom": "26.1.0" }
+}
