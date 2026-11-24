@@ -1,0 +1,15 @@
+/* Purposeful course artwork; lesson text and worksheet flow remain unchanged. */
+.training-blue .module-art{height:auto;aspect-ratio:3/2;background:#f8f4ee}
+.training-blue .module-art img{display:block;width:100%;height:100%;object-fit:contain}
+.training-blue .lesson-link{display:flex;align-items:center;justify-content:flex-start;gap:12px;padding:12px 0;min-height:78px}
+.training-blue .lesson-link img{display:block;width:84px;height:56px;object-fit:contain;border-radius:7px;background:#f8f4ee;flex:none}
+.training-blue .lesson-link .lesson-link-title{color:inherit;flex:1;min-width:0;white-space:normal;font-size:14px;line-height:1.4;font-weight:600}
+.training-blue .hero-art.lesson-hero-art{background:#f8f4ee;height:auto;aspect-ratio:3/2;margin:24px;align-self:center;border-radius:14px}
+.training-blue .hero-art.lesson-hero-art img{display:block;width:100%;height:100%;object-fit:contain;filter:none}
+.training-blue .lesson-illustration{margin:0 0 24px;border:1px solid #dce4f1;border-radius:15px;background:#fff;overflow:hidden}
+.training-blue .lesson-illustration img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:#f8f4ee;max-height:350px}
+.training-blue .lesson-illustration figcaption,.training-blue .video-visual-caption{font-size:16px;line-height:1.5;font-weight:650;color:#17365a;padding:15px 18px;margin:0;border-top:1px solid #e9edf4}
+.training-blue .video-visual-caption{border:0;padding:12px 4px 4px}
+.training-blue .video-wrap video{background:#f8f4ee;aspect-ratio:3/2;object-fit:contain}
+@media(max-width:700px){.training-blue .hero-art.lesson-hero-art{margin:16px 16px 0}.training-blue .module-art{aspect-ratio:16/9}.training-blue .lesson-illustration img{max-height:none}.training-blue .lesson-illustration figcaption{font-size:15px;padding:12px 14px}.training-blue .lesson-link img{width:78px;height:52px}.training-blue .lesson-link .lesson-link-title{font-size:13px}.training-blue .lesson-illustration{margin-bottom:18px}}
+@media print{.lesson-illustration,.video-visual-caption{display:none!important}}

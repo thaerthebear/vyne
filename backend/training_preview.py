@@ -2,8 +2,12 @@
 import os
 import re
 import secrets
+import lesson_art
 
 FILES = {
+ 'lesson-art.js': ('lesson-art.js', 'text/javascript'),
+ 'lesson-art.css': ('lesson-art.css', 'text/css'),
+ **{name: (name, 'image/jpeg') for name in lesson_art.ASSETS},
  'course.html': ('course.html', 'text/html; charset=utf-8'),
  'training.css': ('training.css', 'text/css'),
  'assets/training-cover-v1.png': ('assets/training-cover-v1.png', 'image/png'),
@@ -26,10 +30,10 @@ body a[href^="/account.html"],body a[href="/academy.html"],.software-bridge{disp
 @media print{.staging-notice{display:none}}
 </style></head>''')
  source = source.replace('<main>', '''<aside class="staging-notice" aria-label="Training staging">
-<strong>TRAINING STAGING · All 33 lessons unlocked for review</strong>
-<p>33 written lessons and worksheets · 2 sample videos. Your practice answers save separately in this browser. Use Lessons &amp; tools to download a backup.</p>
+<strong>TRAINING STAGING · 33 lessons open</strong>
+<p>Review copy · 2 sample videos · Answers save in this browser.</p>
 </aside><main>''', 1)
- return source
+ return lesson_art.decorate(source,prefix)
 
 def handle(handler, root, path):
  token = os.environ.get('VYNE_TRAINING_PREVIEW_TOKEN', '')

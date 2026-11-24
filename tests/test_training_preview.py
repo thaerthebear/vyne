@@ -30,6 +30,12 @@ class TrainingPreviewTests(unittest.TestCase):
     self.assertEqual(r.headers['Referrer-Policy'],'no-referrer')
     self.assertIn('no-store',r.headers['Cache-Control'])
     self.assertIsNone(r.headers.get('Set-Cookie'))
+ def test_all_lesson_art_is_available_only_through_the_preview(self):
+  for name in ['lesson-art.js','lesson-art.css',*training_preview.lesson_art.ASSETS]:
+   with self.req(self.prefix+name) as r:
+    self.assertEqual(r.status,200);self.assertEqual(r.read(),(s.ROOT/name).read_bytes())
+    self.assertIn('no-store',r.headers['Cache-Control'])
+  with self.req(self.prefix+'assets/lessons/private-upload.jpg') as r:self.assertEqual(r.status,404)
  def test_unknown_or_disabled_link_is_not_publicly_accessible(self):
   for path in ['/training-preview/wrong/course.html',self.prefix+'api/admin/profile',self.prefix+'../../backend/server.py',self.prefix+'account.html']:
    with self.req(path) as r:self.assertEqual(r.status,404)

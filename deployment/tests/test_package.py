@@ -53,6 +53,12 @@ class ReleasePackage(unittest.TestCase):
   self.assertIn('assets/entry-concept-v1.png',names)
   self.assertIn('assets/training-cover-v1.png',names)
   self.assertNotIn('assets/private-upload.png',names)
+ def test_lesson_artwork_is_packaged_without_unrelated_uploads(self):
+  assets=self.root/'assets/lessons';assets.mkdir(parents=True)
+  for name in ['lesson-0-1-v1.jpg','lesson-7-4-v1.jpg','private-upload.jpg']:(assets/name).write_bytes(b'fixture')
+  result=r.build(self.root,self.base/'release');names={x['path'] for x in result['files']}
+  self.assertIn('assets/lessons/lesson-0-1-v1.jpg',names);self.assertIn('assets/lessons/lesson-7-4-v1.jpg',names)
+  self.assertNotIn('assets/lessons/private-upload.jpg',names)
  def test_real_course_and_media_routes_are_in_release(self):
   root=Path(__file__).resolve().parents[2]
   names={p.relative_to(root).as_posix() for p in r.source_files(root)}

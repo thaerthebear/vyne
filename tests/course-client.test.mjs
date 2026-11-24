@@ -8,6 +8,7 @@ const key=process.env.RYCF_COURSE_KEY||'rycf-course-draft-v1';
 function fixture(seed={},lesson='0.1',failSaving=false){
  const errors=[];const virtualConsole=new VirtualConsole();virtualConsole.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(html,{url:'https://runyourcarfleet.com/course.html?lesson='+lesson,runScripts:'dangerously',virtualConsole,beforeParse(w){
+  if(process.env.RYCF_COURSE_ART==='1')w.eval(readFileSync(new URL('../lesson-art.js',import.meta.url),'utf8'));
   for(const [k,v] of Object.entries(seed))w.localStorage.setItem(k,typeof v==='string'?v:JSON.stringify(v));
   w.scrollTo=()=>{};w.HTMLElement.prototype.scrollIntoView=()=>{};w.HTMLMediaElement.prototype.pause=()=>{};w.confirm=()=>true;
   if(failSaving)w.Storage.prototype.setItem=()=>{throw Error('Quota exceeded')};
@@ -65,4 +66,17 @@ test('full backup restores saved question, state and review without overwriting 
  const f=fixture();const s=f.section('0.1');const answers=Object.fromEntries([...s.querySelectorAll('textarea')].map(t=>[t.dataset.key,'Restored '+t.dataset.key]));answers.__state='Tennessee';
  await f.restore({version:1,answers,completed:{'0.1':true},lastLesson:'0.1',resume:{'0.1':{stage:'practice',question:2,part:1}}});
  assert.equal(s.dataset.stage,'practice');assert.match(s.querySelector('.question-count').textContent,/Question 3 of/);assert.equal(s.querySelector('.location-select').value,'Tennessee');assert.equal(JSON.parse(f.w.localStorage.getItem(key+'-completed'))['0.1'],true);f.button(s,'Read');assert.equal(s.querySelector('.reading-meta').textContent,'Written lesson2 / 4');f.w.close();
+});
+
+if(process.env.RYCF_COURSE_ART==='1')test('every lesson has distinct title-matched art and working navigation',()=>{
+ const f=fixture(),ids=[...f.d.querySelector('#lesson').options].map(o=>o.value),urls=new Set();
+ assert.equal(f.d.querySelectorAll('[data-lesson-link] img').length,33);
+ for(const id of ids){
+  f.select(id);const section=f.section(id),art=section.querySelector('.lesson-illustration img'),video=section.querySelector('video');
+  const url=art?.src||video?.poster;assert(url?.endsWith('lesson-'+id.replace('.','-')+'-v1.jpg'));urls.add(url);
+  if(art)assert(art.alt.length>20);
+  assert.equal(f.d.querySelector('.hero-art img').dataset.artLesson,id);
+  assert.match(f.d.querySelector('.hero-copy h2').textContent,new RegExp('^'+id.replace('.','\\.')+' · '));
+ }
+ assert.equal(urls.size,33);assert.equal(f.d.querySelectorAll('video source').length,2);f.w.close();
 });
