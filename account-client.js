@@ -22,6 +22,7 @@
       const signal=options.signal?AbortSignal.any([options.signal,sessionAbort.signal]):sessionAbort.signal;
       const response=await nativeFetch(input,{...options,headers,signal,credentials:'same-origin'});
       if(response.status===401)expired();
+      if(response.status===403){const info=await response.clone().json().catch(()=>({}));if(info.membershipUrl)location.replace('/membership.html')}
       return response;
     }
     return nativeFetch(input,options);
@@ -30,7 +31,7 @@
     const state=await ready;
     const entry=document.createElement('p');entry.className='notice';
     const link=document.createElement('a');link.href=state?'/account.html':signInPath;
-    link.textContent=state?'Account: '+state.actor.name+' · '+state.actor.role:'Sign in with your individual account';entry.append(link);
+    link.textContent=state?'Account: '+state.actor.name+' · '+state.actor.role:'Sign in with your individual account';entry.append(link);const membership=document.createElement('a');membership.href='/membership.html';membership.textContent=' · Membership';entry.append(membership);
     document.querySelector('main')?.prepend(entry);
     const entryCard=document.getElementById('account-entry');
     if(entryCard)entryCard.hidden=!!state;

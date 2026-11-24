@@ -2,6 +2,7 @@
 from zoneinfo import ZoneInfo
 from contextlib import contextmanager
 import os, json, sqlite3, secrets, hashlib, html, re, threading, subprocess
+import billing
 import quote_offers, document_artifacts, booking_candidates, rental_extensions, candidate_signing, candidate_signing_service, rental_payments, payment_routes, health, academy, transactions, journey, staff, maintenance, document_versions, document_review_routes, standalone_documents, accounts, account_transport, records, candidate_routes, signing_operations, signing_service, cancellation_requests, cancellation_service
 from availability import assert_available
 from money import cents
@@ -34,6 +35,7 @@ CREATE TABLE IF NOT EXISTS agreements(id TEXT PRIMARY KEY, booking TEXT NOT NULL
 CREATE TABLE IF NOT EXISTS audit(seq INTEGER PRIMARY KEY, at TEXT, agreement TEXT, event TEXT, evidence TEXT, previous TEXT, hash TEXT);''')
   records.init(c)
   accounts.init(c)
+  billing.init(c)
   staff.init(c)
   maintenance.init(c)
   document_versions.init(c)
@@ -150,6 +152,8 @@ class Handler(BaseHTTPRequestHandler):
    status,payload=health.live() if path=='/health/live' else health.ready(DB,LOCK,os.environ.get('VYNE_READ_ONLY_RECOVERY')=='1')
    return self.respond(status,payload)
   try:
+   if path.startswith('/api/billing/') or path=='/api/auth/signup':
+    return self.respond(*billing.handle_http(self,path,DB))
    with LOCK,connect() as c:
     if self.command=='POST': c.execute('BEGIN IMMEDIATE')
     self.db=c; self.route(c)
@@ -158,6 +162,9 @@ class Handler(BaseHTTPRequestHandler):
     service,tenant,operation,authorize=self.signing_work
     status,payload=service.execute(DB,tenant,operation,authorize)
     self.respond(status,payload)
+  except billing.Forbidden as e:self.respond(403,{'error':str(e),'membershipUrl':'/membership.html'})
+  except billing.Conflict as e:self.respond(409,{'error':str(e)})
+  except billing.Unavailable as e:self.respond(503,{'error':str(e)})
   except (ValueError,KeyError,TypeError) as e: self.respond(400,{'error':str(e)})
   except Exception: self.respond(500,{'error':'Internal error; no completion confirmed'})
  def route(self,c):
@@ -212,6 +219,7 @@ class Handler(BaseHTTPRequestHandler):
    TENANT.id=actor['tenantId']
    route=path.removeprefix('/api/admin/')
    if not staff.allowed(actor,self.command,route,b): return self.respond(403,{'error':'Staff role does not permit this action'})
+   billing.enforce(c,actor,self.command,route,b)
    if self.command=='POST': staff.record(c,actor,route,b)
    candidate_prepare=self.command=='POST' and route.startswith('candidate-signing/requests/') and route.endswith('/prepare') and len(route.split('/'))==4
    candidate_revoke=self.command=='POST' and route.startswith('contract-candidates/versions/') and route.endswith('/revoke') and len(route.split('/'))==4
@@ -375,6 +383,13 @@ class Handler(BaseHTTPRequestHandler):
     return self.respond(200,body,'text/html; charset=utf-8')
    return self.respond(200,dict(id=data['id'],content=data['content'],contentHash=data['contentHash'],fields=data['template']['fields'],state=row['state'],mode='local_review'))
   if path.startswith('/api/'): return self.respond(404,{'error':'Not found'})
+  if os.environ.get('VYNE_BILLING_CONFIG') and path in ('/course.html','/lesson-1-2.mp4','/lesson-1-2-poster.jpg'):
+   actor=accounts.authenticate(c,session_token)
+   if not actor or not billing.access(c,actor)['training']:
+    if path=='/course.html':
+     self.response_headers['Location']='/membership.html?training=1'
+     return self.respond(303,'','text/plain')
+    return self.respond(403,{'error':'Training access required'})
   if path in ('/assets/entry-concept-v1.png','/assets/training-cover-v1.png') and self.command=='GET':
    image=(ROOT/path.lstrip('/')).read_bytes()
    self.send_response(200)
@@ -399,7 +414,7 @@ class Handler(BaseHTTPRequestHandler):
    self.send_response(status)
    self.send_header('Content-Type','video/mp4' if path.endswith('.mp4') else 'image/jpeg')
    self.send_header('Content-Length',str(end-start+1)); self.send_header('Accept-Ranges','bytes')
-   self.send_header('Cache-Control','public, max-age=3600'); self.send_header('X-Content-Type-Options','nosniff')
+   self.send_header('Cache-Control','private, no-store' if path.startswith('/lesson-1-2') else 'public, max-age=3600'); self.send_header('X-Content-Type-Options','nosniff')
    if status==206: self.send_header('Content-Range',f'bytes {start}-{end}/{total}')
    self.end_headers()
    with media.open('rb') as stream:
@@ -411,8 +426,15 @@ class Handler(BaseHTTPRequestHandler):
    return
   files={'/':'index.html','/index.html':'index.html','/vyne-booking.html':'vyne-booking.html','/vyne-fleet.html':'vyne-fleet.html','/vyne-admin.html':'admin.html','/admin.html':'admin.html','/sign.html':'sign.html','/workflow.css':'workflow.css','/workflow.js':'workflow.js'}
   files.update({'/entry.css':'entry.css','/entry.js':'entry.js','/training.css':'training.css'})
+  files.update({'/'+name:name for name in ['membership.html','membership.css','membership.js']})
   files.update({'/'+name:name for name in ['course.html','lesson-sample.html','open-road.css','payments.html','payments.js','candidates.html','candidates.js','records.html','records.js','account.html','account.js','account-client.js','standalone.html','standalone.js','maintenance.html','maintenance.js','documents.html','documents.js','staff.html','staff.js','rentals.html','rental.html','reserve.html','journey.css','journey.js','academy.html','academy.js','academy.css','trip.html','trip.js','trip.css','operations.html','operations.js','operations.css']})
   if self.command!='GET' or path not in files: return self.respond(404,{'error':'Not found'})
-  file=ROOT/files[path]; ct='text/css' if file.suffix=='.css' else 'text/javascript' if file.suffix=='.js' else 'text/html; charset=utf-8'; self.respond(200,file.read_text(),ct)
+  file=ROOT/files[path]; ct='text/css' if file.suffix=='.css' else 'text/javascript' if file.suffix=='.js' else 'text/html; charset=utf-8'
+  content=file.read_text()
+  if path=='/course.html' and os.environ.get('VYNE_BILLING_CONFIG') and not billing.access(c,actor)['grandfathered']:
+   # New paying students never inherit another student's browser answers.
+   # Existing workspaces retain the original key and all saved worksheets.
+   content=content.replace("storeKey='rycf-course-draft-v1'","storeKey='rycf-course-draft-v1-"+digest(actor['userId'])[:24]+"'",1)
+  self.respond(200,content,ct)
 if __name__=='__main__':
  init(); port=int(os.environ.get('VYNE_PORT','8765')); print(f'VYNE local review: http://127.0.0.1:{port}',flush=True); ThreadingHTTPServer(('127.0.0.1',port),Handler).serve_forever()

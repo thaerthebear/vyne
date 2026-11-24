@@ -5,7 +5,12 @@
   const updates=typeof BroadcastChannel==='function'?new BroadcastChannel('vyne-account'):null;
   const destinations=new Set(['/rentals.html','/operations.html','/records.html','/academy.html','/course.html','/admin.html','/documents.html','/payments.html','/candidates.html','/standalone.html','/maintenance.html','/staff.html','/demo']);
   const next=new URLSearchParams(location.search).get('next');
-  function continueToWorkspace(){location.replace(destinations.has(next)?next:'/admin.html')}
+  destinations.add('/membership.html');
+  async function continueToWorkspace(){
+    if(destinations.has(next)){location.replace(next);return}
+    try{const r=await request('/api/billing/status');location.replace(r.access.software?'/admin.html':r.access.training?'/course.html':'/membership.html')}
+    catch{location.replace('/admin.html')}
+  }
   const pageAnchors=new Set(['main','login','software']);
   const raw=location.hash.slice(1);
   if(raw&&!pageAnchors.has(raw)){invitation=raw.startsWith('invite=')?new URLSearchParams(raw).get('invite')||'':raw;history.replaceState(null,'',location.pathname+location.search)}
