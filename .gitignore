@@ -1,0 +1,12 @@
+backend/*.sqlite3*
+__pycache__/
+node_modules/
+.env
+.playwright-cli/
+output/playwright/
+investor-demo/private/
+investor-demo/.venv/
+pilot-evidence/checkpoints/*.tar.gz
+output/phone-rental-audit/private/
+output/home-server-migration/private/
+output/entry-design/private/
