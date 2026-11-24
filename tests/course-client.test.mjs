@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createRequire} from 'node:module';
 const {JSDOM, VirtualConsole}=createRequire(new URL('./training/package.json',import.meta.url))('jsdom');
-const html=readFileSync(new URL('../course.html',import.meta.url),'utf8');
-const key='rycf-course-draft-v1';
+const html=readFileSync(process.env.RYCF_COURSE_HTML||new URL('../course.html',import.meta.url),'utf8');
+const key=process.env.RYCF_COURSE_KEY||'rycf-course-draft-v1';
 function fixture(seed={},lesson='0.1',failSaving=false){
  const errors=[];const virtualConsole=new VirtualConsole();virtualConsole.on('jsdomError',e=>errors.push(e));
  const dom=new JSDOM(html,{url:'https://runyourcarfleet.com/course.html?lesson='+lesson,runScripts:'dangerously',virtualConsole,beforeParse(w){

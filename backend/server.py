@@ -3,6 +3,7 @@ from zoneinfo import ZoneInfo
 from contextlib import contextmanager
 import os, json, sqlite3, secrets, hashlib, html, re, threading, subprocess
 import billing
+import training_preview
 import quote_offers, document_artifacts, booking_candidates, rental_extensions, candidate_signing, candidate_signing_service, rental_payments, payment_routes, health, academy, transactions, journey, staff, maintenance, document_versions, document_review_routes, standalone_documents, accounts, account_transport, records, candidate_routes, signing_operations, signing_service, cancellation_requests, cancellation_service
 from availability import assert_available
 from money import cents
@@ -152,6 +153,8 @@ class Handler(BaseHTTPRequestHandler):
    status,payload=health.live() if path=='/health/live' else health.ready(DB,LOCK,os.environ.get('VYNE_READ_ONLY_RECOVERY')=='1')
    return self.respond(status,payload)
   try:
+   if path.startswith('/training-preview/'):
+    return training_preview.handle(self,ROOT,path)
    if path.startswith('/api/billing/') or path=='/api/auth/signup':
     return self.respond(*billing.handle_http(self,path,DB))
    with LOCK,connect() as c:
