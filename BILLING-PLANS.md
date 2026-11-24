@@ -34,6 +34,7 @@ Five-vehicle enforcement includes unarchiving. Two-seat enforcement includes out
 - Provider portal session creation, tenant separation, malformed signatures, replay/out-of-order events, expired training and failed renewal behavior checked.
 - Published layout inspected at 390×844 with no horizontal overflow. This is browser phone emulation, not physical iPhone testing.
 - On the home server: all 145 release files match their manifest, all 23 original signing blobs match, three databases pass integrity checks, existing login and settled rental/photos survive, both video byte ranges match, and four Cloudflare connections remain ready.
+- Cloudflare previously cached lesson 1.2 publicly. A targeted prefix purge cleared the video, query variants and poster. Public anonymous requests now return403, authorized video ranges return206, and a subsequent anonymous request still returns403. Seven existing agreement contents are unchanged; one provider proof refreshed its download links and verification time.
 - Two pre-existing legacy unbound agreements remain a signing-reconciliation limitation; this release does not certify live rental readiness.
 
 Sanitized evidence: `output/billing-plans/hosted-verification.json`, `server-verification.json`, `release.json`, `billing-tests.log`, `backend-tests.log`, `client-tests.log`, `deployment-tests.log`. Private credentials/test fixtures are ignored under `output/billing-plans/private/` and are never part of the source release.
