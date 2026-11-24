@@ -1,0 +1,1760 @@
+{
+  "version": 2,
+  "reviewedOn": "2026-11-23",
+  "status": "editorially_reviewed_pending_learner_and_professional_review",
+  "lessons": [
+    {
+      "id": "0.1",
+      "title": "Your Roadmap",
+      "module": "Start Here",
+      "output": "A small learning plan you can start today.",
+      "bring": "No car, business paperwork or experience needed.",
+      "paragraphs": [
+        "Your goal is not to finish a playlist. It is to build a rental process you can explain and practice.",
+        "Use the course in three moves: read one short lesson, try its worksheet, then check your answer. Start with one lesson per sitting. Short notes are enough. When you do not know something, write: “Unknown — [person] will [action] by [date].” That lets you keep learning while the real-world question stays open.",
+        "Fictional example: Maya has one car and no rental experience. Her goal is to rehearse a pickup, not launch tomorrow. She writes “Coverage unknown — I will arrange an insurance conversation this week.” She uses this browser for practice and downloads an answer backup after a module. A reviewed worksheet records learning; it does not approve her car for rental.",
+        "Your task: Write one goal, one open question and your next study session. Stop there; you do not need a complete business plan today."
+      ],
+      "questions": [
+        {
+          "label": "What do you want to be able to do?",
+          "hint": "Choose one action you could demonstrate to another person.",
+          "example": "Explain and rehearse a pickup from reservation checks to handing over keys."
+        },
+        {
+          "label": "What are you starting with?",
+          "hint": "Name your vehicle, process or experience. “Starting from zero” is a valid answer.",
+          "example": "One car; no rental process yet."
+        },
+        {
+          "label": "What is your first unanswered question?",
+          "hint": "Name the question and one next action; you do not have to solve it today.",
+          "example": "Is my intended rental use covered? I will contact an insurance professional this week."
+        },
+        {
+          "label": "Where will you keep your answers and backup?",
+          "hint": "Answers stay in this browser. Lessons & tools → Download answers saves a separate file.",
+          "example": "Practice on this phone; download a backup to my private course folder after each module."
+        },
+        {
+          "label": "When is your next learning session?",
+          "hint": "Choose a realistic day and one lesson, not a deadline for the entire course.",
+          "example": "Tomorrow after dinner: Lesson 0.2, then stop."
+        }
+      ],
+      "done": "Write one goal, one open question and your next study session. Stop there; you do not need a complete business plan today.",
+      "reuse": [],
+      "local": "",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "0.2",
+      "title": "Choose Your Starting Point",
+      "module": "Start Here",
+      "output": "Your starting route and a list of operating locations.",
+      "bring": "Your current situation; proposed locations are fine.",
+      "paragraphs": [
+        "You do not need to start over if you already run rentals. You do need to know which parts of your process are verified.",
+        "If you are new, follow the lessons in order. If you already operate, use the roadmap to open a weak area and compare your current process with its worksheet. A familiar topic is only a reason to move faster, not to assume its checks are complete. List your main city, county and state, then any separate delivery or airport activity.",
+        "Fictional example: Maya starts from zero. She proposes local pickup in her home city; airport delivery is only an idea. She records the airport separately as “not offered; permission and coverage unverified.” An experienced owner with missing return photos could begin at 5.6, then revisit 3.5 for the related policy. Selecting a state does not verify any rule.",
+        "Your task: Choose a starting route, record your locations and pick one area to work on. If you have no existing process, write what you need to build first."
+      ],
+      "questions": [
+        {
+          "label": "Which starting route fits you?",
+          "hint": "Choose new owner or existing owner, then give one reason.",
+          "example": "New owner: I have not completed a rental before."
+        },
+        {
+          "label": "Where will the business operate?",
+          "hint": "List city, county and state. Use a proposed location if you are still deciding.",
+          "example": "My city / my county / my state — proposed local pickup area."
+        },
+        {
+          "label": "Where else might you offer pickup or delivery?",
+          "hint": "Separate planned service from ideas you have not checked.",
+          "example": "Local delivery is under investigation; not offered yet."
+        },
+        {
+          "label": "Will you use an airport or cross state lines?",
+          "hint": "Write planned, not planned or unknown for each.",
+          "example": "Airport delivery: unknown. Interstate rental use: not planned for my first test."
+        },
+        {
+          "label": "What process will you work on first?",
+          "hint": "New owners can start at 1.1; existing owners can name a gap and its lesson.",
+          "example": "Start at 1.1 to choose a customer situation before shopping for a car."
+        }
+      ],
+      "done": "Choose a starting route, record your locations and pick one area to work on. If you have no existing process, write what you need to build first.",
+      "reuse": [],
+      "local": "Record every operating city, county, state and special pickup area. Research permissions for each; the state picker is only a saved location preference.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "1.1",
+      "title": "Choose Your Target Customer",
+      "module": "Plan Your Rental Business",
+      "output": "One customer, one need, one proposed offer and one research action.",
+      "bring": "A customer situation you can investigate.",
+      "paragraphs": [
+        "Before you choose a car, choose who you want to help. Start with a customer situation you can investigate.",
+        "A customer profile is a testable idea about who needs a car and why. Use this sentence: “I want to help [person in a situation] who needs [specific help].” Describe the situation, such as waiting for a repair, rather than trying to serve everyone. Then name what you can realistically offer and one way to find out whether it matters.",
+        "Fictional example: Maya wants to serve local drivers whose cars are being repaired. She thinks predictable pickup and clear total pricing matter most. Her proposed offer is a temporary local rental with an explained handoff. She will compare nearby offers and ask two repair shops what customers struggle with. She has a hypothesis, not evidence of demand yet.",
+        "Your task: Write four short answers that fit together: customer → need → offer → research. You are done when your research could confirm or challenge your idea."
+      ],
+      "questions": [
+        {
+          "label": "Who do you want to serve?",
+          "hint": "Describe one customer situation. Avoid “everyone who needs a cheap car.”",
+          "example": "A local driver waiting several days for a car repair."
+        },
+        {
+          "label": "What do they need most?",
+          "hint": "Pick one practical need you can investigate.",
+          "example": "Predictable pickup and an understandable total price."
+        },
+        {
+          "label": "How could your rental help?",
+          "hint": "Describe a proposed service; do not promise unverified availability or coverage.",
+          "example": "A temporary local car with a clear pickup process and itemized quote."
+        },
+        {
+          "label": "What will you research first?",
+          "hint": "Name an action, who or what you will consult, and when.",
+          "example": "This week, compare three nearby offers and ask two repair shops about transport questions."
+        }
+      ],
+      "done": "Write four short answers that fit together: customer → need → offer → research. You are done when your research could confirm or challenge your idea.",
+      "reuse": [],
+      "local": "",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "1.2",
+      "title": "Research Your Local Market",
+      "module": "Plan Your Rental Business",
+      "output": "Three comparable offer notes and one finding.",
+      "bring": "Your customer idea from 1.1; use the fictional practice offers if you cannot research today.",
+      "paragraphs": [
+        "A low advertised daily price is not the whole rental offer. Compare like with like before drawing a conclusion.",
+        "Use the same vehicle category, dates, pickup/return times and pickup method for all three offers. Record the source and date, daily rate, displayed rental total, mileage terms and unanswered questions. Keep a refundable deposit separate. If a real total is unavailable, record “unknown”; do not place a booking just to finish the worksheet.",
+        "Practice dataset — all invented: three days, same local pickup, compact car. A: $40/day, $120 base, total unknown, mileage unknown. B: $50/day, $150 base, $165 displayed rental total, 300 miles included. C: $45/day, $135 base, total unknown, 200 miles included. Sources: practice cards A/B/C, reviewed today. B is the only complete displayed rental total; these notes cannot establish the cheapest real offer or prove demand.",
+        "Your task: Compare three real offers or label all three as fictional practice. Your finding must distinguish an observed number from a missing number. Save a research action for anything unknown."
+      ],
+      "questions": [
+        {
+          "label": "What customer and vehicle category are you comparing?",
+          "hint": "Reuse 1.1, then choose the same category for all three offers.",
+          "example": "Repair customer; compact car. Using fictional practice cards for this exercise."
+        },
+        {
+          "label": "What matching dates and pickup conditions will you use?",
+          "hint": "Include times and rental length; a daily headline alone is not comparable.",
+          "example": "Day 1 at 09:00 to Day 4 at 09:00; three days; local pickup for all offers."
+        },
+        {
+          "label": "Record offer A.",
+          "hint": "Use: source/date; daily price; base; displayed total; mileage; unknowns.",
+          "example": "Practice card A, today: $40/day; $120 base; total unknown; mileage unknown."
+        },
+        {
+          "label": "Record offers B and C.",
+          "hint": "Put each on its own line using the same fields as A.",
+          "example": "Practice B, today: $50/day; $150 base; $165 displayed total; 300 miles. Practice C: $45/day; $135 base; total unknown; 200 miles."
+        },
+        {
+          "label": "What did you learn, and what needs checking?",
+          "hint": "Do not rank complete prices when two totals are missing.",
+          "example": "Daily headlines differ, but only B has a displayed total. Research A/C totals before comparing complete costs."
+        }
+      ],
+      "done": "Compare three real offers or label all three as fictional practice. Your finding must distinguish an observed number from a missing number. Save a research action for anything unknown.",
+      "reuse": [
+        "1.1"
+      ],
+      "local": "",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "1.3",
+      "title": "Choose Your Operating Model",
+      "module": "Plan Your Rental Business",
+      "output": "A responsibility map for your proposed operating model.",
+      "bring": "One model to explore: owned car, leased car or another owner’s car.",
+      "paragraphs": [
+        "Owning the car and operating the rental business are different responsibilities. Decide who does what before choosing your model.",
+        "Write one row per job: provide the car, manage bookings, handle customer questions, arrange maintenance and pay expenses during downtime. Name a responsible person or role for each. Downtime means time the car cannot earn from rentals. Ownership and day-to-day operation can belong to different people; the written arrangement must explain their responsibilities.",
+        "Fictional example: Jo supplies a car; Maya handles bookings and customer messages. They propose that Jo schedules service, but they have not agreed who pays for a repair or lost rental days. Their worksheet says “unresolved — both owners to review terms,” not “50/50 solves it.” Rental-use permission, coverage and the proposed written agreement need confirmation before use.",
+        "Your task: Choose one model and assign the main jobs. An honest unresolved row is better than inventing an agreement. No need to negotiate a final revenue split in this lesson."
+      ],
+      "questions": [
+        {
+          "label": "Which operating model are you exploring?",
+          "hint": "Describe who owns the car and who runs the rentals.",
+          "example": "Partnership idea: Jo owns the car and Maya runs the rental process."
+        },
+        {
+          "label": "Who supplies and controls the vehicle?",
+          "hint": "Separate ownership from permission to schedule or release it.",
+          "example": "Jo supplies it; Maya’s booking authority is proposed, not yet agreed."
+        },
+        {
+          "label": "Who handles bookings, maintenance and customer issues?",
+          "hint": "Give each job a role, even if one person does all three.",
+          "example": "Maya: bookings and messages. Jo: proposed service scheduling."
+        },
+        {
+          "label": "Who pays expenses and covers downtime?",
+          "hint": "Identify who pays when the vehicle is unavailable, or mark the decision open.",
+          "example": "Repair costs and lost rental days are unresolved; both owners will review the arrangement."
+        },
+        {
+          "label": "What permissions, coverage or written terms are still needed?",
+          "hint": "List the missing answer, responsible person and next action.",
+          "example": "Maya will confirm permitted rental use and coverage; both owners will seek review of responsibilities before agreeing."
+        }
+      ],
+      "done": "Choose one model and assign the main jobs. An honest unresolved row is better than inventing an agreement. No need to negotiate a final revenue split in this lesson.",
+      "reuse": [],
+      "local": "Check actual ownership, lender/lease permissions, coverage and the proposed agreement for your operating model.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "1.4",
+      "title": "Understand Your Costs",
+      "module": "Plan Your Rental Business",
+      "output": "A simple cost list and a checked break-even calculation.",
+      "bring": "A calculator. Use the supplied numbers before gathering your own quotes.",
+      "paragraphs": [
+        "A rental rate is not your profit. First separate the costs that continue each month from costs that change with rentals.",
+        "Separate one-time setup spending, monthly fixed costs and costs that change with rentals. Write the amount, source/date and whether it is an estimate. Choose one unit: a paid rental day. Convert a per-trip expense before mixing units: a $30 cleaning cost spread over a three-day trip is $10 per paid day in that example. Keep this planning calculation separate from tax accounting.",
+        "Fictional math: $50 price − $20 variable cost = $30 contribution per paid day. Contribution is what remains toward fixed costs. $600 monthly fixed costs ÷ $30 = 20 paid days to cover those costs. At 15 paid days: 15 × $30 − $600 = −$150. If contribution is zero or negative, there is no positive break-even target using this formula. If the required paid days exceed available days, revise the plan.",
+        "Your task: List the three cost groups, then show the supplied calculation and the 15-day downside. Name excluded costs, such as startup recovery, owner time, financing and taxes; get help classifying your real costs without counting the same cost twice."
+      ],
+      "questions": [
+        {
+          "label": "What one-time setup costs might you have?",
+          "hint": "List amount, source/date and estimate or quote. Unknown amounts are acceptable.",
+          "example": "Cleaning supplies: $80, fictional estimate today. Vehicle preparation: unknown; request a quote."
+        },
+        {
+          "label": "What costs continue each month?",
+          "hint": "List recurring bills and label estimates. Keep the car’s purchase price separate from monthly bills; get help classifying financing in your real plan.",
+          "example": "Practice operating model: $600/month fixed costs. Financing and accounting treatment excluded for later review."
+        },
+        {
+          "label": "What costs change with rentals?",
+          "hint": "Use the same unit; show any per-trip to per-day conversion.",
+          "example": "Practice total: $20 per paid day. A $30 cleaning expense over three days would be $10/day within that total, not an extra $30/day."
+        },
+        {
+          "label": "Calculate contribution and break-even days.",
+          "hint": "Use $600 fixed costs, $50/day price and $20/day variable cost.",
+          "example": "$50 − $20 = $30 per paid day. $600 ÷ $30 = 20 paid days."
+        },
+        {
+          "label": "What happens at 15 paid days, and what is excluded?",
+          "hint": "Show the calculation and name costs this simplified model does not cover.",
+          "example": "15 × $30 − $600 = −$150. Startup recovery, taxes, financing, owner time and surprises need separate review; refundable deposits are not earnings."
+        }
+      ],
+      "done": "List the three cost groups, then show the supplied calculation and the 15-day downside. Name excluded costs, such as startup recovery, owner time, financing and taxes; get help classifying your real costs without counting the same cost twice.",
+      "reuse": [],
+      "local": "Verify local taxes and charges separately. Ask an accountant how to classify financing, depreciation and owner compensation in your actual plan.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "SBA: break-even calculator",
+          "url": "https://bec.www.sba.gov/",
+          "scope": "Simplified fixed-cost and contribution calculation; not a complete profit or accounting model.",
+          "checkedOn": "2026-11-23"
+        },
+        {
+          "title": "SBA: startup cost planning",
+          "url": "https://www.sba.gov/counseling/plan-your-business/",
+          "scope": "One-time and monthly cost research; no actual prices or financing recommendation.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "1.5",
+      "title": "Build Your Business Plan",
+      "module": "Plan Your Rental Business",
+      "output": "A one-page plan assembled from the work you already did.",
+      "bring": "Your saved answers from 1.1–1.4; open “Earlier answers” in this lesson.",
+      "paragraphs": [
+        "Your first business plan should help you decide what to do next. It does not need to be a long presentation.",
+        "Use four headings: customer and offer; vehicle and responsibilities; costs and resources; open decisions. Refer to your earlier worksheet answers instead of copying every line. Summarize only what matters for the next decision. For an open item, record a person, a next action and a review date. A planned launch date is not evidence that the open item is resolved.",
+        "Fictional plan: local repair customers; one compact car; Maya handles inquiries. Costs use the $600/$50/$20 practice model, not real quotes. Coverage and permitted use are unconfirmed. Next step: compare two vehicle candidates while Maya arranges coverage review. Research can continue; taking a paid booking is not the next step in this example.",
+        "Your task: Write five short summaries using your earlier work. End with one reversible next action. You do not need a pitch deck, a purchase or a finished legal setup."
+      ],
+      "questions": [
+        {
+          "label": "What do your customer and market notes say?",
+          "hint": "Refer to 1.1 and 1.2 and summarize the key finding in two lines.",
+          "example": "See 1.1: repair customers. See 1.2: fictional comparison only; real totals and demand still need research."
+        },
+        {
+          "label": "What vehicle and operating model are proposed?",
+          "hint": "Bring forward 1.3 and name responsibilities still open.",
+          "example": "One compact car; Maya manages bookings. Vehicle ownership and expense responsibilities need review."
+        },
+        {
+          "label": "What resources and costs matter first?",
+          "hint": "Use 1.4; identify assumptions instead of presenting them as quotes.",
+          "example": "The fictional model needs 20 paid days. Real insurance, vehicle and preparation costs are not yet quoted."
+        },
+        {
+          "label": "Which open decisions need action?",
+          "hint": "Write one line per item: question → person → action → review date.",
+          "example": "Coverage → Maya → describe direct rentals to a licensed contact → review Friday."
+        },
+        {
+          "label": "What is your next reversible step?",
+          "hint": "Choose research or preparation you can revise without committing to a purchase or rental.",
+          "example": "Compare two candidate cars and request missing cost information."
+        }
+      ],
+      "done": "Write five short summaries using your earlier work. End with one reversible next action. You do not need a pitch deck, a purchase or a finished legal setup.",
+      "reuse": [
+        "1.1",
+        "1.2",
+        "1.3",
+        "1.4"
+      ],
+      "local": "Carry your location, insurance and permission questions into the plan; a completed plan does not clear them.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "SBA: startup cost planning",
+          "url": "https://www.sba.gov/counseling/plan-your-business/",
+          "scope": "One-time and monthly cost research; no actual prices or financing recommendation.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "2.1",
+      "title": "Choose Vehicles for Your Market",
+      "module": "Prepare Your Fleet",
+      "output": "A shortlist compared against the same three customer needs.",
+      "bring": "Your target customer from 1.1 and cost assumptions from 1.4.",
+      "paragraphs": [
+        "The best-looking vehicle is not automatically the best fit for your customer. Start with the job it needs to do.",
+        "Choose three must-have capabilities before browsing cars: for example, seating, luggage space and suitability for the intended trip. Compare two or three candidates against those same criteria. Keep a nice-to-have, such as a premium trim, separate. Record where specifications came from, then list maintenance, insurance and operating costs that still need research.",
+        "Fictional practice: Candidate A has the required seating and luggage space; its service history is missing. Candidate B meets the same requirements and has service records, but its operating cost is unknown. Both remain research candidates. You cannot declare B the better investment just because one document exists, or A unsuitable solely because its trim is basic.",
+        "Your task: Compare two candidates and choose which to investigate next. You are making a shortlist, not authorizing a purchase."
+      ],
+      "questions": [
+        {
+          "label": "Which customer need must the vehicle meet?",
+          "hint": "Use the situation from 1.1 rather than personal taste.",
+          "example": "Temporary local transport while the customer’s car is repaired."
+        },
+        {
+          "label": "What are your three must-have capabilities?",
+          "hint": "Be concrete; separate essentials from attractive extras.",
+          "example": "Required seats, room for everyday bags and suitability for the intended local trips."
+        },
+        {
+          "label": "Which two or three candidates will you compare?",
+          "hint": "Give each the same criteria and a specification source, or label practice data.",
+          "example": "Practice A and B both meet the three criteria. Real specifications still need manufacturer or vehicle-record confirmation."
+        },
+        {
+          "label": "Which cost or maintenance facts are missing?",
+          "hint": "Name the missing information and where you would get it.",
+          "example": "A: service history missing. B: operating-cost estimate missing. Request records and quotes."
+        },
+        {
+          "label": "Which candidate will you investigate next, and why?",
+          "hint": "A useful decision can be to hold both until one important fact is known.",
+          "example": "Investigate A’s history first; do not buy until the missing evidence is reviewed."
+        }
+      ],
+      "done": "Compare two candidates and choose which to investigate next. You are making a shortlist, not authorizing a purchase.",
+      "reuse": [
+        "1.1",
+        "1.4"
+      ],
+      "local": "",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "2.2",
+      "title": "Evaluate a Vehicle Before Committing",
+      "module": "Prepare Your Fleet",
+      "output": "An evidence-based hold, reject or continue-evaluation decision.",
+      "bring": "One candidate from 2.1. Use Training Car A for practice.",
+      "paragraphs": [
+        "A vehicle can look clean and still have unresolved condition questions. Collect evidence before deciding.",
+        "Make three columns: seller statement, record or inspection evidence, and next action. Check vehicle identity, history, service records and recall information; arrange a qualified inspection. Keep source dates. NHTSA’s lookup is useful for recall research, but its result is not a full safety inspection or complete vehicle history. An unresolved concern needs a specific follow-up.",
+        "Practice record: Training Car A. Seller says “no work needed.” Service record is missing. A fictional inspector reports a concern requiring assessment; recall lookup has not been done. Decision: hold. Next actions: obtain missing records, check recall information and arrange the recommended assessment. Do not turn “not checked” into “passed.”",
+        "Your task: Separate the claim, evidence and missing checks for one car. Name the next action behind your decision. You do not have to buy or inspect a real car to finish this practice."
+      ],
+      "questions": [
+        {
+          "label": "Which vehicle are you evaluating?",
+          "hint": "Use a fictional name or private reference; do not put customer documents here.",
+          "example": "Training Car A from my candidate shortlist."
+        },
+        {
+          "label": "What does the seller claim, and what supports it?",
+          "hint": "Pair each statement with a record, or write “unsupported.”",
+          "example": "Seller says no work needed. Service record missing, so that claim is unsupported."
+        },
+        {
+          "label": "What history, service and recall checks are recorded?",
+          "hint": "List dates and sources. “Not checked; next action…” is valid.",
+          "example": "History: not checked. Service record: requested. Recall lookup: not done; owner to check the actual vehicle identifier privately."
+        },
+        {
+          "label": "What does the inspection show?",
+          "hint": "Use the supplied practice finding if you do not have an inspection.",
+          "example": "Fictional inspector flagged a concern needing assessment; no clearance yet."
+        },
+        {
+          "label": "Will you hold, reject or continue evaluating?",
+          "hint": "Give the evidence and next action; “continue evaluating” is not “ready to rent.”",
+          "example": "Hold. Obtain the records and qualified assessment before reconsidering."
+        }
+      ],
+      "done": "Separate the claim, evidence and missing checks for one car. Name the next action behind your decision. You do not have to buy or inspect a real car to finish this practice.",
+      "reuse": [
+        "2.1"
+      ],
+      "local": "Verify vehicle use, registration and inspection requirements for your location. Recall lookup alone does not establish readiness.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "NHTSA: recall lookup and its limits",
+          "url": "https://www.nhtsa.gov/recalls",
+          "scope": "Official recall search; not an inspection or safety certification.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "2.3",
+      "title": "Evaluate Purchase, Financing, Lease, or Partnership Options",
+      "module": "Prepare Your Fleet",
+      "output": "A side-by-side comparison of two ways to obtain a vehicle.",
+      "bring": "Two real quotes or clearly labeled fictional options.",
+      "paragraphs": [
+        "A smaller monthly payment can hide a different total commitment. Compare the whole arrangement before choosing.",
+        "Compare upfront cash, number and amount of payments, ownership at the end, permitted rental use, maintenance duties and exit costs. A low monthly payment can accompany a long or restricted commitment. Keep financing/lease terms and estimates separate. Ask the provider to clarify the actual contract; personal-use terms do not establish rental-use permission.",
+        "Fictional cash-outlay exercise: A costs $12,000 upfront. B costs $2,000 upfront plus 24 payments of $450: $12,800 scheduled cash outlay. This does not make A automatically better: fees, ownership at the end, maintenance, risk and permitted use are not specified. Both need review. The numbers are arithmetic practice, not an available finance offer.",
+        "Your task: Use the same comparison fields for two options. Identify the missing facts that prevent a decision, especially rental-use permission and exit obligations."
+      ],
+      "questions": [
+        {
+          "label": "Which two acquisition options are you comparing?",
+          "hint": "Name the type and whether the data is real or fictional.",
+          "example": "Fictional A: upfront purchase. Fictional B: payment arrangement with ownership terms unknown."
+        },
+        {
+          "label": "What cash and payment commitments does each require?",
+          "hint": "Include upfront amount, payment count and term; do not compare only monthly payments.",
+          "example": "A: $12,000 upfront. B: $2,000 + 24 × $450 = $12,800 scheduled cash outlay before unspecified costs."
+        },
+        {
+          "label": "Who pays maintenance, insurance and downtime?",
+          "hint": "For each option, record the proposed responsibility or “unknown.”",
+          "example": "A and B: costs and responsibilities need written confirmation."
+        },
+        {
+          "label": "What rental-use and exit conditions need checking?",
+          "hint": "Include ownership at the end, early exit and any restrictions.",
+          "example": "B: rental permission, ownership transfer and early-exit terms are unknown. A: permitted rental use still needs checks."
+        },
+        {
+          "label": "What evidence do you need before deciding?",
+          "hint": "Name the document or reviewer and one next action.",
+          "example": "Obtain complete written terms for both; review use permission and total commitments before choosing."
+        }
+      ],
+      "done": "Use the same comparison fields for two options. Identify the missing facts that prevent a decision, especially rental-use permission and exit obligations.",
+      "reuse": [
+        "1.3",
+        "1.4",
+        "2.2"
+      ],
+      "local": "Use the actual lender, lessor or partner’s written terms and qualified review; this exercise does not recommend a finance product.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "2.4",
+      "title": "Prepare a Vehicle for Rental",
+      "module": "Prepare Your Fleet",
+      "output": "A vehicle preparation checklist with a clear hold or ready-for-review status.",
+      "bring": "Your evaluation from 2.2; one practice vehicle.",
+      "paragraphs": [
+        "Preparing a vehicle means more than washing it and taking listing photos. Build a record someone else could follow.",
+        "Work in four groups: documents and service; cleaning; equipment and keys; baseline condition. Give each item a status, responsible person and evidence reference. “Available” means the calendar is open; it does not mean the car is ready. A warning indicator or unresolved service issue belongs in the hold list until qualified assessment resolves it.",
+        "Practice record: Training Car A is cleaned, keys counted and overview photos taken. A warning indicator remains unresolved. Maya is responsible for arranging assessment. The status remains on hold. The listing photos are complete, but they do not clear the warning or replace a current pickup condition record.",
+        "Your task: Create one checklist and name the issue that prevents release. Record what evidence would let the responsible reviewer reconsider it."
+      ],
+      "questions": [
+        {
+          "label": "Which vehicle are you preparing?",
+          "hint": "Keep the same private or fictional reference as your evaluation.",
+          "example": "Training Car A; see my 2.2 evaluation."
+        },
+        {
+          "label": "What documents and service checks are ready or open?",
+          "hint": "Use item → status → evidence → person.",
+          "example": "Service concern → open → assessment pending → Maya. Vehicle-use documents → not verified → owner to review."
+        },
+        {
+          "label": "What cleaning, equipment and key checks are assigned?",
+          "hint": "A short checklist with names or roles is enough.",
+          "example": "Maya checks interior, exterior, agreed equipment and key count; records date and result."
+        },
+        {
+          "label": "Where will the baseline condition record go?",
+          "hint": "Name a private record location; listing photos and pickup records have different purposes.",
+          "example": "Private vehicle folder, linked to Training Car A; current pickup photos will be stored with each rental."
+        },
+        {
+          "label": "What keeps this vehicle on hold?",
+          "hint": "Name the concern and the evidence needed to reconsider it.",
+          "example": "Warning indicator unresolved. Qualified assessment and documented resolution are needed before a readiness review."
+        }
+      ],
+      "done": "Create one checklist and name the issue that prevents release. Record what evidence would let the responsible reviewer reconsider it.",
+      "reuse": [
+        "2.2"
+      ],
+      "local": "Check applicable vehicle documents, operating permissions, coverage and inspection requirements before release.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "3.1",
+      "title": "Organize Your Business Setup",
+      "module": "Establish Your Business Rules",
+      "output": "A setup research list with a source and next action for each question.",
+      "bring": "Your operating locations from 0.2 and model from 1.3.",
+      "paragraphs": [
+        "A business name is one part of setup. Build a location-specific checklist instead of assuming registration finishes the job.",
+        "Create rows for business identity, operating permissions, taxes and recordkeeping. Start with official state business-registration, state revenue, local city/county and vehicle-agency resources relevant to your activity. For a special pickup site, identify who controls it. These are research starting points, not a complete list of requirements. Use status labels: not checked, submitted, pending or confirmed with evidence.",
+        "Fictional example: Maya has submitted a business-name application but has not received confirmation. She also plans pickup at a location whose permission is unknown. These are two separate rows. The application receipt supports “submitted,” not “approved.” Maya records the relevant office, question, contact date and the evidence she needs. Tax/entity choices go to the appropriate adviser.",
+        "Your task: Write a short research list, using your actual planned locations. Your goal today is to know who to ask and what evidence to keep, not complete every registration."
+      ],
+      "questions": [
+        {
+          "label": "Where and how do you intend to operate?",
+          "hint": "Bring forward the location and model notes; include proposed delivery areas.",
+          "example": "Local direct rentals in my recorded city/county/state; airport delivery not yet offered."
+        },
+        {
+          "label": "Which setup questions need answers?",
+          "hint": "Start with identity, permissions, tax registration and recordkeeping; this is not an exhaustive compliance checklist.",
+          "example": "Business registration status, pickup-location permission and applicable rental tax questions."
+        },
+        {
+          "label": "Which official source or contact will you use for each?",
+          "hint": "Name the office and exact question; save a source link/date privately.",
+          "example": "State business office: registration. City/county office: pickup site. State revenue office: rental tax questions."
+        },
+        {
+          "label": "Which business details must match across records?",
+          "hint": "List fields, not sensitive identification numbers.",
+          "example": "Legal business name, public trading name where applicable, business contact and approved address details."
+        },
+        {
+          "label": "What proves each item’s status?",
+          "hint": "Distinguish an application receipt from an issued approval.",
+          "example": "Registration: submitted, receipt retained. Pickup permission: not checked, owner to contact the office Friday."
+        }
+      ],
+      "done": "Write a short research list, using your actual planned locations. Your goal today is to know who to ask and what evidence to keep, not complete every registration.",
+      "reuse": [
+        "0.2",
+        "1.3"
+      ],
+      "local": "Research each actual city/county/state and activity with official sources. Keep renewal dates and evidence; no nationwide rental checklist is approved here.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "SBA: business setup research",
+          "url": "https://www.sba.gov/counseling/launch-your-business/",
+          "scope": "Location/activity-dependent setup research, not a state-specific rental checklist.",
+          "checkedOn": "2026-11-23"
+        },
+        {
+          "title": "IRS: business recordkeeping",
+          "url": "https://www.irs.gov/businesses/small-businesses-self-employed/what-kind-of-records-should-i-keep",
+          "scope": "General recordkeeping concepts; no tax rate, election or retention period prescribed.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "3.2",
+      "title": "Understand Your Insurance Needs",
+      "module": "Establish Your Business Rules",
+      "output": "A clear briefing and question list for an insurance conversation.",
+      "bring": "Your model, vehicle use and pickup/delivery plans.",
+      "paragraphs": [
+        "A policy label alone does not tell you whether your planned rental activities are covered. Ask about the actual operation.",
+        "Describe the actual operation before asking for a quote: who owns the cars, who rents/drives them, direct versus platform rentals, where they travel, and pickup/delivery activities. Ask which activities and people are covered, what is excluded, limits, deductibles and reporting steps. A deductible is the amount assigned to you under the policy for a covered loss; the actual terms control. Ask the licensed professional to tie answers to the documents.",
+        "Fictional briefing: “I plan direct short-term rentals of one car with local pickup. Delivery is under consideration. Which parts of that operation would this proposed policy cover, and what is excluded?” If the response only says “commercial auto,” Maya asks for clarification. A quote or generic policy label does not settle every coverage question. Keep unanswered items open.",
+        "Your task: Prepare the briefing and five or fewer priority questions. You can finish this exercise before the appointment by recording the contact and follow-up date."
+      ],
+      "questions": [
+        {
+          "label": "What operation do you need to describe?",
+          "hint": "Include ownership, direct/platform use, drivers, travel area and delivery.",
+          "example": "One owner-operated car, direct rentals, local pickup; delivery proposed and not yet confirmed."
+        },
+        {
+          "label": "Who will you contact, and when?",
+          "hint": "Use a role or private reference rather than posting personal contact details.",
+          "example": "A licensed insurance professional familiar with rental operations; appointment to arrange this week."
+        },
+        {
+          "label": "What are your key coverage questions?",
+          "hint": "Ask about activities, drivers, exclusions, limits, deductibles and claim reporting.",
+          "example": "Is direct rental use included? Who may drive? What is excluded? What limits/deductibles apply? How are incidents reported?"
+        },
+        {
+          "label": "What documents and clarification will you retain?",
+          "hint": "Keep actual insurance documents privately, not in this practice worksheet.",
+          "example": "Quote and policy documents plus written clarification tied to the relevant terms, in a private business folder."
+        },
+        {
+          "label": "What is still unresolved, and who follows up?",
+          "hint": "A quote is not a completed coverage review.",
+          "example": "Delivery coverage remains unclear; Maya will ask for clarification before offering delivery."
+        }
+      ],
+      "done": "Prepare the briefing and five or fewer priority questions. You can finish this exercise before the appointment by recording the contact and follow-up date.",
+      "reuse": [
+        "1.3",
+        "0.2"
+      ],
+      "local": "Have a licensed insurance professional review the actual operation and jurisdiction. Customer or platform coverage must not be assumed sufficient.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "NAIC: small-business insurance questions",
+          "url": "https://content.naic.org/consumer/small-business.htm",
+          "scope": "General insurance education; no rental coverage confirmation.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "3.3",
+      "title": "Set Renter and Driver Requirements",
+      "module": "Establish Your Business Rules",
+      "output": "A renter-review procedure with a clear pause-and-review path.",
+      "bring": "Your proposed operating model and coverage questions.",
+      "paragraphs": [
+        "A repeatable renter review starts with written criteria, not a last-minute impression of the person in front of you.",
+        "For each necessary check, record the requirement, its reviewed source, the minimum information needed and who may access it. Verify eligibility rules against applicable law and your actual insurer, platform and agreement terms; this lesson gives no universal age rule. Keep real identity documents out of course answers. Plan retention, access and deletion instead of collecting everything “just in case.”",
+        "Practice scenario: Alex is the named driver; Sam arrives expecting to drive too. Staff records the difference and routes Sam through the approved additional-driver process. Sam is not automatically approved because Alex says it is fine. The staff member pauses the handoff if the required check remains unresolved and tells the owner what decision is needed.",
+        "Your task: Write the checks, their sources and what staff should do when a detail is missing. Use Alex and Sam as fictional names only."
+      ],
+      "questions": [
+        {
+          "label": "Which eligibility requirements need confirmation?",
+          "hint": "List the rule and its legal, insurer or platform review source; do not invent thresholds.",
+          "example": "Driver eligibility and additional-driver requirements need confirmation against our actual terms."
+        },
+        {
+          "label": "What information is needed for each check?",
+          "hint": "State the purpose and minimum information, not real document numbers.",
+          "example": "Check the named driver against the approved process; record the outcome and evidence reference, not identity data here."
+        },
+        {
+          "label": "Who can review the information, and where is it protected?",
+          "hint": "Identify a role, limited access and a private storage process.",
+          "example": "Authorized reviewer only; private access-controlled business records, separate from course notes."
+        },
+        {
+          "label": "What happens with a missing item or another driver?",
+          "hint": "Explain the pause, reviewer and renter message.",
+          "example": "Sam is unreviewed; pause the handoff and ask the owner to complete the additional-driver process."
+        },
+        {
+          "label": "What retention and deletion decisions need review?",
+          "hint": "Name the question and person responsible; do not invent a universal retention period.",
+          "example": "What must be retained, for how long and by whom? Owner to confirm obligations and set a deletion procedure."
+        }
+      ],
+      "done": "Write the checks, their sources and what staff should do when a detail is missing. Use Alex and Sam as fictional names only.",
+      "reuse": [
+        "3.2"
+      ],
+      "local": "Review driver eligibility, additional-driver handling and privacy obligations for your operation. Course answers are not authorization for screening or background checks.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "FTC: protecting personal information",
+          "url": "https://www.ftc.gov/business-guidance/resources/protecting-personal-information-guide-business",
+          "scope": "Data minimization, access and retention planning; not complete privacy-law compliance.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "3.4",
+      "title": "Prepare and Review Your Agreements",
+      "module": "Establish Your Business Rules",
+      "output": "A document checklist that catches a mismatch before signing.",
+      "bring": "A fictional reservation and draft document; no real contract needed.",
+      "paragraphs": [
+        "A signature is only useful in context. First make sure the document describes the rental you actually intend to offer.",
+        "Check document type/version, parties, vehicle, pickup/return times, charges, policies and any linked condition record. Compare each transaction fact with the current reservation. A template filled with your name still needs review for your operation and location. A signature does not remove every liability or prove that the agreement is suitable.",
+        "Practice record: R-001, Alex Example, Training Car A, pickup Day 1 at 09:00, return Day 4 at 09:00; three daily units at $50. Draft v1 incorrectly says return Day 3. Hold sending, confirm the intended dates and prepare a corrected version for review. If a signed version already exists, preserve it and use the reviewed amendment/re-signing process; never silently rewrite it.",
+        "Your task: Find the mismatch and describe the correction, reviewer and version history. You are practicing document review, not writing universally valid rental terms."
+      ],
+      "questions": [
+        {
+          "label": "Which document and version are you reviewing?",
+          "hint": "Give the document a clear practice name/version.",
+          "example": "R-001 draft rental agreement v1, fictional training copy."
+        },
+        {
+          "label": "Do the renter, vehicle, dates and charges match?",
+          "hint": "Compare the supplied reservation with draft v1; name the exact mismatch.",
+          "example": "R-001 returns Day 4 at 09:00, but draft v1 says Day 3. Hold sending until corrected."
+        },
+        {
+          "label": "What policies and supporting records should be referenced?",
+          "hint": "Identify the relevant documents without inventing legal clauses.",
+          "example": "Reviewed rental policies and the rental-specific pickup/return condition records."
+        },
+        {
+          "label": "Who reviews location-specific terms and signing requirements?",
+          "hint": "Name an appropriate reviewer or a next action to find one.",
+          "example": "Owner will arrange qualified legal review for the actual operating locations and document use."
+        },
+        {
+          "label": "How will changes and signed versions be kept?",
+          "hint": "Preserve the original; record which version replaces it and why.",
+          "example": "Retain v1; create corrected v2 for review. Preserve any signed version and use the reviewed change process."
+        }
+      ],
+      "done": "Find the mismatch and describe the correction, reviewer and version history. You are practicing document review, not writing universally valid rental terms.",
+      "reuse": [
+        "3.1"
+      ],
+      "local": "Get qualified review of terms, notices, signing and record retention for your operation. No template makes an owner free of all liability.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "3.5",
+      "title": "Write Clear Rental Policies",
+      "module": "Establish Your Business Rules",
+      "output": "One plain-language policy process, with other policy topics listed for later.",
+      "bring": "Choose one topic: extension, cancellation, fuel, mileage or deposit handling.",
+      "paragraphs": [
+        "A policy works best when the customer can understand it before a problem happens. Write the process before choosing the wording.",
+        "For your chosen topic, write: trigger → renter action → decision-maker → confirmation → record. Start with the process before choosing amounts or deadlines. Then list the other topics you still need to cover: deposits, cancellations/no-shows, mileage, fuel, extensions, late returns and possible adjustments. One completed practice policy is not a full policy set.",
+        "Fictional extension process: renter requests more time; staff checks the next booking and relevant terms; owner decides; the renter receives the recorded outcome. Wording: “Please request an extension through our contact channel. The original return time remains in place unless a change is confirmed through the agreed process.” The wording is a practice draft, not approved terms.",
+        "Your task: Draft one short process and flag amounts, deadlines or disclosures for review. Keep the remaining policy topics as a future-work list, not seven new worksheets today."
+      ],
+      "questions": [
+        {
+          "label": "Which policy topic will you work on first?",
+          "hint": "Choose just one and list other topics to return to later.",
+          "example": "Extensions first. Later: cancellations, deposits, mileage, fuel and late returns."
+        },
+        {
+          "label": "What starts the process, and what should the renter do?",
+          "hint": "Use a concrete event and one clear request channel.",
+          "example": "Renter wants an extra day; submit a request with the desired return time."
+        },
+        {
+          "label": "Who decides, and what do they check?",
+          "hint": "Name the role and records; avoid automatic approval.",
+          "example": "Owner checks schedule, approved policy, coverage and any updated agreement/payment steps."
+        },
+        {
+          "label": "What will you tell the renter?",
+          "hint": "Write two plain sentences describing the process and confirmation.",
+          "example": "Please request the extra time through our contact channel. The original return time stays in place until a change is confirmed."
+        },
+        {
+          "label": "Which terms still need review?",
+          "hint": "Identify amounts, time limits and required disclosures before real use.",
+          "example": "Extension price, timing, deposit treatment and required notices need qualified/local review."
+        }
+      ],
+      "done": "Draft one short process and flag amounts, deadlines or disclosures for review. Keep the remaining policy topics as a future-work list, not seven new worksheets today.",
+      "reuse": [
+        "3.2",
+        "3.4"
+      ],
+      "local": "Verify allowed charges, deposits, cancellations, mileage/fuel disclosures and notice requirements. This draft supplies no universal amounts or deadlines.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "4.1",
+      "title": "Create a Trustworthy Brand and Listing",
+      "module": "Attract and Book Customers",
+      "output": "A factual listing draft with one clear next step.",
+      "bring": "Your customer, candidate vehicle and proposed pickup process.",
+      "paragraphs": [
+        "Your listing should help a customer decide whether the rental fits. Attractive photos cannot fix unclear terms.",
+        "Build five parts: headline, vehicle facts, what is included, pickup process and how to request dates. Use accurate current photos and supported specifications. Separate offered services from ideas under review. Make important price conditions visible rather than hiding them behind a vague “from” number. Do not publish a practice listing or invent reviews to fill gaps.",
+        "Fictional draft: “Compact car for temporary local transport. Request your dates for an itemized quote. Local pickup by confirmed appointment. Included items and mileage are shown in the quote. Delivery is not currently offered.” Before using it, Maya must confirm the actual vehicle facts, pickup permission, pricing disclosures and ability to provide the service. A friend can read the draft and explain what to do next.",
+        "Your task: Write the short draft, list supporting photos/facts and identify claims to verify. Keep it unpublished until those checks are complete."
+      ],
+      "questions": [
+        {
+          "label": "What is your factual headline and description?",
+          "hint": "Say what the car/service is; avoid unsupported “best,” “fully covered” or guaranteed availability claims.",
+          "example": "Practice: Compact car for temporary local transport. Request dates for a quote."
+        },
+        {
+          "label": "Which photos and specifications support the description?",
+          "hint": "List current images and sources; do not use an unrelated vehicle as the actual listing.",
+          "example": "Current exterior/interior photos and verified seating/cargo details from the actual vehicle record."
+        },
+        {
+          "label": "What is included, optional or unavailable?",
+          "hint": "Use separate short lines so conditions are visible.",
+          "example": "Included items: to verify in quote. Delivery: not currently offered. Mileage: stated in reviewed terms."
+        },
+        {
+          "label": "How does pickup work, and what should a customer do next?",
+          "hint": "One clear action is enough.",
+          "example": "Local pickup by confirmed appointment; request pickup and return dates first."
+        },
+        {
+          "label": "What must be verified before publishing?",
+          "hint": "Read each factual claim back against its evidence.",
+          "example": "Vehicle details, actual availability, pickup permission, price disclosures and included items."
+        }
+      ],
+      "done": "Write the short draft, list supporting photos/facts and identify claims to verify. Keep it unpublished until those checks are complete.",
+      "reuse": [
+        "1.1",
+        "2.1",
+        "3.5"
+      ],
+      "local": "Check advertising, price disclosure and platform requirements before publishing a real offer.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "4.2",
+      "title": "Set and Review Your Pricing",
+      "module": "Attract and Book Customers",
+      "output": "An itemized practice quote with unknown items visible.",
+      "bring": "Your cost exercise from 1.4 and comparison notes from 1.2.",
+      "paragraphs": [
+        "Copying a competitor’s price tells you nothing about whether it works for your costs. Build a quote you can explain.",
+        "Start with daily rate × agreed daily units. Show selected options separately. Then identify any taxes, allowed charges and refundable amounts that need verification. A deposit and rental charge are different lines. Do not call an incomplete subtotal a final total. This exercise uses fixed three-day units; your real pricing must explain how pickup/return times affect billing.",
+        "Fictional quote: three days × $50 = $150 base. Optional delivery, if selected in this separate example: $30. Subtotal with that option: $180 before any applicable verified taxes or other charges. Deposit terms are unknown and shown separately. Neither $150 nor $180 is an all-inclusive final quote. In the later R-001 practice rental, delivery is not selected.",
+        "Your task: Show the base and optional subtotal, then list items to verify. Explain the 15-paid-day downside from 1.4 before treating your rate as workable."
+      ],
+      "questions": [
+        {
+          "label": "What supports your proposed base rate?",
+          "hint": "Bring together cost and market notes; label practice numbers and gaps.",
+          "example": "The $50/day rate is fictional for arithmetic. Actual cost quotes and comparable rental totals still need research."
+        },
+        {
+          "label": "What is the three-day base at $50 per day?",
+          "hint": "Show the multiplication so another person can check it.",
+          "example": "3 × $50 = $150 base rental amount."
+        },
+        {
+          "label": "What is the subtotal with a $30 delivery option?",
+          "hint": "Add the option only when selected; this is a hypothetical option.",
+          "example": "$150 + $30 = $180 before applicable verified taxes or other charges."
+        },
+        {
+          "label": "Which taxes, fees or deposit terms need checking?",
+          "hint": "Keep unknowns visible; do not invent a final payable amount.",
+          "example": "Taxes and allowed charges unknown; deposit amount and handling unverified. No all-inclusive total yet."
+        },
+        {
+          "label": "How would fewer paid days affect the monthly plan?",
+          "hint": "Reuse the $600/$50/$20 example; do not count deposits as earnings.",
+          "example": "At 15 paid days: 15 × ($50 − $20) − $600 = −$150 before excluded items."
+        }
+      ],
+      "done": "Show the base and optional subtotal, then list items to verify. Explain the 15-paid-day downside from 1.4 before treating your rate as workable.",
+      "reuse": [
+        "1.2",
+        "1.4"
+      ],
+      "local": "Verify actual tax treatment, permitted charges, refundable amounts and price disclosures before quoting a customer.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "SBA: break-even calculator",
+          "url": "https://bec.www.sba.gov/",
+          "scope": "Simplified fixed-cost and contribution calculation; not a complete profit or accounting model.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "4.3",
+      "title": "Build Your Customer Acquisition Plan",
+      "module": "Attract and Book Customers",
+      "output": "One small marketing test with a limit and a decision rule.",
+      "bring": "The customer situation from 1.1 and listing draft from 4.1.",
+      "paragraphs": [
+        "Choose one customer channel to test before trying to market everywhere. You need evidence of useful inquiries, not just views.",
+        "Pick one channel where that customer already looks for help. Define one message, one next action and a time/spending limit. Track the path separately: views → relevant inquiries → confirmed bookings. A relevant inquiry matches the service and dates you could potentially offer; it is not proof of eligibility or a booking. Test an idea without claiming a partnership or outcome that does not exist.",
+        "Fictional test: Maya spends one hour this week on two research conversations with repair shops, with no paid ad spend. She records recurring customer questions. If both conversations mention difficulty understanding total price, she revises her listing draft and plans a further test. Two conversations are a signal to investigate, not a forecast of customers or profit.",
+        "Your task: Choose one channel and a small test. Define what would make you continue, change it or stop. You do not need to launch ads or contact real people to finish the practice plan."
+      ],
+      "questions": [
+        {
+          "label": "Which customer and channel will you test first?",
+          "hint": "Choose one audience and one channel, not every social platform.",
+          "example": "Repair customers; research conversations with local repair businesses."
+        },
+        {
+          "label": "What message and next action will you offer?",
+          "hint": "Match the next action to the test: a question for research or an inquiry for a reviewed offer.",
+          "example": "Research question: What transport problems do customers mention while waiting for repairs?"
+        },
+        {
+          "label": "What is the time or spending limit?",
+          "hint": "Set a boundary you can afford; do not assume paid advertising is required.",
+          "example": "One hour this week; no paid advertising for the research step."
+        },
+        {
+          "label": "How will you separate interest from bookings?",
+          "hint": "Record source and stage; a view or inquiry is not a confirmed rental.",
+          "example": "Keep counts of conversations, relevant inquiries and confirmed bookings in separate columns."
+        },
+        {
+          "label": "What would make you continue, revise or stop?",
+          "hint": "Name a measurable signal and a review date.",
+          "example": "Review Friday: use repeated questions to revise the offer; do not scale from two conversations alone."
+        }
+      ],
+      "done": "Choose one channel and a small test. Define what would make you continue, change it or stop. You do not need to launch ads or contact real people to finish the practice plan.",
+      "reuse": [
+        "1.1",
+        "4.1"
+      ],
+      "local": "Check the channel’s advertising and contact rules before publishing or sending outreach. This exercise sends nothing.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "4.4",
+      "title": "Turn Inquiries into Bookings",
+      "module": "Attract and Book Customers",
+      "output": "A short inquiry response and a recorded follow-up.",
+      "bring": "A fictional customer question; your quote and process notes.",
+      "paragraphs": [
+        "An inquiry is a conversation, not a confirmed rental. Help the customer understand the steps without promising an unchecked booking.",
+        "Use a four-part reply: acknowledge the request, ask for missing dates/times and pickup needs, explain the next step, and state what is still pending. Check the schedule and vehicle readiness before confirming availability. Share the reviewed quote and requirements before asking the customer to commit. Collect sensitive information only through your appropriate secure process.",
+        "Practice inquiry: “Do you have a car this weekend?” Reply: “What pickup and return dates/times do you need, and will you collect locally? I’ll check the vehicle schedule and send the quote and rental requirements. Your booking is not confirmed yet.” Record the next action: staff checks the schedule after the dates arrive. Do not request card or identity-document details in the course worksheet.",
+        "Your task: Write a concise reply and a follow-up status. The customer should understand both their next step and what you will check."
+      ],
+      "questions": [
+        {
+          "label": "What did the fictional customer ask?",
+          "hint": "Keep the original question visible.",
+          "example": "Do you have a car this weekend?"
+        },
+        {
+          "label": "What details are missing?",
+          "hint": "Ask only what is needed to clarify the request now.",
+          "example": "Exact pickup/return dates and times, vehicle needs and pickup location."
+        },
+        {
+          "label": "What must you check before confirming?",
+          "hint": "Include schedule, vehicle readiness and the reviewed quote/requirements.",
+          "example": "Calendar conflicts, readiness, pickup arrangements and the correct itemized quote."
+        },
+        {
+          "label": "What is your short response?",
+          "hint": "Give one clear next action without claiming a booking exists.",
+          "example": "Please send your dates/times and pickup needs. I’ll check availability and send the quote and requirements; the booking is not confirmed yet."
+        },
+        {
+          "label": "What follow-up will you record?",
+          "hint": "Use status → person → next action.",
+          "example": "Inquiry awaiting dates → staff → check schedule when details arrive."
+        }
+      ],
+      "done": "Write a concise reply and a follow-up status. The customer should understand both their next step and what you will check.",
+      "reuse": [
+        "4.1",
+        "4.2",
+        "3.3"
+      ],
+      "local": "Use appropriate booking disclosures and contact permissions. An inquiry is not a confirmed reservation.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "5.1",
+      "title": "Review the Reservation",
+      "module": "Complete a Rental",
+      "output": "One consistent reservation record with separate readiness checks.",
+      "bring": "Use practice rental R-001 below; no customer data needed.",
+      "paragraphs": [
+        "Before preparing a handoff, reconcile the reservation. Small mismatches become larger problems when the customer arrives.",
+        "R-001 follows the same fictional rental through lessons 5.1–5.6: Alex Example, Training Car A, pickup Day 1 at 09:00, return Day 4 at 09:00, local pickup, three daily units at $50. Tax/deposit terms remain unspecified. Compare the current reservation with customer messages, the schedule and vehicle readiness. Keep agreement, payment and vehicle checks separate.",
+        "The reservation says 09:00 pickup, but an email draft says 10:00. Do not silently choose one. Ask Alex to confirm the intended time, record the response and update the linked records. For the remaining practice, the scenario supplies Alex’s confirmation of 09:00; record that as fictional clarification. Signing and payment are still unresolved and handled next.",
+        "Your task: Record the facts, catch the time conflict and assign its resolution. Finish with separate statuses for agreement, payment and vehicle readiness, not one vague “all done.”"
+      ],
+      "questions": [
+        {
+          "label": "What are the rental’s main details?",
+          "hint": "Use R-001 consistently across this module.",
+          "example": "R-001; Alex Example, sole proposed driver; Training Car A; Day 1 09:00 to Day 4 09:00; local pickup; $150 base before unverified items."
+        },
+        {
+          "label": "Which record supports each detail?",
+          "hint": "Identify the current reservation and the clarification needed when messages conflict.",
+          "example": "Reservation is the working record; email says 10:00. Scenario clarification from Alex confirms 09:00; update the draft."
+        },
+        {
+          "label": "What schedule or readiness conflicts did you check?",
+          "hint": "A free calendar does not clear a service concern.",
+          "example": "Check overlapping bookings and vehicle hold status separately; readiness evidence is still needed."
+        },
+        {
+          "label": "What are the separate requirement statuses?",
+          "hint": "List agreement, payment and vehicle readiness independently.",
+          "example": "Agreement: draft review next. Payment: not verified. Vehicle: readiness review outstanding. No release approval."
+        },
+        {
+          "label": "Who resolves each open item?",
+          "hint": "Give one responsible role and next action per issue.",
+          "example": "Staff reconciles time; owner reviews document/payment evidence; qualified reviewer resolves the vehicle concern."
+        }
+      ],
+      "done": "Record the facts, catch the time conflict and assign its resolution. Finish with separate statuses for agreement, payment and vehicle readiness, not one vague “all done.”",
+      "reuse": [
+        "3.3",
+        "3.4",
+        "4.4"
+      ],
+      "local": "Use the actual renter, location and release requirements in a live rental. These are fictional status notes, not app transactions.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "5.2",
+      "title": "Complete the Agreement",
+      "module": "Complete a Rental",
+      "output": "A checked agreement status and a clear signing follow-up.",
+      "bring": "R-001 and the reservation checks from 5.1.",
+      "paragraphs": [
+        "Send the agreement only after the rental details are correct. Then track what actually happened, not what you intended to happen.",
+        "Before sending, compare the reviewed document version with R-001: Alex, Training Car A, Day 1 09:00 to Day 4 09:00, three $50 daily units. Keep taxes and deposit questions visible. Explain where the renter can read it and ask questions. Use only the statuses your actual signing system proves; prepared, sent or delivered does not mean completed.",
+        "Practice: draft v1 ends on Day 3, so it must be corrected to Day 4 and reviewed before sending. Later, the scenario shows a delivery notice but no completion evidence. Record “sent/delivered; signature not verified.” Ask the renter whether they need help, then check the signing record. Keep the rental on hold where a required signature is missing.",
+        "Your task: Find the wrong return day, state the evidence-supported signing status and describe the failure/change path. No real document is sent from this worksheet."
+      ],
+      "questions": [
+        {
+          "label": "Which agreement version are you checking?",
+          "hint": "Use a clear practice version and identify review status.",
+          "example": "R-001 draft v1; corrected v2 needed for the return-day mismatch, then review before sending."
+        },
+        {
+          "label": "Do all rental facts match?",
+          "hint": "Compare with 5.1; do not overlook the Day 3/Day 4 difference.",
+          "example": "Return must be Day 4 at 09:00. Alex, Training Car A and the three-day base must match the reservation."
+        },
+        {
+          "label": "What signing status is actually supported?",
+          "hint": "Use the supplied delivery notice; there is no execution evidence yet.",
+          "example": "Sent/delivered in the fictional record; signature and completion are not verified."
+        },
+        {
+          "label": "How can the renter get help and a completed copy?",
+          "hint": "Describe the communication route and copy delivery after completion.",
+          "example": "Provide a questions contact before signing; use the signing system’s completed-document delivery process once completion is verified."
+        },
+        {
+          "label": "What if signing fails or rental details change?",
+          "hint": "Check the existing record before retrying; preserve any signed version.",
+          "example": "Staff investigates incomplete signing; owner reviews changes and any re-signing need. Never silently overwrite a signed agreement."
+        }
+      ],
+      "done": "Find the wrong return day, state the evidence-supported signing status and describe the failure/change path. No real document is sent from this worksheet.",
+      "reuse": [
+        "5.1",
+        "3.4"
+      ],
+      "local": "Verify execution, delivery, retention and document-change requirements for your actual agreement and provider.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "5.3",
+      "title": "Confirm Payment and Deposit Status",
+      "module": "Complete a Rental",
+      "output": "A matched payment-status note and a safe follow-up.",
+      "bring": "R-001, a fictional $150 base payment request and reference Practice-P001.",
+      "paragraphs": [
+        "A payment screenshot is not the same as a verified payment status. Check the record in the payment system you use.",
+        "Match rental, amount and transaction reference before reading the status. Common concepts differ: a request asks for payment; an authorization may reserve funds; capture collects an authorized amount; a refund returns a collected amount through the provider process. Your provider’s exact definitions control. A refundable deposit may use a hold or a collected amount under the chosen process; do not treat those as identical.",
+        "Practice: Alex says “paid,” but Practice-P001 for the $150 base still shows pending. For this fictional exercise, pending means no confirmed successful collection yet. Record the mismatch and inspect that transaction before retrying. Do not duplicate a charge because of a screenshot. The $150 base is not an all-inclusive rental total; tax/deposit terms remain unspecified.",
+        "Your task: Write the status, what it means in this scenario and who investigates next. Use only fictional references. This worksheet performs no payment or refund."
+      ],
+      "questions": [
+        {
+          "label": "What rental, amount and transaction are you checking?",
+          "hint": "Match all three; a similar amount on another rental is not proof.",
+          "example": "R-001; $150 base-only practice request; Practice-P001. Final tax/deposit terms remain unspecified."
+        },
+        {
+          "label": "What exact status is shown?",
+          "hint": "Use the fictional provider state, not Alex’s claim.",
+          "example": "Practice-P001 shows pending; Alex says paid."
+        },
+        {
+          "label": "What does that status mean?",
+          "hint": "In this scenario pending means not yet confirmed successful. In real use check your provider’s documentation.",
+          "example": "Collection is not verified; do not mark the rental paid from the screenshot."
+        },
+        {
+          "label": "What mismatch or duplicate risk needs attention?",
+          "hint": "Explain why you should check the existing transaction before retrying.",
+          "example": "Customer claim differs from pending status. A fresh charge could duplicate a delayed payment."
+        },
+        {
+          "label": "Who follows up, and what will you tell the renter?",
+          "hint": "Name the reviewer and avoid promising bank timing.",
+          "example": "Staff checks Practice-P001 with the provider process. Message: “We are checking the transaction; please do not submit another payment while we resolve its status.”"
+        }
+      ],
+      "done": "Write the status, what it means in this scenario and who investigates next. Use only fictional references. This worksheet performs no payment or refund.",
+      "reuse": [
+        "5.1",
+        "4.2"
+      ],
+      "local": "Verify deposit, refund and disclosure requirements plus your provider’s actual definitions. No raw card details belong in course answers.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "5.4",
+      "title": "Complete Pickup and Vehicle Handoff",
+      "module": "Complete a Rental",
+      "output": "A pickup record and an explicit release-or-hold decision.",
+      "bring": "R-001. First review the unresolved checks from 5.1–5.3.",
+      "paragraphs": [
+        "Before you hand over the keys, take pickup photos and review them with your renter.",
+        "First decide whether the required release checks are resolved. If not, record hold. To practice the physical handoff, this fictional scenario then explicitly supplies: corrected reservation and agreement, verified signing/payment evidence, qualified resolution of the vehicle concern and the required release review. These are training assumptions only, not facts about your business. Record them before rehearsing the pickup.",
+        "Pickup practice: R-001, Day 1 at 09:00; Training Car A shows 42,800 miles and a full fuel indication. A left-front wheel mark already exists. Record overview images plus a detail and wider location image of the mark; link them to R-001 and this pickup time. Review the mark and condition record with Alex. Explain return Day 4 at 09:00, the agreed location and how to reach assistance. Photos alone do not decide liability.",
+        "Your task: State the initial hold, then label the supplied assumptions used for practice. Record condition, mileage, fuel and return instructions. Never use the example to clear an unresolved real vehicle."
+      ],
+      "questions": [
+        {
+          "label": "Which rental and vehicle are at pickup?",
+          "hint": "Reuse the same identity and corrected time.",
+          "example": "R-001; Alex Example; Training Car A; Day 1 at 09:00."
+        },
+        {
+          "label": "What release checks are resolved or still open?",
+          "hint": "First note the hold. Only for the later practice, record the scenario’s explicit assumptions.",
+          "example": "Initially hold: unresolved signing/payment/readiness. For rehearsal only, assume the corrected records and required evidence/review were supplied. This is not real approval."
+        },
+        {
+          "label": "What condition evidence will you record?",
+          "hint": "Include overview/detail images, readings and existing marks linked to this handoff.",
+          "example": "R-001 pickup: 42,800 miles, full fuel; overview photos; left-front wheel mark with detail plus location photo; pickup date/time."
+        },
+        {
+          "label": "How will you review the record with Alex?",
+          "hint": "Explain how the renter can see the same record and raise a concern.",
+          "example": "Walk through the existing mark and readings together, invite corrections, record them and provide access to the agreed condition record."
+        },
+        {
+          "label": "What return instructions and questions remain?",
+          "hint": "Give time, place and contact route; keep unknowns visible.",
+          "example": "Return Day 4 at 09:00 to the agreed local pickup point. Explain assistance/change-request contacts; resolve unclear instructions before release."
+        }
+      ],
+      "done": "State the initial hold, then label the supplied assumptions used for practice. Record condition, mileage, fuel and return instructions. Never use the example to clear an unresolved real vehicle.",
+      "reuse": [
+        "5.1",
+        "5.2",
+        "5.3"
+      ],
+      "local": "Apply reviewed release criteria, pickup permissions and required records to real handoffs. Fictional assumptions do not clear real blockers.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "5.5",
+      "title": "Manage the Active Rental",
+      "module": "Complete a Rental",
+      "output": "A recorded extension request with a clear decision and response.",
+      "bring": "R-001; its original return remains Day 4 at 09:00.",
+      "paragraphs": [
+        "When a renter asks for a change, record the request before changing the rental. A conversation is not the whole decision.",
+        "Record what changed, when it was requested and what the renter wants. For an extension, check schedule conflicts, approved terms, coverage and any signing/payment changes. An extension request is not approval. Until a change is properly confirmed, keep the original arrangement visible. If it needs review, tell the renter who is checking it and when you plan to update them.",
+        "Practice: Alex requests return on Day 5 at 09:00. Training Car A has a conflicting next booking. The owner declines this extension in the scenario. Message: “We cannot extend this vehicle because it is booked next. Your agreed return remains Day 4 at 09:00. Contact us if you need to discuss the return arrangements.” Do not quietly move the next customer’s booking.",
+        "Your task: Record the request, conflict, decision and message. Keep the original return time and link the outcome to the same rental record."
+      ],
+      "questions": [
+        {
+          "label": "What change did the renter request?",
+          "hint": "Include the requested new time, not just “one more day.”",
+          "example": "Alex requests extending R-001 to Day 5 at 09:00."
+        },
+        {
+          "label": "Which availability and policy checks apply?",
+          "hint": "Look at the next booking and the reviewed change process.",
+          "example": "The next booking conflicts; the extension cannot be assumed available."
+        },
+        {
+          "label": "What terms, coverage or payment questions need review?",
+          "hint": "If a change were possible, what else would need confirmation?",
+          "example": "Updated dates, coverage, approved price and any required signing/payment steps. In this case the schedule conflict prevents approval."
+        },
+        {
+          "label": "What will you tell the renter?",
+          "hint": "Use the scenario’s declined decision; do not promise an unavailable alternative.",
+          "example": "We cannot extend this vehicle because it is booked next. The agreed return stays Day 4 at 09:00; contact us about return arrangements."
+        },
+        {
+          "label": "What records and roles need updating?",
+          "hint": "Save the request and decision without changing the accepted return time.",
+          "example": "Owner records declined request and message on R-001. Original return remains Day 4 at 09:00."
+        }
+      ],
+      "done": "Record the request, conflict, decision and message. Keep the original return time and link the outcome to the same rental record.",
+      "reuse": [
+        "5.1",
+        "3.5"
+      ],
+      "local": "Check applicable change, coverage and provider requirements before approving real extensions.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "5.6",
+      "title": "Complete the Return and Closeout",
+      "module": "Complete a Rental",
+      "output": "A return comparison and closeout note that separates resolved from pending items.",
+      "bring": "R-001 and its pickup record from 5.4.",
+      "paragraphs": [
+        "Returning the keys does not finish the record. Close the rental with a clear comparison and an explainable outcome.",
+        "Record return time, vehicle identity, condition, mileage and fuel. Compare with the pickup record before deciding what changed. Observations, proposed charges and completed financial actions are separate. Review any adjustment against original evidence, the agreement and applicable rules. Use actual provider statuses for deposit/refund handling; do not promise when money reaches a bank.",
+        "Practice return: Day 4 at 09:00; 42,950 miles; full fuel indication. The same left-front wheel mark appears in pickup and return images; no new mark is established by these records. Distance: 42,950 − 42,800 = 150 miles. Base rental: 3 × $50 = $150. Taxes, mileage allowance and deposit terms remain unspecified, so do not invent a final balance, charge or refund. This exercise leaves financial closeout pending those checks.",
+        "Your task: Write the comparison and a clear customer update. Mark financial items pending where evidence is missing; do not label the whole rental closed just because keys returned."
+      ],
+      "questions": [
+        {
+          "label": "What return facts belong to R-001?",
+          "hint": "Use the supplied time, readings and vehicle.",
+          "example": "Day 4 at 09:00; Training Car A; 42,950 miles; full fuel; return photos linked to R-001."
+        },
+        {
+          "label": "What changed since pickup?",
+          "hint": "Compare the same areas and readings from 5.4.",
+          "example": "150 miles used. Full fuel at both checks. The same left-front wheel mark was already recorded; no new damage established by this comparison."
+        },
+        {
+          "label": "Do any proposed adjustments need review?",
+          "hint": "Mileage used does not prove excess mileage; review terms and evidence first.",
+          "example": "No automatic wheel-mark charge. Check the actual mileage allowance and other applicable terms before proposing an adjustment."
+        },
+        {
+          "label": "What are the payment, deposit and refund statuses?",
+          "hint": "Separate rehearsal assumptions from any unverified financial item.",
+          "example": "Practice payment evidence was assumed for pickup rehearsal; actual tax/deposit/final-balance details remain unspecified. No refund action is established."
+        },
+        {
+          "label": "What will the closeout message say?",
+          "hint": "Give resolved facts and name the pending next action.",
+          "example": "Return recorded on time. The wheel mark matches pickup evidence. Base rental is $150; staff is checking remaining applicable items before an itemized final statement."
+        }
+      ],
+      "done": "Write the comparison and a clear customer update. Mark financial items pending where evidence is missing; do not label the whole rental closed just because keys returned.",
+      "reuse": [
+        "5.4",
+        "5.3",
+        "5.5"
+      ],
+      "local": "Verify adjustments, notices, deposit/refund handling and retention requirements before real closeout.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "6.1",
+      "title": "Handle Cancellations, No-Shows, and Late Returns",
+      "module": "Handle Problems",
+      "output": "A calm response to one cancellation, no-show or late-return scenario.",
+      "bring": "A policy process from 3.5; use the separate exception example below.",
+      "paragraphs": [
+        "When plans change, use the recorded facts and your reviewed policy. Do not improvise a penalty in the middle of a disagreement.",
+        "Name the event first: cancellation, no-show, late pickup or late return. Create a short timeline of agreed times, messages and actual events. Check the policy version and applicable requirements before deciding any adjustment. Keep a request, approval and completed payment action separate. This exercise uses a different branch from R-001’s on-time return.",
+        "Fictional late-return branch: return agreed at 09:00; renter requested extra time at 08:30; no approval was given; at 09:30 the car has not returned. Staff records the facts and contacts the renter through the reviewed procedure. Message: “Our record shows return was due at 09:00 and no extension is confirmed. Please update us on your return status.” The owner reviews the situation; no invented grace period, fee or recovery tactic is added.",
+        "Your task: Write the timeline, decision-maker and message for one exception. Leave unverified charges or escalation requirements open for the appropriate reviewer."
+      ],
+      "questions": [
+        {
+          "label": "Which exception occurred, and when?",
+          "hint": "Distinguish this alternate practice branch from the normal R-001 closeout.",
+          "example": "Separate late-return scenario: due 09:00; request 08:30; no approval; still absent 09:30."
+        },
+        {
+          "label": "Which terms and messages support the timeline?",
+          "hint": "Use original records; do not convert a request into permission.",
+          "example": "Agreed return 09:00; saved request at 08:30; no recorded acceptance."
+        },
+        {
+          "label": "Which policy and location checks are needed?",
+          "hint": "Identify the applicable version and unresolved requirements.",
+          "example": "Reviewed late-return policy version needed; applicable notice/adjustment requirements still to verify."
+        },
+        {
+          "label": "Who decides the next action?",
+          "hint": "Separate staff contact from authority to approve adjustments or escalation.",
+          "example": "Staff contacts renter; owner reviews the facts and any allowed next steps with appropriate help."
+        },
+        {
+          "label": "What calm message will you send?",
+          "hint": "Ask for relevant information; avoid threats or unsupported fees.",
+          "example": "Our record shows return due at 09:00 with no confirmed extension. Please update us on your return status."
+        }
+      ],
+      "done": "Write the timeline, decision-maker and message for one exception. Leave unverified charges or escalation requirements open for the appropriate reviewer.",
+      "reuse": [
+        "3.5",
+        "5.5"
+      ],
+      "local": "Verify cancellation/lateness rules, notices and escalation requirements. Use appropriate professional or authority channels for serious recovery issues.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "6.2",
+      "title": "Respond to Breakdowns, Accidents, and Damage Reports",
+      "module": "Handle Problems",
+      "output": "An incident contact plan and a first-response message.",
+      "bring": "Use fictional contact placeholders; keep real emergency/insurer details privately.",
+      "paragraphs": [
+        "An incident response should begin with immediate safety and appropriate help, not an argument about who will pay.",
+        "Prepare contacts before a trip: local emergency services, approved roadside assistance, insurer reporting and the responsible business person. In an actual emergency, contact local emergency services and follow their instructions. Ask what help is needed, gather facts only when safe, and follow the verified assistance/reporting process. Staff should not diagnose a car by text or decide fault or coverage.",
+        "Practice report: “A warning appeared and the car is stopped.” Response: “Is anyone in immediate danger or needing emergency help? If so, contact local emergency services. When safe, use our verified assistance contact; we will coordinate the next update.” Record the reported condition, assistance reference and responsible person. Do not tell the renter to continue driving a potentially unsafe vehicle or promise the insurer will pay.",
+        "Your task: List the contact roles, facts to record and next-update owner. Identify any real instructions you still need to confirm before using this plan."
+      ],
+      "questions": [
+        {
+          "label": "Which verified contacts will you keep privately?",
+          "hint": "Use roles here, not real phone numbers or incident locations.",
+          "example": "Local emergency services; approved roadside provider; insurer reporting contact; on-duty business contact."
+        },
+        {
+          "label": "Which response instructions still need confirmation?",
+          "hint": "Use the actual provider/insurer process; do not invent a roadside procedure.",
+          "example": "Confirm emergency escalation, approved towing/assistance, insurer reporting steps and after-hours responsibility."
+        },
+        {
+          "label": "What can you record when safe?",
+          "hint": "Stick to what was reported and observed; do not assign fault or diagnose.",
+          "example": "Report time, reported warning/stopped vehicle, whether help is requested and assistance reference. Location kept privately."
+        },
+        {
+          "label": "Who handles reporting and the vehicle’s return to service?",
+          "hint": "Separate insurer reporting from qualified vehicle assessment.",
+          "example": "Designated owner handles reporting; qualified service reviewer assesses vehicle readiness before it is offered again."
+        },
+        {
+          "label": "What acknowledgment and update plan will you use?",
+          "hint": "Put immediate help first, then state who will follow up.",
+          "example": "Is immediate emergency help needed? When safe, follow the verified assistance route. The on-duty contact will coordinate and tell you the next update time."
+        }
+      ],
+      "done": "List the contact roles, facts to record and next-update owner. Identify any real instructions you still need to confirm before using this plan.",
+      "reuse": [
+        "3.2",
+        "2.4"
+      ],
+      "local": "Confirm emergency, roadside, insurer and local reporting instructions for your operation before using a live incident plan.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "6.3",
+      "title": "Resolve Payment Issues and Customer Complaints",
+      "module": "Handle Problems",
+      "output": "An evidence-based complaint response with an owner and next action.",
+      "bring": "Use the separate fuel-charge complaint below.",
+      "paragraphs": [
+        "A complaint is easier to review when the facts are organized. Start by understanding the disputed item, not defending every decision.",
+        "Identify exactly what the customer disputes: amount, service or event. Gather original quote/agreement, messages, condition evidence and payment history. Note gaps rather than filling them with assumptions. If a formal payment dispute exists, check the provider portal and its actual response deadline; a customer email alone does not satisfy that process. Keep complaint resolution and provider actions recorded separately.",
+        "Fictional case: a renter questions a fuel charge. Pickup shows full, but the return fuel photo is missing. That is an evidence gap, not permission to invent a reading. Staff asks the authorized reviewer to examine the charge and any correction. Message: “I’m reviewing the fuel charge against the original records. The return evidence is incomplete; I’ll update you after the review.” Do not condition routine resolution on deleting a review.",
+        "Your task: Name the disputed item, evidence gap, reviewer and next message. If there is a formal dispute, record its real deadline privately rather than guessing one."
+      ],
+      "questions": [
+        {
+          "label": "What exactly is disputed?",
+          "hint": "Use a separate fictional case; do not change R-001’s recorded full-fuel return.",
+          "example": "Separate practice case: renter disputes a fuel charge."
+        },
+        {
+          "label": "Which original records exist, and what is missing?",
+          "hint": "Separate the policy from evidence of the actual event.",
+          "example": "Pickup fuel photo exists; return fuel photo missing. Agreement and messages need review."
+        },
+        {
+          "label": "Which instructions or deadlines need checking?",
+          "hint": "Distinguish a complaint from a formal provider dispute.",
+          "example": "Check whether a formal dispute exists; if it does, use the provider’s actual submission process/deadline."
+        },
+        {
+          "label": "Who can approve a correction or response?",
+          "hint": "Identify authority; staff should not invent evidence to defend a charge.",
+          "example": "Authorized owner reviews the unsupported item and decides the documented response or correction."
+        },
+        {
+          "label": "What will you tell the customer, and what happens next?",
+          "hint": "Acknowledge the specific issue and avoid claiming an uncompleted refund.",
+          "example": "I’m reviewing the fuel charge; return evidence is incomplete. The owner will check the records and provide the outcome. No refund is confirmed yet."
+        }
+      ],
+      "done": "Name the disputed item, evidence gap, reviewer and next message. If there is a formal dispute, record its real deadline privately rather than guessing one.",
+      "reuse": [
+        "3.5",
+        "5.6"
+      ],
+      "local": "Verify complaint and payment-dispute procedures for the applicable location and provider; preserve original evidence.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "7.1",
+      "title": "Review Your Business Performance",
+      "module": "Improve and Expand",
+      "output": "A one-period review with two clearly defined utilization numbers.",
+      "bring": "A calculator and the supplied fictional 30-day month.",
+      "paragraphs": [
+        "A busy calendar can hide weak results. Review the numbers using definitions you can apply consistently.",
+        "Utilization describes how much of a chosen time period was rented; always name the denominator, the number you divide by. For this exercise, available-day utilization = paid rental days ÷ available days. Calendar-day utilization = paid rental days ÷ all calendar days. Track downtime separately, then compare revenue with costs. These percentages alone do not establish profit.",
+        "Practice month: 30 calendar days, 10 unavailable days and 15 paid days. Available days = 30 − 10 = 20. Available-day utilization = 15 ÷ 20 = 75%. Calendar-day utilization = 15 ÷ 30 = 50%. Five available days were unpaid. If no days are available, the first ratio is undefined, not zero or 100%. Investigate the ten unavailable days before buying another car.",
+        "Your task: Calculate both percentages, separate revenue/deposits/expenses and choose one improvement to investigate next period. Use the same definitions for comparisons."
+      ],
+      "questions": [
+        {
+          "label": "What period and definitions will you use?",
+          "hint": "State the dates/length and what counts as paid, available and unavailable.",
+          "example": "Fictional 30-day month. Paid: 15 rented days. Unavailable: 10 days out of service. Available: 20 days including paid days."
+        },
+        {
+          "label": "Calculate both utilization percentages.",
+          "hint": "Show the denominator in each calculation.",
+          "example": "Available-day: 15 ÷ (30 − 10) = 75%. Calendar-day: 15 ÷ 30 = 50%. Five available days were unpaid."
+        },
+        {
+          "label": "Which money records stay separate?",
+          "hint": "Keep refundable funds and expense records distinct from rental revenue.",
+          "example": "Rental charges, collected taxes, refundable funds, refunds and business expenses tracked separately; cash balance is not profit."
+        },
+        {
+          "label": "What downtime or customer issue needs investigation?",
+          "hint": "Link the question to a record rather than assuming the cause.",
+          "example": "Why was the car unavailable for ten days? Review service and scheduling records."
+        },
+        {
+          "label": "What one improvement will you test?",
+          "hint": "Name one change and a later comparison; do not promise higher earnings.",
+          "example": "Review service scheduling to reduce avoidable delays, then compare unavailable days next period."
+        }
+      ],
+      "done": "Calculate both percentages, separate revenue/deposits/expenses and choose one improvement to investigate next period. Use the same definitions for comparisons.",
+      "reuse": [
+        "1.4",
+        "5.6"
+      ],
+      "local": "",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "IRS: business recordkeeping",
+          "url": "https://www.irs.gov/businesses/small-businesses-self-employed/what-kind-of-records-should-i-keep",
+          "scope": "General recordkeeping concepts; no tax rate, election or retention period prescribed.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "7.2",
+      "title": "Plan Maintenance and Vehicle Replacement",
+      "module": "Improve and Expand",
+      "output": "A maintenance plan linked to the vehicle calendar and readiness review.",
+      "bring": "The vehicle’s manufacturer/service guidance or a placeholder to obtain it.",
+      "paragraphs": [
+        "Maintenance planning should shape availability, not compete with a booking after the fact.",
+        "Use the actual manufacturer information, vehicle history and qualified service advice to determine due work. List item, responsible person, service date and expected unavailable time. Block that time in the real scheduling process and review affected bookings. Service completed and vehicle cleared for return are related checks; retain the record supporting the readiness decision.",
+        "Fictional example: Training Car A has a recurring concern, and assessment is scheduled on Day 8. Maya marks it unavailable while the concern is assessed and checks upcoming reservations. Return-to-service evidence is still needed; a completed calendar appointment alone does not clear it. Later replacement review uses repair costs, downtime and suitability, not just one large bill or money already spent.",
+        "Your task: Plan one service item, its scheduling impact and the evidence needed before offering the car again. Do not invent a universal maintenance interval."
+      ],
+      "questions": [
+        {
+          "label": "Which source guides this vehicle’s maintenance?",
+          "hint": "Identify the actual manual/service guidance or action to obtain it.",
+          "example": "Manufacturer guidance for the vehicle plus qualified service advice; exact schedule to confirm."
+        },
+        {
+          "label": "What work or concern is assigned, and when?",
+          "hint": "Use concern → person → planned date.",
+          "example": "Recurring concern → Maya arranges qualified assessment → practice Day 8."
+        },
+        {
+          "label": "How will unavailable time affect bookings?",
+          "hint": "Name the calendar block and review of existing reservations.",
+          "example": "Mark the assessment/hold period unavailable and review any affected bookings; do not promise a return date before evidence supports it."
+        },
+        {
+          "label": "What evidence is needed before return to service?",
+          "hint": "A completed appointment alone is not clearance.",
+          "example": "Service findings, documented resolution of the concern and the responsible readiness review."
+        },
+        {
+          "label": "What records help decide eventual replacement?",
+          "hint": "Gather a pattern over time rather than deciding from one repair.",
+          "example": "Repair history, total costs, unavailable days and fit for the customer’s needs."
+        }
+      ],
+      "done": "Plan one service item, its scheduling impact and the evidence needed before offering the car again. Do not invent a universal maintenance interval.",
+      "reuse": [
+        "2.4",
+        "7.1"
+      ],
+      "local": "Use qualified service guidance and applicable vehicle requirements; this course does not certify mechanical safety.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "7.3",
+      "title": "Build Your Team and Daily Procedures",
+      "module": "Improve and Expand",
+      "output": "A one-task procedure another person can follow.",
+      "bring": "Choose pickup, return inspection or reservation review.",
+      "paragraphs": [
+        "Giving someone a login is not the same as giving them a clear job. Define the task, decision limit and handoff.",
+        "Write the task as a short sequence, then name who performs it, who reviews exceptions and what record shows it is complete. Specify necessary access and escalation. Use separate accounts where supported, and verify actual permissions before relying on them. A proposed role in a worksheet does not configure software access. Keep employment/contractor decisions separate for qualified review.",
+        "Practice procedure: staff identifies R-001, records return time/condition/readings, attaches evidence and flags any mismatch. The owner reviews proposed charges. Staff does not need billing-administration access simply to record condition. Rehearse with fictional data, then change the steps that caused confusion. When a role changes, reassign open work and remove access no longer needed.",
+        "Your task: Write one procedure, its decision limit and evidence handoff. Test it by explaining the steps aloud without supplying missing instructions."
+      ],
+      "questions": [
+        {
+          "label": "Which task and steps will you document?",
+          "hint": "Choose one task with a clear start and finish.",
+          "example": "Return inspection: identify rental, record time/condition/readings, attach evidence, flag differences, hand off to owner."
+        },
+        {
+          "label": "Who performs it, and who reviews exceptions?",
+          "hint": "Give roles rather than relying on “someone handles it.”",
+          "example": "Inspector records facts; owner reviews proposed charges and unresolved issues."
+        },
+        {
+          "label": "What access is necessary or unnecessary?",
+          "hint": "Check actual software permissions; do not share an owner password.",
+          "example": "Inspector needs the assigned rental/condition record; billing administration is unnecessary for this task."
+        },
+        {
+          "label": "What record shows completion?",
+          "hint": "Name the output and where the next person finds it.",
+          "example": "Dated return record with readings/photos, inspector identity and any unresolved item linked to R-001."
+        },
+        {
+          "label": "How will you train, hand off and remove access?",
+          "hint": "Include a fictional rehearsal and a responsibility-change step.",
+          "example": "Rehearse once; correct unclear steps; reassign pending tasks and revoke unneeded access when the role ends."
+        }
+      ],
+      "done": "Write one procedure, its decision limit and evidence handoff. Test it by explaining the steps aloud without supplying missing instructions.",
+      "reuse": [
+        "5.4",
+        "5.6"
+      ],
+      "local": "Obtain appropriate staffing, privacy and employment/contractor review; assigning a lesson role does not establish compliance.",
+      "reviewedOn": "2026-11-23",
+      "sources": [
+        {
+          "title": "FTC: protecting personal information",
+          "url": "https://www.ftc.gov/business-guidance/resources/protecting-personal-information-guide-business",
+          "scope": "Data minimization, access and retention planning; not complete privacy-law compliance.",
+          "checkedOn": "2026-11-23"
+        }
+      ],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    },
+    {
+      "id": "7.4",
+      "title": "Decide When to Expand",
+      "module": "Improve and Expand",
+      "output": "A final practice-rental review and one evidence-based next decision.",
+      "bring": "Your earlier worksheets; open the final rehearsal checklist below.",
+      "paragraphs": [
+        "Expansion should follow evidence that the current process works. Another vehicle can multiply an unresolved problem.",
+        "Bring together demand evidence, costs, downtime and team capacity. For each proposed extra car or location, repeat the original cost/readiness questions. Test a weaker result as well as the hoped-for result. Reuse your saved answers; this is a review of your work, not another full business plan. You can finish with hold, investigate further or seek qualified review.",
+        "Fictional decision: Maya has more inquiries, but return records are inconsistent and coverage for delivery remains open. The 15-paid-day cost case is still −$150 under the simplified model. She chooses hold on expansion, fixes the return process and schedules a review of real demand/cost records. She rehearses R-001 with the supplied checklist, recording missed checks instead of giving herself an average passing score.",
+        "Your task: Use the final rehearsal checklist in this lesson. In question 4, list checks you missed and how to correct them; refer to earlier answers without retyping them. Finish with one decision, a responsible person and a review date."
+      ],
+      "questions": [
+        {
+          "label": "What demand evidence supports considering expansion?",
+          "hint": "Separate actual dated inquiries/bookings from a hope or practice example.",
+          "example": "I have only fictional research so far. Gather dated demand records before treating expansion as justified."
+        },
+        {
+          "label": "What current weakness could get worse?",
+          "hint": "Look at service, returns, customer support, staffing and open permissions.",
+          "example": "Inconsistent return evidence and unverified delivery coverage could worsen with more cars."
+        },
+        {
+          "label": "What happens in a downside cost/capacity case?",
+          "hint": "Reuse 1.4 and 7.1; explain the consequence rather than just a percentage.",
+          "example": "Fifteen paid days gives −$150 in the simplified model. More workload could also delay inspections; actual extra-vehicle costs need research."
+        },
+        {
+          "label": "What did the final rehearsal reveal?",
+          "hint": "Open the checklist in this lesson, use your saved 5.1–5.6 answers and record misses or unknowns with a fix.",
+          "example": "Caught the time/date mismatches and pending payment. Pickup uses labeled fictional clearance. Need to resolve real tax/deposit terms before any real quote/closeout."
+        },
+        {
+          "label": "What is your decision and next review?",
+          "hint": "Choose hold, investigate or seek qualified review; add evidence, person and date.",
+          "example": "Hold expansion. Maya will improve return documentation and gather actual costs/demand, then review on the chosen date."
+        }
+      ],
+      "done": "Use the final rehearsal checklist in this lesson. In question 4, list checks you missed and how to correct them; refer to earlier answers without retyping them. Finish with one decision, a responsible person and a review date.",
+      "reuse": [
+        "1.5",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4",
+        "5.5",
+        "5.6",
+        "7.1",
+        "7.2",
+        "7.3"
+      ],
+      "local": "Recheck requirements for any added vehicle, location or activity. Completing this rehearsal is learning progress, not permission to launch or expand.",
+      "reviewedOn": "2026-11-23",
+      "sources": [],
+      "time": "Plan 10–15 minutes for a first draft; outside research can take longer.",
+      "revisionNote": "Clarified the task, supplied a worked example and question-by-question guidance; preserved question meanings and saved-answer keys."
+    }
+  ],
+  "capstone": [
+    [
+      "5.1",
+      "Reservation",
+      "R-001: Alex Example, Training Car A; Day 1 09:00 to Day 4 09:00, local pickup. Catch the email’s 10:00 pickup. The scenario supplies Alex’s fictional confirmation of 09:00; record the correction."
+    ],
+    [
+      "5.2",
+      "Agreement",
+      "Catch Day 3 in draft v1; the reservation ends Day 4. Correct and review before sending. A delivery notice without completion evidence must remain unsigned/unverified."
+    ],
+    [
+      "5.3",
+      "Payment",
+      "Practice-P001 is a $150 base-only request showing pending despite the renter’s claim. Investigate the matched transaction; do not charge twice or call it verified. Tax/deposit terms are unspecified."
+    ],
+    [
+      "5.4",
+      "Pickup",
+      "First hold the handoff for unresolved checks. For pickup practice only, record the explicit fictional clearance assumptions in 5.4. Then record 42,800 miles, full fuel and the existing left-front wheel mark; review the record and return instructions with Alex."
+    ],
+    [
+      "5.5",
+      "Change request",
+      "Alex asks for Day 5 at 09:00. The next booking conflicts and the scenario owner declines. Record the decision; the original Day 4 return remains unchanged."
+    ],
+    [
+      "5.6",
+      "Return and closeout",
+      "Return is Day 4 at 09:00: 42,950 miles, full fuel, same wheel mark. Usage is 150 miles; base is 3 × $50 = $150. No new wheel damage is established. Do not invent mileage charges, final tax/deposit amounts or a refund; keep unverified items pending."
+    ],
+    [
+      "7.4",
+      "Your decision",
+      "Identify any missed check, the correction and who follows up. State what still prevents real-world use. A learning review can end with a justified hold."
+    ]
+  ]
+}

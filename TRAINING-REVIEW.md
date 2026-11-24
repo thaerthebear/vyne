@@ -1,44 +1,31 @@
 # Training review — November 23, 2026
 
-The current course contains 33 original written lesson drafts, 164 required worksheet questions, example answers and completion checks. There are two sample videos. This review does not certify the educational, legal or commercial completeness of the course, or full coverage of the referenced Whop videos.
+All 33 written lessons and their 164 required questions have now received an editorial pass. The website preserves all 197 answer fields (including 33 optional notes), existing review marks, v1 backups, exact question/reading resume, and the two sample videos.
 
-## Fixed and deployed
+See [the full lesson-by-lesson review](docs/TRAINING-CONTENT-REVIEW.md) for findings, fixes, official background references and limitations. The canonical revised content is [the v2 curriculum](docs/training-curriculum-v2.json). The original v1 media, mascot, voice and prompts are preserved; a v2 written export is saved in the car-rental project.
 
-- Returning to a lesson restores its reading part, worksheet question and lesson stage on the same browser.
-- The home page recommends an unfinished lesson after the current worksheet is reviewed.
-- Restoring a partial answer backup preserves unrelated answers and reviewed lessons. A partial backup cannot falsely mark a mixed worksheet reviewed.
-- Oversized imported answers are rejected before changing existing work, instead of silently truncating them.
-- Browser-save failures appear outside the collapsed tools panel and beside the worksheet.
-- Printing uses the complete answer text rather than fixed-height textareas that can clip long answers.
-- Full backups include resume positions. Existing v1 backups and original answer keys remain supported.
+## What changed
 
-Only `course.html` and `training.css` changed in the hosted release. All 33 lesson bodies, prompts, examples, existing media, rental code and billing configuration are unchanged. Current billing remains test mode; live Stripe activation was deferred by the user.
+- Concrete outputs, plain-language instructions and complete fictional worked examples.
+- Specific help and expandable answers for all 164 required questions.
+- Earlier-answer panels in 28 lessons, with no automatic copying or overwriting.
+- One consistent practice rental from reservation through return, including explicit simulated evidence assumptions and unresolved items.
+- The missing final rehearsal checklist, accessible in lesson 7.4 and its worksheet.
+- Short reading blocks, explicit optional-note skipping and navigation that stays at the next question.
 
 ## Verification
 
-- Seven automated DOM regression checks pass, including all 33 worksheet completions, review invalidation after edits, exact reload position, partial/full restore, oversized import rejection, failed local storage and long printed answers.
-- Run with `npm ci --prefix tests/training` then `npm test --prefix tests/training`.
-- 33 deployment checks pass.
-- Chrome at 390×844: course home has no horizontal overflow; the worksheet resumed at question 2 after an actual reload and retained question 1. Screenshots are in `output/training-audit/`. This is emulation, not physical iPhone testing.
-- Host verification: all 145 release files match; all 23 original signing blobs match; three databases pass integrity checks; existing owner login, settled rental and both photos persist; both videos return matching byte ranges; four Cloudflare connections are ready.
-- Public verification: sample lesson returns 200; full course redirects anonymous visitors to membership; protected lesson 1.2 media remains 403 anonymously. The authenticated course matches the release.
+Ten course interaction checks, six staging HTTP checks and 34 deployment checks passed. Phone-sized browser checks covered saved answers across reload, contextual examples and the final rehearsal; the 320- and 390-pixel views inspected had no horizontal overflow. Desktop home was inspected. No physical iPhone or real customer usability study is claimed.
 
-Current release: `/srv/vyne/releases/ebfb7eefa9fd1795`. Previous: `/srv/vyne/releases/5469e62440d56cf0`. A consistent pre-change application snapshot is in `/var/lib/rycf-bootstrap/training-fixes-pre-deploy/`. No database was restored or replaced. Roll back source through the previous release, without overwriting later customer records.
+Release and server-preservation evidence is in `output/training-content-review/`. The release changes only `course.html` and `training.css`; customer/rental code, existing media and all billing configuration are outside this change. State is preserved in place; rollback changes source only and must not overwrite later customer records.
 
-## Remaining training work
+## Still separate from this review
 
-These gaps are still open; the fixes above do not complete them.
+- 31 remaining final videos and timed captions; two sample introductions already exist.
+- Qualified state/local, legal, tax, insurance and actual provider-procedure review.
+- Beginner and existing-owner customer trials.
+- Answers still save in this browser, with download/restore backups, not across devices.
+- Support policy, account recovery and broader commercial-readiness work.
+- Live Stripe setup, explicitly deferred by the owner.
 
-| Area | Current evidence | Needed to finish |
-| --- | --- | --- |
-| Lesson quality | All 33 have scripts, tasks, examples and checks; source package labels them editorial drafts | Review each lesson for accuracy and actionable depth; test with a beginner and an existing owner |
-| Video | Two sample videos, 31 lessons currently taught in writing | Produce approved final videos using the saved mascot and Trevin voice; verify actual on-screen wording |
-| Accessibility | Written lesson and transcript views exist; neither video has a separate caption track | Add and verify timed captions for both samples and every final video |
-| Saved work | Answers, review marks and resume positions stay in this browser; JSON backup/restore supported | Account-backed sync with explicit migration, conflict handling and tenant isolation; no current cross-device promise |
-| State/local checks | State selector saves a choice and explicitly says guides are unreviewed | Operating city/county and multiple locations; sourced, dated applicability checks; separate learner and editorial status |
-| Assignments | Module assignments/capstone exist in the production package | Connect assignments to saved worksheet outputs without duplicate entry, and demonstrate a complete fictional rental |
-| Help | Worksheet examples and optional questions are available | Define a real support route and response policy, carrying the lesson ID into requests |
-| Account access | Full course requires eligible sign-in; public sample is free | Finish account recovery and verification before broad customer sales |
-| Commercial readiness | Sandbox purchase/access checks exist; live Stripe is deferred | Resume approved Stripe setup after identity verification and complete the previously documented launch requirements |
-
-The source inventory is `output/training-audit/curriculum-inventory.json`. The editorial master remains `/Users/rebuiltpros/Documents/ChatGPT/car rental/course-production-v1/`; its saved mascot, voice and prompts were not changed. No new videos, state-specific legal assertions or real charges were created in this pass.
+Editorial review and self-marked worksheet completion are not operating approval, a liability guarantee or proof of comprehensive Whop-video coverage.

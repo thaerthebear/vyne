@@ -80,3 +80,30 @@ if(process.env.RYCF_COURSE_ART==='1')test('every lesson has distinct title-match
  }
  assert.equal(urls.size,33);assert.equal(f.d.querySelectorAll('video source').length,2);f.w.close();
 });
+
+test('reviewed guidance keeps existing answers, shows contextual help and makes optional notes skippable',()=>{
+ const f=fixture({[key]:{'0.1-0':'Existing goal from before the content review'}},'0.1');let s=f.section('0.1');
+ assert.equal(f.d.querySelectorAll('[data-content-version="2"]').length,33);
+ assert.equal(f.d.querySelectorAll('.question-help').length,164);
+ for(const help of f.d.querySelectorAll('.question-help')){assert.ok(help.querySelector('.question-hint')?.textContent.length>15);assert.ok(help.querySelector('.question-example p')?.textContent.length>20)}
+ f.button(s,'Practice');const input=s.querySelector('textarea');assert.equal(input.value,'Existing goal from before the content review');
+ const visible=()=>[...s.querySelectorAll('.question-card')].filter(n=>!n.hidden);assert.equal(visible().length,1);
+ f.button(s,'Save & continue →');assert.equal(visible().length,1);assert.match(visible()[0].querySelector('.question-example p').textContent,/One car/);
+ const required=[...s.querySelectorAll('textarea')].filter(t=>!t.dataset.key.endsWith('-notes'));for(const t of required)if(!t.value)f.input(t,'My short draft');
+ for(let i=1;i<required.length;i++)f.button(s,'Save & continue →');
+ assert.match(s.querySelector('.question-count').textContent,/Optional/);f.button(s,'Skip optional note →');assert.equal(s.dataset.stage,'review');
+ assert.equal(s.querySelectorAll('.review-answer').length,5);assert.equal(s.querySelector('[data-key="0.1-notes"]').value,'');
+ s.querySelector('.complete').click();assert.equal(s.dataset.stage,'finish');f.w.close();
+});
+
+test('earlier answers are read-only and escaped; final rehearsal is available exactly where requested',()=>{
+ const f=fixture({[key]:{'1.1-0':'<img src=x onerror=alert(1)> My original customer'}},'1.5');let s=f.section('1.5');f.button(s,'Practice');
+ const reuse=s.querySelector('.reuse-work');reuse.open=true;reuse.dispatchEvent(new f.w.Event('toggle'));
+ assert.match(reuse.querySelector('.reused-answer p').textContent,/<img/);assert.equal(reuse.querySelectorAll('img,textarea').length,0);
+ f.button(reuse,'Open lesson 1.1');assert.equal(f.d.querySelector('#lesson').value,'1.1');assert.equal(f.section('1.1').querySelector('textarea').value,'<img src=x onerror=alert(1)> My original customer');
+ f.select('7.4');s=f.section('7.4');assert.ok(s.querySelector('.learn-panel .capstone-checklist'));f.button(s,'Practice');
+ for(let i=0;i<3;i++){f.input(s.querySelectorAll('textarea')[i],'My evidence');f.button(s,'Save & continue →')}
+ const card=[...s.querySelectorAll('.question-card')].find(n=>!n.hidden);assert.ok(card.querySelector('.capstone-checklist'));
+ const text=card.querySelector('.capstone-checklist').textContent;for(const required of ['R-001','Day 4','Practice-P001','42,800','42,950','150 miles'])assert.ok(text.includes(required));
+ assert.equal(f.d.querySelectorAll('textarea').length,197);f.w.close();
+});
