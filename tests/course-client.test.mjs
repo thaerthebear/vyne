@@ -107,3 +107,29 @@ test('earlier answers are read-only and escaped; final rehearsal is available ex
  const text=card.querySelector('.capstone-checklist').textContent;for(const required of ['R-001','Day 4','Practice-P001','42,800','42,950','150 miles'])assert.ok(text.includes(required));
  assert.equal(f.d.querySelectorAll('textarea').length,197);f.w.close();
 });
+
+test('new learners see Start here; pausing resumes the question and keeps their draft',()=>{
+ const f=fixture({},'');assert.equal(f.d.querySelector('.hero-action').textContent,'Start here →');
+ f.button(f.d,'Start here →');const s=f.section('0.1');f.button(s,'Practice');f.input(s.querySelector('textarea'),'One car; coverage still unknown.');f.button(s,'Save & continue →');f.button(s.querySelector('.practice-panel'),'Pause for now');
+ assert.equal(f.d.querySelector('#course-home').hidden,false);assert.equal(f.d.querySelector('.hero-action').textContent,'Resume lesson →');f.button(f.d,'Resume lesson →');assert.equal(s.dataset.stage,'practice');assert.match(s.querySelector('.question-count').textContent,/Question 2 of/);assert.equal(s.querySelector('textarea').value,'One car; coverage still unknown.');f.w.close();
+});
+
+test('phone Back and Forward preserve the lesson, reading part and worksheet question',async()=>{
+ const f=fixture({},'');const travel=async direction=>{const changed=new Promise(resolve=>f.w.addEventListener('popstate',resolve,{once:true}));f.w.history[direction]();await changed;};
+ f.button(f.d,'Start here →');const s=f.section('0.1');f.button(s,'Next part →');f.button(s,'Practice');f.input(s.querySelector('textarea'),'My goal');f.button(s,'Save & continue →');
+ f.select('0.2');assert.equal(f.d.querySelector('#lesson').value,'0.2');await travel('back');assert.equal(f.d.querySelector('#lesson').value,'0.1');assert.equal(s.dataset.stage,'practice');assert.match(s.querySelector('.question-count').textContent,/Question 2 of/);
+ await travel('back');assert.equal(s.dataset.stage,'learn');assert.equal(s.querySelector('.reading-meta').textContent,'Written lesson2 / 4');await travel('forward');assert.equal(s.dataset.stage,'practice');assert.equal(s.querySelector('textarea').value,'My goal');
+ f.button(s.querySelector('.practice-panel'),'Pause for now');await travel('back');assert.equal(s.dataset.stage,'practice');assert.equal(f.d.querySelector('#course-home').hidden,true);f.w.close();
+});
+
+test('video introductions never hide the full lesson, preparation or transcript',()=>{
+ const f=fixture();for(const id of ['1.1','1.2']){f.select(id);const s=f.section(id);assert.equal(s.querySelector('.intro-video').open,false);assert.ok(s.querySelector('.intro-video video'));assert.equal(s.querySelector('.lesson-reader').closest('details'),null);assert.match(s.querySelector('.lesson-preparation').textContent,/Bring:.*Plan/s);assert.match(s.querySelector('.intro-video').textContent,/second (introduction|teaching example)/);assert.ok([...s.querySelectorAll('summary')].some(n=>/transcript/i.test(n.textContent)))}f.w.close();
+});
+
+test('long answers can be expanded, edited and printed without filling the review screen',()=>{
+ const f=fixture();const s=f.section('0.1'),long='My detailed practice notes. '.repeat(100);answerLesson(f,'0.1');f.input(s.querySelector('textarea'),long);f.button(s,'Review my answers');const answer=s.querySelector('details.review-answer');assert.equal(answer.open,false);assert.ok(answer.querySelector('.answer-preview').textContent.length<120);assert.equal(answer.querySelector('p').textContent,long.trim());answer.open=true;f.button(answer,'Edit answer');assert.equal(s.dataset.stage,'practice');assert.equal(s.querySelector('textarea').value,long);f.w.close();
+});
+
+test('all reviewed worksheets have a distinct course-home ending',()=>{
+ const f=fixture();for(const option of f.d.querySelector('#lesson').options){f.select(option.value);answerLesson(f,option.value)}f.button(f.section('7.4'),'Back to your course');assert.equal(f.d.querySelector('.hero-action').textContent,'Revisit a lesson →');assert.equal(f.d.querySelector('.hero-copy .eyebrow').textContent,'ALL 33 WORKSHEETS REVIEWED');f.w.close();
+});
